@@ -10,7 +10,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * @ProjectName 食品企业订货销售系统
+ * @Author 朱向阳
+ * @Date 2018/7/20 14:38
+ * @Description: 用户类
+ */
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames="username")})
 public class SysUser implements UserDetails {
