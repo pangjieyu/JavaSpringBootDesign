@@ -6,5 +6,5 @@ package com.exercise.mysys.dao;
  * @Date 2018/7/20 15:03
  * @Description: 订货单类的数据表示层
  */
-public interface OrderRepository {
+public interface OrderGoodRepository {
 }

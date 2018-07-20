@@ -12,7 +12,7 @@ import java.util.Date;
  * @Description: 退货单类
  */
 @Entity
-public class Return {
+public class ReturnGood {
     @Id
     @GeneratedValue
     //编号（主键）

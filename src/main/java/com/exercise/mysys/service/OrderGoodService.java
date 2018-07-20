@@ -6,5 +6,5 @@ package com.exercise.mysys.service;
  * @Date 2018/7/20 15:03
  * @Description: 订货单类所提供的服务
  */
-public class OrderService {
+public class OrderGoodService {
 }

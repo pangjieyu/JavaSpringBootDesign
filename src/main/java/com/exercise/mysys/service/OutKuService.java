@@ -6,5 +6,5 @@ package com.exercise.mysys.service;
  * @Date 2018/7/20 16:10
  * @Description: 出货单类所提供的服务
  */
-public class OutService {
+public class OutKuService {
 }
