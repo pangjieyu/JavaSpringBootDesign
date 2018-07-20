@@ -17,6 +17,5 @@ public class Shengchan {
         return "bumen";
     }
 
-    public String shengchanjihua
 
 }
