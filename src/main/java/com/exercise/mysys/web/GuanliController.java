@@ -12,21 +12,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/guanli")
 public class GuanliController {
+    //库存
     @RequestMapping(value = "/kucun", method = RequestMethod.GET)
     public String kucun() {
         return "kucun";
     }
-
+    //订单
     @RequestMapping(value = "/dingdan", method = RequestMethod.GET)
     public String dingdan() {
         return "dingdan";
     }
-
+    //退货
     @RequestMapping(value = "/tuidan", method = RequestMethod.GET)
     public String tuidan() {
         return "tuidan";
     }
-
+    //财务
     @RequestMapping(value = "/caiwu", method = RequestMethod.GET)
     public String caiwu() {
 
