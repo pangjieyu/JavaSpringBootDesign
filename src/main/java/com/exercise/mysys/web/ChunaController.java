@@ -1,6 +1,7 @@
 package com.exercise.mysys.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -10,12 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @date 2018/7/20
  */
 @Controller
-@RequestMapping(value = "shengchan")
-public class Shengchan {
-    @RequestMapping(value = "/bumen", method = RequestMethod.GET)
-    public String bumen() {
-        return "bumen";
+@RequestMapping("/chuna")
+public class ChunaController {
+    @RequestMapping(value = "/tuikuan", method = RequestMethod.GET)
+    public String tuikuan() {
+        return "tuikuan";
     }
-
-
 }
