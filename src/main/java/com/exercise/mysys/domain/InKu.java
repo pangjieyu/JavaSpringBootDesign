@@ -8,23 +8,23 @@ import java.util.Date;
 /**
  * @ProjectName 食品企业订货销售系统
  * @Author 朱向阳
- * @Date 2018/7/20 16:02
- * @Description: 出库单类
+ * @Date 2018/7/20 16:11
+ * @Description: TODO
  */
 @Entity
-public class Out {
+public class InKu {
     @Id
     @GeneratedValue
     //编号（主键）
     private Long id;
-    //商品编号（外键）
+    //商品编号（主键）
     private Long good_id;
-    //员工编号（外键）
+    //员工编号（主键）
     private Long employee_id;
     //商品数量
     private Integer number;
-    //出库日期
-    private Date out_date;
+    //入库日期
+    private Date in_date;
 
     public Long getId() {
         return id;
@@ -58,11 +58,11 @@ public class Out {
         this.number = number;
     }
 
-    public Date getOut_date() {
-        return out_date;
+    public Date getIn_date() {
+        return in_date;
     }
 
-    public void setOut_date(Date out_date) {
-        this.out_date = out_date;
+    public void setIn_date(Date in_date) {
+        this.in_date = in_date;
     }
 }

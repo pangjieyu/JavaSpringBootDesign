@@ -13,7 +13,7 @@ import java.util.Date;
  * @Description: 订货单类
  */
 @Entity
-public class Order {
+public class OrderGood {
     @Id
     @GeneratedValue
     //编号（主键）
