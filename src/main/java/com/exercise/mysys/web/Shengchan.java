@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @date 2018/7/20
  */
 @Controller
-public class staticPagesController {
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String home() {
-        return "index";
+@RequestMapping(value = "shengchan")
+public class Shengchan {
+    @RequestMapping(value = "/bumen", method = RequestMethod.GET)
+    public String bumen() {
+        return "bumen";
     }
+
+    public String shengchanjihua
+
 }
