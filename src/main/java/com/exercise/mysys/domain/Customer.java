@@ -3,7 +3,12 @@ package com.exercise.mysys.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+/**
+ * @ProjectName 食品企业订货销售系统
+ * @Author 朱向阳
+ * @Date 2018/7/20 14:38
+ * @Description: 客户类
+ */
 @Entity
 public class Customer {
     @Id
