@@ -16,37 +16,26 @@
             height: 100px;
         }
     </style>
-    <script type="text/javascript">
-        function checkInput() {
-            var name = document.form1.name.value;
-            if(name == ""){
-                alert("请输入姓名");
-                return false;
-            }
-            else{
-                return true;
-            }
-        }
-    </script>
+
 </head>
 
 <body>
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">员工信息:</strong>
 </p>
 <br>
-<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form action="/users" method="post">
 <span class="text-primary" style="font-size: 20px;">所属部门:</span>
-<select class="form-control" id="sale" style="height: 35px;">
-    <option selected="selected" value="销售部门">销售部门</option>
-    <option value="仓库部门">仓库部门</option>
-    <option value="生产部门">生产部门</option>
-    <option value="生产计划部门">生产计划部门</option>
-    <option value="财务会计部">财务会计部</option>
-    <option value="财务出纳部">财务出纳部</option>
+<select class="form-control" id="sale" style="height: 35px;" name="bumen">
+    <option selected="selected">销售部门</option>
+    <option>仓库部门</option>
+    <option>生产部门</option>
+    <option>生产计划部门</option>
+    <option>财务会计部</option>
+    <option>财务出纳部</option>
 </select>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span class="text-primary" style="font-size: 20px;">姓名:</span>
-<input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
+<input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
     <span>查询</span>
@@ -66,7 +55,7 @@
         <th scope="col"></th>
     </tr>
     </thead>
-    <tr id="main" th:each="user:${userList}">
+    <tr th:each="user:${userList}">
         <td th:text="${user.getUsername()}">123</td>
         <td th:text="${user.getName()}">张江瑜</td>
         <td th:text="${user.getSex()}">男</td>
