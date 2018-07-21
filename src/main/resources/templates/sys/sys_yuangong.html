@@ -64,7 +64,7 @@
         <td th:text="${user.getAddress()}">山西省晋中市太谷县</td>
         <td th:text="${user.getHiretime()}">2018年7月20日</td>
         <td th:text="${user.getRole()}">销售部门</td>
-        <td><a href="#" class="a2">修改</a> </td>
+        <td><a href="sys_xiugai.html" th:href="/edit/${user.getId()}" class="a2">修改</a> </td>
     </tr>
 </table>
 </body>

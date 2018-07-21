@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            font-size: 20px;
+        }
+        #id,#sex,#salary,#address,#belong{
+            margin-left: 40px;
+        }
+        #name,#password,#telephone,#date{
+            margin-left: 50px;
+        }
+        #btn{
+            margin-left: 500px;
+        }
+    </style>
+    <script type="text/javascript">
+        function checkInput() {
+            var id = document.form1.id.value;
+            var name = document.form1.name.value;
+            var sex = document.form1.sex.value;
+            var password = document.form1.password.value;
+            var salary = document.form1.salary.value;
+            var telephone = document.form1.telephone.value;
+            var address = document.form1.address.value;
+            var date = document.form1.date.value;
+            var bool = document.form1.bool.value;
+            var belong = document.form1.belong.value;
+            if(id == ""){
+                alert("请输入员工用户名");
+                return false;
+            }else if(name == "") {
+                alert("请输入员工姓名");
+                return false;
+            }else if(password == ""){
+                alert("请输入员工密码");
+                return false;
+            }else if(salary == ""){
+                alert("请输入员工工资");
+                return false;
+            }else if(telephone == ""){
+                alert("请输入员工手机号");
+                return false;
+            }else if(address == ""){
+                alert("请输入员工家庭地址");
+                return false;
+            }else if(date == ""){
+                alert("请输入员工入职时间");
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">修改员工信息:</strong>
+</p>
+<br>
+<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data" th:object="${user}">
+    <span class="text-primary" style="margin-left: 21px">用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username"/>
+
+    <span class="text-primary" style="margin-left: 190px">姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name"/>
+
+    <br>
+    <span class="text-primary" style="margin-left: 40px">性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <select class="form-control" id="sex" style="height: 35px;" name="sex">
+        <option selected="selected">男</option>
+        <option>女</option>
+    </select>
+
+    <span class="text-primary" style="margin-left: 190px">密码:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="password" placeholder="password" style="height: 25px;" name="password"/>
+
+    <br>
+    <span class="text-primary" style="margin-left: 40px">工资:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="salary" placeholder="salary" style="height: 25px;" name="salary">
+
+    <span class="text-primary" style="margin-left: 170px">手机号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="telephone" placeholder="telephone" style="height: 25px;" name="telephone">
+
+    <br>
+    <span class="text-primary">家庭地址:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="address" placeholder="address" style="height: 25px;" name="address">
+
+    <span class="text-primary" style="margin-left: 150px">入职时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" class="form-control" id="date"  style="height: 25px;" name="date">
+
+    <br>
+    <span class="text-primary">是否在职:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <select class="form-control" id="bool" style="height: 35px;"name="bumen">
+        <option selected="selected" value="1">是</option>
+        <option value="0">否</option>
+    </select>
+    <span class="text-primary">所属部门:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <select class="form-control" id="belong" style="height: 35px;"name="bumen">
+        <option selected="selected">销售部门</option>
+        <option>仓库部门</option>
+        <option>生产部门</option>
+        <option>生产计划部门</option>
+        <option>财务会计部</option>
+        <option>财务出纳部</option>
+    </select>
+
+    <br>
+    <br>
+    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
+        <span>提交</span>
+    </button>
+</form>
+</body>
+</html>
