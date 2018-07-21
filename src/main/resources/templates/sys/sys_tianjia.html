@@ -10,6 +10,7 @@
     <meta name="renderer" content="webkit">
     <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
     <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <style>
         .img1:hover {
             width: 100px;
@@ -68,10 +69,11 @@
 </head>
 
 <body>
+<!--<script type="text/javascript">alert("1234214");</script>-->
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">添加员工信息:</strong>
 </p>
 <br>
-<form method="post" name="form1" id="form-add" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form name="form1" id="form-add" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username"/>
 
@@ -126,15 +128,14 @@
     function submitFunction(){
         var formData = new FormData($("#form-add")[0]);
         $.ajax({
-            url:'/add',
+            url:'/addUser',
             type:'POST',
             data:formData,
             async:false,
             cache:false,
-            contentType:false,
             processData:false,
-            sucess:function (data) {
-                alert("1234");
+            success:function (data) {
+                alert("1232421");
             },
             error:function () {
                 alert("1234124");
