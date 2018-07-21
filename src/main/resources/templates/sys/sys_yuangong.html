@@ -66,7 +66,7 @@
         <th scope="col"></th>
     </tr>
     </thead>
-    <tr th:each="user:${userList}">
+    <tr id="main" th:each="user:${userList}">
         <td th:text="${user.getUsername()}">123</td>
         <td th:text="${user.getName()}">张江瑜</td>
         <td th:text="${user.getSex()}">男</td>
