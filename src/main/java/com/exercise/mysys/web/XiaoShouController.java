@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Description: 销售控制器
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/xiaoshou")
 public class XiaoShouController {
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String shengchan() {
+        return "/index/index_sale.html";
+    }
     //添加客户
     @RequestMapping(value = "/添加客户", method = RequestMethod.GET)
     public String tianjiakehu(){ return "tianjiakehu"; }

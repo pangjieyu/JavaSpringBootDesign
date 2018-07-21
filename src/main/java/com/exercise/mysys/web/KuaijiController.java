@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class KuaijiController {
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String kuaiji() {
+        return "/index/index_kuaiji.html";
+    }
+
     @RequestMapping(value = "/huokuan", method = RequestMethod.GET)
     public String huokuan() {
         return "huokuan";
