@@ -76,7 +76,7 @@ public class SysUserController {
         x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
         x.setRole(request.getParameter("bumen"));
         userRepository.save(x);
-        return "redirect:/admin";
+        return "redirect:/shouye";
 
     }
 
