@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,6 +28,11 @@ public class SysUserController {
         return "login";
     }
 
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String userList(Model model) {
+        model.addAttribute("userList", userRepository.findAll());
+        return "userList";
+    }
     @RequestMapping(value = "/addUser",method = RequestMethod.GET)
     public String addUser() {
         return "addUser";
@@ -36,6 +43,8 @@ public class SysUserController {
         /**
          * root
          * $2a$10$kke9EHzAFTKWJTQcTzFi0.IFlJmJLd6BhOtPKlAoq3iH9G.s3KAtG
+         * INSERT INTO `sqlDesign`.`sys_user` (`id`, `address`, `effective`, `hiretime`, `password`, `role`, `salary`, `telephone`, `username`) VALUES (0, 'a', true, '2018-07-21 00:50:40', '$2a$10$kke9EHzAFTKWJTQcTzFi0.IFlJmJLd6BhOtPKlAoq3iH9G.s3KAtG', 'admin', 0, 0, 'root')
+         *
          *
          */
         SysUser nowUser = (SysUser) SecurityContextHolder.getContext()

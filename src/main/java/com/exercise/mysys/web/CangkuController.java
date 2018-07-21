@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.GenericArrayType;
 
 /**
@@ -14,8 +15,14 @@ import java.lang.reflect.GenericArrayType;
 @Controller
 @RequestMapping(value = "/cangku")
 public class CangkuController {
-    @RequestMapping(value = "/ruku", method = RequestMethod.GET)
-    public String ruku() {
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String cangku() {
+        return "cangku";
+    }
+
+    @RequestMapping(value = "/ruku", method = RequestMethod.POST)
+    public String ruku(HttpServletRequest request) {
 
         return "ruku";
     }

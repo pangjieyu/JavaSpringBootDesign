@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap.css}" href="../../static/css/bootstrap.css" />
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">员工信息:</strong>
+</p>
+<br>
+<form action="#" method="post">
+<span class="text-primary" style="font-size: 20px;">所属部门:</span>
+<select class="form-control" id="sale" style="height: 35px;">
+    <option selected="selected">销售部门</option>
+    <option>仓库部门</option>
+    <option>生产部门</option>
+    <option>生产计划部门</option>
+    <option>财务会计部</option>
+    <option>财务出纳部</option>
+</select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="text-primary" style="font-size: 20px;">姓名:</span>
+<input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+    <span>查询</span>
+</button>
+</form>
+<table class="table table-bordered table-hover definewidth m10">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">用户名</th>
+        <th scope="col">姓名</th>
+        <th scope="col">性别</th>
+        <th scope="col">密码</th>
+        <th scope="col">工资</th>
+        <th scope="col">手机号</th>
+        <th scope="col">住址</th>
+        <th scope="col">入职时间</th>
+        <th scope="col">所属部门</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tr>
+        <td>123</td>
+        <td>张江瑜</td>
+        <td>男</td>
+        <td>123456</td>
+        <td>1200</td>
+        <td>18535449392</td>
+        <td>山西省晋中市太谷县</td>
+        <td>2018年7月20日</td>
+        <td>销售部门</td>
+        <td></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -21,7 +21,7 @@ public class KuaijiController {
         return "yufukuan";
     }
 
-    @RequestMapping(value = "/yufukuan", method = RequestMethod.GET)
+    @RequestMapping(value = "/tuihuo", method = RequestMethod.GET)
     public String tuihuo() {
         return "tuihuo";
     }

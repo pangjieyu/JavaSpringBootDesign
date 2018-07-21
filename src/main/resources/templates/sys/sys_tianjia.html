@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            font-size: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        function checkInput() {
+           var id = document.form1.id.value;
+           var name = document.form1.name.value;
+           var sex = document.form1.sex.value;
+           var password = document.form1.password.value;
+           var salary = document.form1.salary.value;
+           var telephone = document.form1.telephone.value;
+           var address = document.form1.address.value;
+           var date = document.form1.date.value;
+           var bool = document.form1.bool.value;
+           var belong = document.form1.belong.value;
+           if(id == ""){
+               alert("请输入员工用户名");
+               return false;
+           }else if(name == "") {
+               alert("请输入员工姓名");
+               return false;
+           }else if(password == ""){
+               alert("请输入员工密码");
+               return false;
+           }else if(salary == ""){
+               alert("请输入员工工资");
+               return false;
+           }else if(telephone == ""){
+               alert("请输入员工手机号");
+               return false;
+           }else if(address == ""){
+               alert("请输入员工家庭地址");
+               return false;
+           }else if(date == ""){
+               alert("请输入员工入职时间");
+               return false;
+           }else{
+               return true;
+           }
+        }
+    </script>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">添加员工信息:</strong>
+</p>
+<br>
+<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+    <span class="text-primary">员工用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" />
+    <span class="text-primary">员工姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" />
+    <br>
+    <span class="text-primary">员工性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <select class="form-control" id="sex" style="height: 35px;">
+        <option selected="selected">男</option>
+        <option>女</option>
+    </select>
+    <span class="text-primary">员工密码:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="password" placeholder="password" style="height: 25px;" />
+    <br>
+    <span class="text-primary">员工工资:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="salary" placeholder="salary" style="height: 25px;">
+    <span class="text-primary">员工手机号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="telephone" placeholder="telephone" style="height: 25px;">
+    <br>
+    <span class="text-primary">员工家庭地址:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="address" placeholder="address" style="height: 25px;">
+    <span class="text-primary">入职时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" class="form-control" id="date"  style="height: 25px;">
+    <br>
+    <span class="text-primary">员工是否在职:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <select class="form-control" id="bool" style="height: 35px;">
+        <option selected="selected">是</option>
+        <option>否</option>
+    </select>
+    <span class="text-primary">员工所属部门:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <select class="form-control" id="belong" style="height: 35px;">
+        <option selected="selected">销售部门</option>
+        <option>仓库部门</option>
+        <option>生产部门</option>
+        <option>生产计划部门</option>
+        <option>财务会计部</option>
+        <option>财务出纳部</option>
+    </select>
+    <br>
+    <br>
+    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+        <span>添加</span>
+    </button>
+</form>
+</body>
+</html>
