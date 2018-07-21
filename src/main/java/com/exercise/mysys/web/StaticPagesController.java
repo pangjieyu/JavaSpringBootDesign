@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class StaticPagesController {
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String home() {
 
         SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getPrincipal();
         if(nowUser.getRole().equals("boss"))
-            return "redirect:/guanli";
+            return "index/index_boss";
+        else if(nowUser.getRole().equals("admin"))
+            return "redirect:/users";
         return "index";
     }
 
