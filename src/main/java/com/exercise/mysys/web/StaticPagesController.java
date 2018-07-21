@@ -20,12 +20,19 @@ public class StaticPagesController {
                 .getAuthentication()
                 .getPrincipal();
         if(nowUser.getRole().equals("boss"))
-            return "redirect:/guanli";
+            return "index/index_boss";
+        else if(nowUser.getRole().equals("admin"))
+            return "redirect:/admin";
         return "index";
     }
 
     @RequestMapping(value = "/shouye", method = RequestMethod.GET)
     public String shouye() {
         return "shouye";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String admin() {
+        return "index/index_sys";
     }
 }
