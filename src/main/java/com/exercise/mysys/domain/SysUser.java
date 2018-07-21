@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -104,6 +105,12 @@ public class SysUser implements UserDetails {
 
     public Date getHiretime() {
         return hiretime;
+    }
+    public String getTimeString() {
+        String sb = "yyyy年M月dd日";
+        SimpleDateFormat sdf = new SimpleDateFormat(sb);
+        String day = sdf.format(this.hiretime);
+        return day;
     }
 
     public void setHiretime(Date hiretime) {
