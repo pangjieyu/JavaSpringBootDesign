@@ -21,6 +21,12 @@
         #id,#sex,#salary,#address,#belong{
             margin-left: 40px;
         }
+        #name,#password,#telephone,#date{
+            margin-left: 50px;
+        }
+        #btn{
+            margin-left: 500px;
+        }
     </style>
     <script type="text/javascript">
         function checkInput() {
@@ -67,27 +73,27 @@
 </p>
 <br>
 <form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 20px">用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 21px">用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username"/>
 
-    <span class="text-primary" style="margin-left: 150px">姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 190px">姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name"/>
 
     <br>
-    <span class="text-primary" style="margin-left: 37px">性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 40px">性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="sex" style="height: 35px;" name="sex">
         <option selected="selected">男</option>
         <option>女</option>
     </select>
 
-    <span class="text-primary" style="margin-left: 150px">密码:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 190px">密码:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="password" placeholder="password" style="height: 25px;" name="password"/>
 
     <br>
-    <span class="text-primary" style="margin-left: 37px">工资:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 40px">工资:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="salary" placeholder="salary" style="height: 25px;" name="salary">
 
-    <span class="text-primary" style="margin-left: 150px">手机号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 170px">手机号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="telephone" placeholder="telephone" style="height: 25px;" name="telephone">
 
     <br>
@@ -110,7 +116,7 @@
 
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
         <span>添加</span>
     </button>
 </form>
