@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import java.util.List;
+
 /**
  * @ProjectName 食品企业订货销售系统
  * @Author 朱向阳
@@ -23,4 +26,5 @@ public class SysUserDetailsService implements UserDetailsService {
         }
         return user;
     }
+
 }

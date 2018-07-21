@@ -23,9 +23,9 @@
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">员工信息:</strong>
 </p>
 <br>
-<form action="#" method="post">
+<form action="/users" method="post">
 <span class="text-primary" style="font-size: 20px;">所属部门:</span>
-<select class="form-control" id="sale" style="height: 35px;">
+<select class="form-control" id="sale" style="height: 35px;" name="bumen">
     <option selected="selected">销售部门</option>
     <option>仓库部门</option>
     <option>生产部门</option>
@@ -35,7 +35,7 @@
 </select>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span class="text-primary" style="font-size: 20px;">姓名:</span>
-<input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
+<input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
     <span>查询</span>
