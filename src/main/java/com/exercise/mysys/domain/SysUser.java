@@ -20,9 +20,11 @@ import java.util.List;
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames="username")})
 public class SysUser implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    private String sex;
     private String username;
+    private String name;
     private String password;
     private Integer salary;
     private Integer telephone;
@@ -130,5 +132,21 @@ public class SysUser implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

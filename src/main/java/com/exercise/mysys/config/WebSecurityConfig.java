@@ -41,19 +41,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/static");
+                .antMatchers("/static/**");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin().loginPage("/login")
-                .defaultSuccessUrl("/").failureUrl("/login").permitAll()
+                .defaultSuccessUrl("/index").failureUrl("/login").permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()
+                .antMatchers(
+                        "/login"
+                ).permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .logout().logoutSuccessUrl("/")
+                .logout().logoutSuccessUrl("/login")
                 .permitAll()
                 .and()
                 .csrf().disable();
