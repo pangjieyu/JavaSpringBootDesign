@@ -1,5 +1,9 @@
 package com.exercise.mysys.dao;
 
+import com.exercise.mysys.domain.Voucher;
+
+import java.util.List;
+
 /**
  * @ProjectName 食品企业订货销售系统
  * @Author 朱向阳
@@ -7,4 +11,5 @@ package com.exercise.mysys.dao;
  * @Description: 凭证类的数据访问层
  */
 public interface VoucherRepository {
+    List<Voucher> findAll();
 }

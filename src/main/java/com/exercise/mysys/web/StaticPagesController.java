@@ -19,6 +19,9 @@ public class StaticPagesController {
         SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getPrincipal();
+        if(!nowUser.isEffective()) {
+            return "redirect:/login?logout";
+        }
         if(nowUser.getRole().equals("boss"))
             return "index/index_boss";
         else if(nowUser.getRole().equals("admin"))

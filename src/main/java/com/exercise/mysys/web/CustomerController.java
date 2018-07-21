@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -19,7 +20,7 @@ import java.text.ParseException;
  * @Description: 用户类的控制器
  */
 @Controller
-@RequestMapping("customer")
+@RequestMapping("/custommer")
 public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
