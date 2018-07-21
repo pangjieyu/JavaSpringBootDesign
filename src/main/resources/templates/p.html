@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form name="q">
+    <input type="text" value="1234"/>
+    <button onclick="pq()">click</button>
+</form>
+<script type="text/javascript">
+
+    function pq () {
+        var a =2;
+    //params.XX必须与Spring Mvc controller中的参数名称一致
+    //否则在controller中使用@RequestParam绑定
+    //params.a = 2;
+    $.ajax({
+        async: false,
+        type: "POST",
+        url: "/p",//注意路径
+        data: a,
+        dataType: "json",
+        success: function (data) {
+            if (data.result == true) {
+                alert("修改成功");
+            } else {
+                alert("修改失败，失败原因【" + data + "】");
+            }
+        },
+        error: function (data) {
+            alert(data.result);
+        }
+    });
+    }
+</script>
+</body>
+</html>
