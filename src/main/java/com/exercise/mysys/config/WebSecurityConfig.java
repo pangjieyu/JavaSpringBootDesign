@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin().loginPage("/login")
-                .defaultSuccessUrl("/index").failureUrl("/login").permitAll()
+                .defaultSuccessUrl("/").failureUrl("/login").permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers(
