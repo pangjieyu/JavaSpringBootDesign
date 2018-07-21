@@ -27,7 +27,7 @@ public class SysUser implements UserDetails {
     private String name;
     private String password;
     private Integer salary;
-    private Integer telephone;
+    private Long telephone;
     private String address;
     private Date hiretime;
     private boolean effective;
@@ -94,14 +94,6 @@ public class SysUser implements UserDetails {
         this.salary = salary;
     }
 
-    public Integer getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(Integer telephone) {
-        this.telephone = telephone;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -148,5 +140,13 @@ public class SysUser implements UserDetails {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public Long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
     }
 }

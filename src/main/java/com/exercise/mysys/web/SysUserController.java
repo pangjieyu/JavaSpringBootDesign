@@ -72,9 +72,13 @@ public class SysUserController {
 
         //默认有效
         x.setEffective(true);
+        //设置工资
         x.setSalary(Integer.parseInt(request.getParameter("salary")));
-        x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
+        //设置手机号
+        x.setTelephone(Long.parseLong(request.getParameter("telephone")));
+        //设置角色
         x.setRole(request.getParameter("bumen"));
+        //保存
         userRepository.save(x);
         return "redirect:/shouye";
 
@@ -108,7 +112,7 @@ public class SysUserController {
         //默认有效
         x.setEffective(true);
         x.setSalary(Integer.parseInt(request.getParameter("salary")));
-        x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
+        x.setTelephone(Long.parseLong(request.getParameter("telephone")));
         x.setRole(request.getParameter("bumen"));
         userRepository.save(x);
         return "redirect:/shouye";
