@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,18 +45,16 @@ public class SysUserController {
         return "sys/sys_tianjia";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     @ResponseBody
     public String add(HttpServletRequest request) throws ParseException {
         /**
          * root
          * $2a$10$kke9EHzAFTKWJTQcTzFi0.IFlJmJLd6BhOtPKlAoq3iH9G.s3KAtG
-         *
-         * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', true, '2018-07-21 03:30:34', 'a', '$2a$10$kke9EHzAFTKWJTQcTzFi0.IFlJmJLd6BhOtPKlAoq3iH9G.s3KAtG', 'admin', 0, '0', 0, 'root')
-         * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', true, '2018-07-21 06:23:45', 'b', '$2a$10$cJ0qF01X6G6i5s2l4rhXOe0.0IQOdbB/dY7ntqzGgm3ONY.hOnqcu', 'boss', 0, '0', 0, 'boss')
+         * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', false, '2018-07-21 03:30:34', 'a', '$2a$10$kke9EHzAFTKWJTQcTzFi0.IFlJmJLd6BhOtPKlAoq3iH9G.s3KAtG', 'admin', 0, '0', 0, 'root')
+         * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', false, '2018-07-21 06:23:45', 'b', '$2a$10$cJ0qF01X6G6i5s2l4rhXOe0.0IQOdbB/dY7ntqzGgm3ONY.hOnqcu', 'boss', 0, '0', 0, 'boss')
          *
          */
-        System.out.println("12342");
         try {
             SysUser x = new SysUser();
             //用户名
@@ -77,15 +76,18 @@ public class SysUserController {
 
             //默认有效
             x.setEffective(true);
+            //设置工资
             x.setSalary(Integer.parseInt(request.getParameter("salary")));
-            x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
+            //设置手机号
+            x.setTelephone(Long.parseLong(request.getParameter("telephone")));
+            //设置角色
             x.setRole(request.getParameter("bumen"));
-
-            System.out.println(x.toString());
+            //保存
             userRepository.save(x);
         }
-        catch (Exception ex){
-            System.out.println(ex.toString());
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
             return "false";
         }
         return "true";
@@ -93,9 +95,9 @@ public class SysUserController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String editPage(@PathVariable String id ,Model model) {
-        model.addAttribute("user",userRepository.findSysUserById(Long.parseLong(id)));
-        return "sys/sys_xiugai";
+    public String editPage(@PathVariable Long id ,Model model) {
+        model.addAttribute("user",userRepository.findSysUserById(id));
+        return "editUser";
     }
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String editUser(@PathVariable Long id, HttpServletRequest request) throws ParseException {
@@ -108,11 +110,10 @@ public class SysUserController {
         x.setSex(request.getParameter("sex"));
         BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
         //设置密码
-        String passwd = request.getParameter("password");
-        if(!passwd.trim().equals(""))
-            x.setPassword(encoder.encode(request.getParameter("password").trim()));
+        x.setPassword(encoder.encode(request.getParameter("password").trim()));
         //设置地址
         x.setAddress(request.getParameter("address"));
+
         //设置入职时间
         DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
         Date date = fmt.parse(request.getParameter("date"));
@@ -121,10 +122,10 @@ public class SysUserController {
         //默认有效
         x.setEffective(true);
         x.setSalary(Integer.parseInt(request.getParameter("salary")));
-        x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
+        x.setTelephone(Long.parseLong(request.getParameter("telephone")));
         x.setRole(request.getParameter("bumen"));
         userRepository.save(x);
-        return "redirect:/users";
+        return "redirect:/shouye";
     }
 
 }
