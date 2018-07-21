@@ -1,8 +1,14 @@
 package com.exercise.mysys.web;
 
+import com.exercise.mysys.dao.CustomerRepository;
+import com.exercise.mysys.domain.Customer;
+import com.exercise.mysys.domain.Msg;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @ProjectName 食品企业订货销售系统
@@ -13,12 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/xiaoshou")
 public class XiaoShouController {
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public String shengchan() {
-    }
     private CustomerRepository customerRepository;
     //添加客户
-    @RequestMapping(value = "/添加客户", method = RequestMethod.GET)
+    @RequestMapping(value = "/tianjiakehu", method = RequestMethod.POST)
     public String tianjiakehu(HttpServletRequest request){
             Customer customer = new Customer();
             customer.setName(request.getParameter("name"));
