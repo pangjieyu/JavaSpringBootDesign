@@ -11,4 +11,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SysUserRepository extends JpaRepository<SysUser,Long> {
     //通过username找user
     SysUser findSysUserByUsername(String username);
+    SysUser findSysUserById(Long id);
 }
