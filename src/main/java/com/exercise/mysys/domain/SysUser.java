@@ -1,12 +1,11 @@
 package com.exercise.mysys.domain;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -18,6 +17,7 @@ import java.util.List;
  * @Description: 用户类
  */
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames="username")})
 public class SysUser implements UserDetails {
     @Id
     @GeneratedValue
