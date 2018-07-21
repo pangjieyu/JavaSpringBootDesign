@@ -47,7 +47,6 @@
         <th scope="col">用户名</th>
         <th scope="col">姓名</th>
         <th scope="col">性别</th>
-        <th scope="col">密码</th>
         <th scope="col">工资</th>
         <th scope="col">手机号</th>
         <th scope="col">住址</th>
@@ -60,13 +59,12 @@
         <td th:text="${user.getUsername()}">123</td>
         <td th:text="${user.getName()}">张江瑜</td>
         <td th:text="${user.getSex()}">男</td>
-        <td th:text="${user.getPassword()}">123456</td>
         <td th:text="${user.getSalary()}">1200</td>
         <td th:text="${user.getTelephone()}">18535449392</td>
         <td th:text="${user.getAddress()}">山西省晋中市太谷县</td>
         <td th:text="${user.getHiretime()}">2018年7月20日</td>
         <td th:text="${user.getRole()}">销售部门</td>
-        <td><a href="#" class="a2">修改</a> </td>
+        <td><a href="sys_xiugai.html" th:href="/edit/${user.getId()}" class="a2">修改</a> </td>
     </tr>
 </table>
 </body>
