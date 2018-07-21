@@ -95,13 +95,14 @@ public class SysUserController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String editPage(@PathVariable Long id ,Model model) {
-        model.addAttribute("user",userRepository.findSysUserById(id));
+    public String editPage(@PathVariable String id ,Model model) {
+        System.out.println(id);
+        model.addAttribute("user",userRepository.findSysUserById(Long.parseLong(id.trim())));
         return "sys/sys_xiugai";
     }
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String editUser(@PathVariable Long id, HttpServletRequest request) throws ParseException {
-        SysUser x = userRepository.findSysUserById(id);
+    public String editUser(@PathVariable String id, HttpServletRequest request) throws ParseException {
+        SysUser x = userRepository.findSysUserById(Long.parseLong(id.trim()));
         //用户名
         x.setUsername(request.getParameter("username"));
         //姓名
