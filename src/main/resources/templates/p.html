@@ -5,35 +5,48 @@
     <title>Title</title>
 </head>
 <body>
-<form name="q">
-    <input type="text" value="1234"/>
-    <button onclick="pq()">click</button>
-</form>
-<script type="text/javascript">
+<form id="form-add">
+    //单选项 （解释：name要与接口的参数名对应起来，value是对应值）
+    <input type="radio" name="imageNameIndex"  value="1"> 一号位<br>
+    <input type="radio" name="imageNameIndex"  value="2"> 二号位<br>
+    <input type="radio" name="imageNameIndex"  value="3"> 二号位<br>
 
-    function pq () {
-        var a =2;
-    //params.XX必须与Spring Mvc controller中的参数名称一致
-    //否则在controller中使用@RequestParam绑定
-    //params.a = 2;
-    $.ajax({
-        async: false,
-        type: "POST",
-        url: "/p",//注意路径
-        data: a,
-        dataType: "json",
-        success: function (data) {
-            if (data.result == true) {
-                alert("修改成功");
-            } else {
-                alert("修改失败，失败原因【" + data + "】");
+    //文字 （解释：name要与接口的参数名对应起来）
+    <input type="text" name="url">
+
+    //文件 （解释：name要与接口的参数名对应起来）
+    <input type="file" name="file">
+
+    //提交 （解释：这个按钮的唯一作用就是触发提交的js方法）
+    <button type="button"  onclick="submitFunction()">提交</button>
+</form>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" >
+
+    function submitFunction() {
+        //这里唯一需要注意的就是这个form-add的id
+        var formData = new FormData($("#form-add")[0]);
+        $.ajax({
+            //接口地址
+            url: '/c' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                //成功的回调
+                alert(data);
+
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
             }
-        },
-        error: function (data) {
-            alert(data.result);
-        }
-    });
+        });
     }
+
 </script>
 </body>
 </html>

@@ -23,17 +23,17 @@ public class KuaijiController {
 //        returrn "huokuan";
 //    }
 
-<<<<<<< Updated upstream
-    @RequestMapping(value = "/tuihuo", method = RequestMethod.GET)
-    public String tuihuo() {
-        return "tuihuo";
-    }
-=======
-//    @RequestMapping(value = "/yufukuan", method = RequestMethod.GET)
-//    public String yufukuan(){
-//        return "yufukuan";
+//<<<<<<< Updated upstream
+//    @RequestMapping(value = "/tuihuo", method = RequestMethod.GET)
+//    public String tuihuo() {
+//        return "tuihuo";
 //    }
->>>>>>> Stashed changes
+//=======
+////    @RequestMapping(value = "/yufukuan", method = RequestMethod.GET)
+////    public String yufukuan(){
+////        return "yufukuan";
+////    }
+//>>>>>>> Stashed changes
 
 //    @RequestMapping(value = "/yufukuan", method = RequestMethod.GET)
 //    public String tuihuo() {
