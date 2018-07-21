@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            font-size: 20px;
+        }
+        #name,#date,#thing,#num,#sale{
+            margin-left: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        function checkInput() {
+
+        }
+    </script>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">制定生产计划</strong>
+</p>
+<br>
+<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 21px">请输入员工姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 21px">请选择生产时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" class="form-control" id="date" style="height: 25px;" value="2018-02-10"/>
+    <br>
+    <span class="text-primary" style="margin-left: 21px">请输入商品名字:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="thing" placeholder="thing" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 21px">请输入商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 61px">请输入花费:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="sale" placeholder="sale" style="height: 25px;"/>
+    <br>
+    <br>
+    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+        <span>生成</span>
+    </button>
+</form>
 </body>
 </html>
