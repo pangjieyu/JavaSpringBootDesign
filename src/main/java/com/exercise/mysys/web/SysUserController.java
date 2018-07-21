@@ -44,7 +44,7 @@ public class SysUserController {
         return "sys/sys_tianjia";
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(HttpServletRequest request) throws ParseException {
         /**
