@@ -16,9 +16,9 @@ import java.lang.reflect.GenericArrayType;
 @RequestMapping(value = "/cangku")
 public class CangkuController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String cangku() {
-        return "cangku";
+        return "/index/index_store.html";
     }
 
     @RequestMapping(value = "/ruku", method = RequestMethod.POST)

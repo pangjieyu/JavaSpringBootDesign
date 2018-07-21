@@ -1,6 +1,7 @@
 package com.exercise.mysys.dao;
 
 import com.exercise.mysys.domain.Customer;
+import com.exercise.mysys.domain.SysUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @ProjectName 食品企业订货销售系统
@@ -9,4 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Description: 客户类数据访问层
  */
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+    //按主键查找
+    Customer findCustomerById(Long id);
+    //按行名查找
+    Customer findCustomerByName(String name);
 }

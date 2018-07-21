@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class StaticPagesController {
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @RequestMapping(value = "/",method = RequestMethod.GET)
     public String home() {
 
         SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
@@ -22,12 +22,17 @@ public class StaticPagesController {
         if(nowUser.getRole().equals("boss"))
             return "index/index_boss";
         else if(nowUser.getRole().equals("admin"))
-            return "redirect:/users";
+            return "redirect:/admin";
         return "index";
     }
 
     @RequestMapping(value = "/shouye", method = RequestMethod.GET)
     public String shouye() {
         return "shouye";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String admin() {
+        return "index/index_sys";
     }
 }

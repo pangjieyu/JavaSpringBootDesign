@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/chuna")
 public class ChunaController {
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String chuna() {
+        return "/index/index_chuna.html";
+    }
+
     @RequestMapping(value = "/tuikuan", method = RequestMethod.GET)
     public String tuikuan() {
         return "tuikuan";
