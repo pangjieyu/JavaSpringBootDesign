@@ -7,15 +7,15 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>企业管理部</title>
-    <link rel="stylesheet" href="../../static/css/pintuer.css">
-    <link rel="stylesheet" href="../../static/css/admin.css">
-    <script src="../../static/js/jquery.js"></script>
+    <link href="../../static/css/pintuer.css" rel="stylesheet" th:href="@{/static/css/pintuer.css}">
+    <link href="../../static/css/admin.css" rel="stylesheet" th:href="@{/static/css/admin.css}">
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
 </head>
 <body style="background-color: #f2f9fd;">
 <div class="header bg-main">
     <div class="logo margin-big-left fadein-top">
         <h1>
-            <img src="../../static/images/D.jpg" class="radius-circle  rotate-hover"
+            <img src="/static/images/D.jpg" th:src="@{/static/images/D.jpg}" class="radius-circle  rotate-hover"
                  width="50" height="50" alt="" />企业管理部
         </h1>
     </div>
