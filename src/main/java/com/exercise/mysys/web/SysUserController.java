@@ -76,14 +76,42 @@ public class SysUserController {
         x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
         x.setRole(request.getParameter("bumen"));
         userRepository.save(x);
-        return "redirect:/admin";
+        return "redirect:/shouye";
 
     }
 
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String editPage(@PathVariable Long id ,Model model) {
+        model.addAttribute("user",userRepository.findSysUserById(id));
+        return "editUser";
+    }
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String editUser(@PathVariable Long id, HttpServletRequest request) {
+    public String editUser(@PathVariable Long id, HttpServletRequest request) throws ParseException {
         SysUser x = userRepository.findSysUserById(id);
-        return "";
+        //用户名
+        x.setUsername(request.getParameter("username"));
+        //姓名
+        x.setName(request.getParameter("name"));
+        //性别
+        x.setSex(request.getParameter("sex"));
+        BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
+        //设置密码
+        x.setPassword(encoder.encode(request.getParameter("password").trim()));
+        //设置地址
+        x.setAddress(request.getParameter("address"));
+
+        //设置入职时间
+        DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
+        Date date = fmt.parse(request.getParameter("date"));
+        x.setHiretime(date);
+
+        //默认有效
+        x.setEffective(true);
+        x.setSalary(Integer.parseInt(request.getParameter("salary")));
+        x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
+        x.setRole(request.getParameter("bumen"));
+        userRepository.save(x);
+        return "redirect:/shouye";
     }
 
 }
