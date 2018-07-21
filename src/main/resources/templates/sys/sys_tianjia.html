@@ -32,7 +32,7 @@
            var bool = document.form1.bool.value;
            var belong = document.form1.belong.value;
            if(id == ""){
-               alert("请输入员工编号");
+               alert("请输入员工用户名");
                return false;
            }else if(name == "") {
                alert("请输入员工姓名");
@@ -64,7 +64,7 @@
 </p>
 <br>
 <form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
-    <span class="text-primary">员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary">员工用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" />
     <span class="text-primary">员工姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" />
