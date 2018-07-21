@@ -12,4 +12,14 @@ import java.util.List;
  * @Description: 订货单类的数据表示层
  */
 public interface OrderGoodRepository extends JpaRepository<OrderGood, Long> {
+//<<<<<<< Updated upstream
+//=======
+//    List<OrderGood> findAll();
+//    OrderGood findById(long id);
+//    void delete(OrderGood order);
+//
+//    default OrderGood save(OrderGood order) {
+//        return null;
+//    }
+//>>>>>>> Stashed changes
 }

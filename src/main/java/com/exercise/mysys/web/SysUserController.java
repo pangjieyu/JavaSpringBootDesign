@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +55,6 @@ public class SysUserController {
          * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', false, '2018-07-21 06:23:45', 'b', '$2a$10$cJ0qF01X6G6i5s2l4rhXOe0.0IQOdbB/dY7ntqzGgm3ONY.hOnqcu', 'chaxun', 0, '0', 0, 'chaxun')
          *
          */
-        System.out.println("12342");
         try {
             SysUser x = new SysUser();
             //用户名
@@ -76,15 +76,18 @@ public class SysUserController {
 
             //默认有效
             x.setEffective(true);
+            //设置工资
             x.setSalary(Integer.parseInt(request.getParameter("salary")));
-            x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
+            //设置手机号
+            x.setTelephone(Long.parseLong(request.getParameter("telephone")));
+            //设置角色
             x.setRole(request.getParameter("bumen"));
-
-            System.out.println(x.toString());
+            //保存
             userRepository.save(x);
         }
-        catch (Exception ex){
-            System.out.println(ex.toString());
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
             return "false";
         }
         return "true";
@@ -119,7 +122,7 @@ public class SysUserController {
         //默认有效
         x.setEffective(true);
         x.setSalary(Integer.parseInt(request.getParameter("salary")));
-        x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
+        x.setTelephone(Long.parseLong(request.getParameter("telephone")));
         x.setRole(request.getParameter("bumen"));
         userRepository.save(x);
         return "redirect:/shouye";

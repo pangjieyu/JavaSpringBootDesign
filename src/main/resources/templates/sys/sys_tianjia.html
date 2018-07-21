@@ -10,7 +10,6 @@
     <meta name="renderer" content="webkit">
     <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
     <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <style>
         .img1:hover {
             width: 100px;
@@ -77,13 +76,12 @@
 </head>
 
 <body>
-<!--<script type="text/javascript">alert("1234214");</script>-->
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">添加员工信息:</strong>
 </p>
 <br>
-<form name="form1" id="form-add" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form  name="form1" id="form-add" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="username" style="height: 25px;" name="username"/>
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username"/>
 
     <span class="text-primary" style="margin-left: 190px">姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name"/>
@@ -91,7 +89,7 @@
     <br>
     <span class="text-primary" style="margin-left: 40px">性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="sex" style="height: 35px;" name="sex">
-        <option selected>男</option>
+        <option selected="selected">男</option>
         <option>女</option>
     </select>
 
@@ -128,15 +126,14 @@
 
     <br>
     <br>
-    <!--<button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
-        <span>添加</span>
-    </button>-->
     <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
         <span>添加</span>
     </button>
 </form>
+
 <script type="text/javascript">
-    function submitFunction(){
+    function submitFunction() {
+        //这里唯一需要注意的就是这个form-add的id
         var formData = new FormData($("#form-add")[0]);
         $.ajax({
             url:'/addUser',
@@ -154,10 +151,11 @@
                     window.location.href="/shouye";
                 }
             },
-            error:function () {
-                alert("1234124");
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
             }
-        })
+        });
     }
 </script>
 </body>
