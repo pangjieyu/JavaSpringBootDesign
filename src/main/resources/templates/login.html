@@ -27,7 +27,7 @@
                     <div class="panel-body" style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
                         <div class="form-group">
                             <div class="field field-icon-right">
-                                <input type="text" class="input input-big" name="user.username"
+                                <input type="text" class="input input-big" name="username"
                                        placeholder="登录账号" data-validate="required:请填写账号" /> <span
                                     class="icon icon-user margin-small"></span>
                             </div>
@@ -35,14 +35,13 @@
                         <div class="form-group">
                             <div class="field field-icon-right">
                                 <input type="password" class="input input-big"
-                                       name="user.password" placeholder="登录密码"
+                                       name="password" placeholder="登录密码"
                                        data-validate="required:请填写密码" /> <span
                                     class="icon icon-key margin-small"></span>
                             </div>
                         </div>
                     </div>
                     <div style="margin-left: 40px">
-                        <span th:value="${error}"></span>
                     </div>
                     <div style="padding: 30px;">
                         <input type="submit" class="button button-block bg-main text-big input-big" value="登录">
