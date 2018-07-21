@@ -10,6 +10,7 @@
     <meta name="renderer" content="webkit">
     <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
     <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <style>
         .img1:hover {
             width: 100px;
@@ -68,6 +69,7 @@
 </head>
 
 <body>
+<!--<script type="text/javascript">alert("1234214");</script>-->
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">添加员工信息:</strong>
 </p>
 <br>
@@ -131,10 +133,9 @@
             data:formData,
             async:false,
             cache:false,
-            contentType:false,
             processData:false,
-            sucess:function (data) {
-                alert("1234");
+            success:function (data) {
+                alert("1232421");
             },
             error:function () {
                 alert("1234124");

@@ -80,9 +80,12 @@ public class SysUserController {
             x.setSalary(Integer.parseInt(request.getParameter("salary")));
             x.setTelephone(Integer.parseInt(request.getParameter("telephone")));
             x.setRole(request.getParameter("bumen"));
+
+            System.out.println(x.toString());
             userRepository.save(x);
         }
         catch (Exception ex){
+            System.out.println(ex.toString());
             return "false";
         }
         return "true";
