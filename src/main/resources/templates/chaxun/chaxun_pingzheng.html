@@ -34,11 +34,11 @@
 </p>
 <br>
 <form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
-    <span class="text-primary" style="font-size: 20px;">客户编号:</span>
-    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px;">
+    <span class="text-primary" style="font-size: 20px;">客户姓名:</span>
+    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px;" name="customerName">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span class="text-primary" style="font-size: 20px;margin-left: 40px">凭证类型:</span>
-    <select class="form-control" id="type" style="height: 35px;" name="bumen">
+    <select class="form-control" id="type" style="height: 35px;" name="type">
         <option selected="selected">收款</option>
         <option>取款</option>
     </select>
@@ -50,19 +50,19 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
+        <th scope="col">凭证编号</th>
         <th scope="col">客户名称</th>
-        <th scope="col">客户编号</th>
         <th scope="col">类型</th>
         <th scope="col">金额</th>
         <th scope="col">是否完成</th>
     </tr>
     </thead>
-    <tr th:each="">
-        <td th:text="">123</td>
-        <td th:text="">1234</td>
-        <td th:text="">A4</td>
-        <td th:text="">123</td>
-        <td th:text="">1234</td>
+    <tr th:each="item:${pingzhengList}">
+        <td th:text="${item.id}">123</td>
+        <td th:text="${item.customer_name}">123</td>
+        <td th:text="${item.type}">1234</td>
+        <td th:text="${item.money}">A4</td>
+        <td th:text="${item.effective}">123</td>
     </tr>
 </table>
 </body>

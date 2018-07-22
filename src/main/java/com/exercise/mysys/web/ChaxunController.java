@@ -127,20 +127,26 @@ public class ChaxunController {
     //查询凭证
     @GetMapping("/pingzheng")
     public String pingzheng(Model model) {
-        List<Voucher> list = voucherRepository.findAll();
-        model.addAttribute("pingzhengList",list);
+        model.addAttribute("pingzhengList",findServices.findVoucher("",""));
+        return "chaxun/chaxun_pingzheng";
+    }
+    @PostMapping("/pingzheng")
+    public String findPingzheng(HttpServletRequest request, Model model) {
+        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim()));
         return "chaxun/chaxun_pingzheng";
     }
 
     //查询入库
     @GetMapping("/ruku")
     public String ruku(Model model) {
+        model.addAttribute("rukuList", findServices.findRuKu("","",""));
         return "chaxun/chaxun_ruku";
     }
 
     //查询出库
     @GetMapping("/chuku")
     public String chuku(Model model) {
+        model.addAttribute("chukuList",findServices.findChuKu("","",""));
         return "chaxun/chaxun_chuku";
     }
 

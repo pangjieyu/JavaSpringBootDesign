@@ -265,7 +265,7 @@ public class findServices {
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
             stmt = con.createStatement();
             String sql2="select x.name, hh.money," +
-                    "hh.effective, hh.receivable, hh.type from\n" +
+                    "hh.effective, hh.receivable, hh.type, hh.id from\n" +
                     "voucher as hh, customer as x\n" +
                     "where hh.customer_id=x.id ";
             if (!customerName.equals(""))
@@ -285,6 +285,7 @@ public class findServices {
                 tem.effective = rs.getString(3);
                 tem.receivable = rs.getString(4);
                 tem.type = rs.getString(5);
+                tem.id = rs.getString(6);
                 list.add(tem);
             }
         }

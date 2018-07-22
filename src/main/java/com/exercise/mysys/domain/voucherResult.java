@@ -7,6 +7,7 @@ package com.exercise.mysys.domain;
  * @Description: 凭证查询信息类
  */
 public class voucherResult {
+    public String id;
     public String customer_name;
     public String effective;
     public String money;
