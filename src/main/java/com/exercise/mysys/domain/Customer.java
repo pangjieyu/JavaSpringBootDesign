@@ -17,6 +17,7 @@ public class Customer {
     private String name;
     private Long telephone;
     private Long rank;
+    private String address;
 
     public Long getId() {
         return id;
@@ -48,5 +49,13 @@ public class Customer {
 
     public void setRank(Long rank) {
         this.rank = rank;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

@@ -18,13 +18,14 @@ public class Store {
     //商品编号（主键）
     private Long id;
     //存储数量
-    private Integer numble;
+    private Integer number;
     //存放位置
     private String position;
     //批号
     private Long in_id;
     //入库时间
     private Date in_time;
+
 
     public Long getId() {
         return id;
@@ -34,13 +35,6 @@ public class Store {
         this.id = id;
     }
 
-    public Integer getNumble() {
-        return numble;
-    }
-
-    public void setNumble(Integer numble) {
-        this.numble = numble;
-    }
 
     public String getPosition() {
         return position;
@@ -64,5 +58,13 @@ public class Store {
 
     public void setIn_time(Date in_time) {
         this.in_time = in_time;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 }

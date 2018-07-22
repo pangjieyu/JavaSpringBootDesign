@@ -51,12 +51,12 @@
         <th scope="col">等级</th>
     </tr>
     </thead>
-    <tr>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
+    <tr th:each="kehu:${kehuList}">
+        <td th:text="${kehu.getId()}">123</td>
+        <td th:text="${kehu.getName()}">123</td>
+        <td th:text="${kehu.getTelephone()}">123</td>
+        <td th:text="${kehu.getAddress()}">123</td>
+        <td th:text="${kehu.getRank()}">123</td>
     </tr>
 </table>
 </body>

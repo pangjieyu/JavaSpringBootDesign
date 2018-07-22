@@ -53,7 +53,7 @@
     <tr th:each="kucun:${kucunList}">
         <td th:text="${kucun.getId()}">123</td>
         <td th:text="${kucun.getNumble()}">1234</td>
-        <td th:text="">A4</td>
+        <td th:text="${kucun.getIn_id()}">A4</td>
         <td th:text="${kucun.getPosition()}">A4</td>
     </tr>
 </table>
