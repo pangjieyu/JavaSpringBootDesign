@@ -50,11 +50,11 @@
         <th scope="col">存放位置</th>
     </tr>
     </thead>
-    <tr th:each="#">
-        <td th:text="#">123</td>
-        <td th:text="#">1234</td>
-        <td th:text="#">A4</td>
-        <td th:text="#">A4</td>
+    <tr th:each="kucun:${kucunList}">
+        <td th:text="${kucun.getId()}">123</td>
+        <td th:text="${kucun.getNumble()}">1234</td>
+        <td th:text="">A4</td>
+        <td th:text="${kucun.getPosition()}">A4</td>
     </tr>
 </table>
 </body>

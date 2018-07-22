@@ -3,6 +3,7 @@ package com.exercise.mysys.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * @ProjectName 食品企业订货销售系统
@@ -20,6 +21,10 @@ public class Store {
     private Integer numble;
     //存放位置
     private String position;
+    //批号
+    private Long in_id;
+    //入库时间
+    private Date in_time;
 
     public Long getId() {
         return id;
@@ -43,5 +48,21 @@ public class Store {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public Long getIn_id() {
+        return in_id;
+    }
+
+    public void setIn_id(Long in_id) {
+        this.in_id = in_id;
+    }
+
+    public Date getIn_time() {
+        return in_time;
+    }
+
+    public void setIn_time(Date in_time) {
+        this.in_time = in_time;
     }
 }
