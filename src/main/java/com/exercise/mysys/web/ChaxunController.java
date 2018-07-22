@@ -54,7 +54,7 @@ public class ChaxunController {
     //查询订单
     @GetMapping("/dingdan")
     public String dingdan(Model model) {
-        model.addAttribute("orderList", orderGoodRepository.findAll());
+        model.addAttribute("orderList", findServices.findOrder("",""));
         return "chaxun/chaxun_dingdan";
     }
 
