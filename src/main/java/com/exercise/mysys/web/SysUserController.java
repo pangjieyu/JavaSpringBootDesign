@@ -55,8 +55,8 @@ public class SysUserController {
         /**
          * root
          * $2a$10$kke9EHzAFTKWJTQcTzFi0.IFlJmJLd6BhOtPKlAoq3iH9G.s3KAtG
-         * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', false, '2018-07-21 03:30:34', 'a', '$2a$10$kke9EHzAFTKWJTQcTzFi0.IFlJmJLd6BhOtPKlAoq3iH9G.s3KAtG', 'admin', 0, '0', 0, 'root')
-         * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', false, '2018-07-21 06:23:45', 'b', '$2a$10$cJ0qF01X6G6i5s2l4rhXOe0.0IQOdbB/dY7ntqzGgm3ONY.hOnqcu', 'boss', 0, '0', 0, 'boss')
+         * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', true, '2018-07-21 03:30:34', 'a', '$2a$10$kke9EHzAFTKWJTQcTzFi0.IFlJmJLd6BhOtPKlAoq3iH9G.s3KAtG', 'admin', 0, '0', 0, 'root')
+         * INSERT INTO `sqlDesign`.`sys_user` (`address`, `effective`, `hiretime`, `name`, `password`, `role`, `salary`, `sex`, `telephone`, `username`) VALUES ('a', true, '2018-07-21 06:23:45', 'b', '$2a$10$cJ0qF01X6G6i5s2l4rhXOe0.0IQOdbB/dY7ntqzGgm3ONY.hOnqcu', 'boss', 0, '0', 0, 'boss')
          *
          */
         try {
@@ -86,6 +86,7 @@ public class SysUserController {
             x.setTelephone(Long.parseLong(request.getParameter("telephone")));
             //设置角色
             x.setRole(request.getParameter("bumen"));
+            System.out.println(request.getParameter("bumen"));
             //保存
             userRepository.save(x);
         }
@@ -125,26 +126,32 @@ public class SysUserController {
         x.setHiretime(date);
 
         //默认有效
-        x.setEffective(true);
+        String eff = request.getParameter("effective");
+        if(eff.equals("1"))
+            x.setEffective(true);
+        else
+            x.setEffective(false);
         x.setSalary(Integer.parseInt(request.getParameter("salary")));
         x.setTelephone(Long.parseLong(request.getParameter("telephone")));
+        //zhiye
         x.setRole(request.getParameter("bumen"));
+        System.out.println(request.getParameter("bumen"));
         userRepository.save(x);
-        return "redirect:/shouye";
+        return "redirect:/users";
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    @ResponseBody
-    public List<SysUser> chazhao(HttpServletRequest request) {
+    public String chazhao(HttpServletRequest request, Model model) {
         String name = request.getParameter("name");
         String bumen = request.getParameter("bumen");
-        List<SysUser> list = userRepository.findAllByRole(bumen);
+        List<SysUser> list;
         if(name.equals("")) {
-            return list;
+            list = userRepository.findAllByRole(bumen);
         }else {
             list = userRepository.myFind(bumen, name);
-            return list;
         }
+        model.addAttribute("userList",list);
+        return "sys/sys_yuangong";
     }
 
 }

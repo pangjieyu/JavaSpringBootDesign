@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap.css}" href="../../static/css/bootstrap.css" />
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        function checkInput() {
+            var name = document.form1.name.value;
+            if(name == ""){
+                alert("请输入商品名称");
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">库存信息:</strong>
+</p>
+<br>
+<form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
+    <span class="text-primary" style="font-size: 20px;">商品名称:</span>
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+        <span>查询</span>
+    </button>
+</form>
+<table class="table table-bordered table-hover definewidth m10">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">商品编号</th>
+        <th scope="col">商品名称</th>
+        <th scope="col">商品数量</th>
+        <th scope="col">入库批号</th>
+        <th scope="col">存放位置</th>
+        <th scope="col">入库时间</th>
+    </tr>
+    </thead>
+    <tr th:each="kucun:${kucunList}">
+        <td th:text="${kucun.id}">123</td>
+        <td th:text="${kucun.good_name}">1234</td>
+        <td th:text="${kucun.number}">A4</td>
+        <td th:text="${kucun.in_id}">A4</td>
+        <td th:text="${kucun.position}"></td>
+        <td th:text="${kucun.in_time}"></td>
+    </tr>
+</table>
+</body>
+</html>

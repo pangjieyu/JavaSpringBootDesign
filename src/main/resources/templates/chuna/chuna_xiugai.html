@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            font-size: 20px;
+        }
+        #name,#date,#thing,#num,#sale{
+            margin-left: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        function checkInput() {
+            var id = document.form1.id.value;
+            if(id == ""){
+                alert("请输入凭证编号");
+                return false;
+            }else{
+                return true;
+            }
+        }
+        function checkInput1() {
+            var tuikuan = documen.form2.value;
+            if(tuikuan == ""){
+                alert("请输入退款凭证编号");
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">修改取退款完成标记</strong>
+</p>
+<br>
+<form action="/chuna/chuna/xiugaipingzheng" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 42px">请输入凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="id"/>
+    <br>
+    <br>
+    <button class="btn btn-primary" type="submit" id="btn" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
+        <span>修改款项标记</span>
+    </button>
+</form>
+<form action="/chuna/chuna/xiugaituikuanpingzheng" method="post" name="form2" onsubmit="return checkInput1()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 0px">请输入退款凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="tuikuan" placeholder="id" style="height: 25px;" name="tuikuan"/>
+    <br>
+    <br>
+    <button class="btn btn-primary" type="submit" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
+        <span>修改有效标记</span>
+    </button>
+</form>
+</body>
+</html>

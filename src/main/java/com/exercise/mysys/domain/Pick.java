@@ -3,7 +3,6 @@ package com.exercise.mysys.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 
 /**
@@ -23,7 +22,7 @@ public class Pick {
     //商品编号（外键）
     private Long good_id;
     //客户编号（外键）
-    private Long custmer_id;
+    private Long customer_id;
     //商品数量
     private Integer number;
     //是否有效
@@ -57,12 +56,12 @@ public class Pick {
         this.good_id = good_id;
     }
 
-    public Long getCustmer_id() {
-        return custmer_id;
+    public Long getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCustmer_id(Long custmer_id) {
-        this.custmer_id = custmer_id;
+    public void setCustomer_id(Long customer_id) {
+        this.customer_id = customer_id;
     }
 
     public Integer getNumber() {

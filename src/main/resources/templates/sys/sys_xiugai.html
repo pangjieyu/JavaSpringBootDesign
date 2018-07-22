@@ -46,9 +46,6 @@
             }else if(name == "") {
                 alert("请输入员工姓名");
                 return false;
-            }else if(password == ""){
-                alert("请输入员工密码");
-                return false;
             }else if(salary == ""){
                 alert("请输入员工工资");
                 return false;
@@ -74,16 +71,16 @@
 <br>
 <form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username" th:text="${user.getUsername()}"/>
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username" th:value="${user.getUsername()}" readonly="readonly"/>
 
     <span class="text-primary" style="margin-left: 190px">姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name" th:text="${user.getName()}"/>
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name" th:value="${user.getName()}"/>
 
     <br>
     <span class="text-primary" style="margin-left: 40px">性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="sex" style="height: 35px;" name="sex">
-        <option th:class="${user.getSex() == '男'}?'selected':''">男</option>
-        <option th:class="${user.getSex() == '女'}?'selected':''">女</option>
+        <option value="男" th:selected="${user.getSex() == '男'}">男</option>
+        <option value="女" th:selected="${user.getSex() == '女'}">女</option>
     </select>
 
     <span class="text-primary" style="margin-left: 190px">密码:</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -91,32 +88,32 @@
 
     <br>
     <span class="text-primary" style="margin-left: 40px">工资:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="salary" placeholder="salary" style="height: 25px;" name="salary" th:text="${user.getSalary()}">
+    <input type="text" class="form-control" id="salary" placeholder="salary" style="height: 25px;" name="salary" th:value="${user.getSalary()}">
 
     <span class="text-primary" style="margin-left: 170px">手机号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="telephone" placeholder="telephone" style="height: 25px;" name="telephone" th:text="${user.getTelephone()}">
+    <input type="text" class="form-control" id="telephone" placeholder="telephone" style="height: 25px;" name="telephone" th:value="${user.getTelephone()}">
 
     <br>
     <span class="text-primary">家庭地址:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="address" placeholder="address" style="height: 25px;" name="address" th:text="${user.getAddress()}">
+    <input type="text" class="form-control" id="address" placeholder="address" style="height: 25px;" name="address" th:value="${user.getAddress()}">
 
     <span class="text-primary" style="margin-left: 150px">入职时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="date" class="form-control" id="date"  style="height: 25px;" name="date" th:text="${user.getHiretime()}">
+    <input type="date" class="form-control" id="date"  style="height: 25px;" name="date" th:value="${user.getTimeString()}">
 
     <br>
     <span class="text-primary">是否在职:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <select class="form-control" id="bool" style="height: 35px;"name="bumen">
-        <option th:class="${user.isEffective()}?'selected':''" value="1">是</option>
-        <option th:class="${user.isEffective()}?'selected':''" value="0">否</option>
+    <select class="form-control" id="bool" style="height: 35px;"name="effective">
+        <option th:selected="${user.isEffective() == '1'}" value="1">是</option>
+        <option th:selected="${user.isEffective() == '0'}" value="0">否</option>
     </select>
     <span class="text-primary" style="margin-left: 150px">所属部门:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="belong" style="height: 35px;"name="bumen">
-        <option th:class="${user.getRole() == '销售部门'}?'selected':''">销售部门</option>
-        <option th:class="${user.getRole() == '仓库部门'}?'selected':''">仓库部门</option>
-        <option th:class="${user.getRole() == '生产部门'}?'selected':''">生产部门</option>
-        <option th:class="${user.getRole() == '生产计划部门'}?'selected':''">生产计划部门</option>
-        <option th:class="${user.getRole() == '财务会计部'}?'selected':''">财务会计部</option>
-        <option th:class="${user.getRole() == '财务出纳部'}?'selected':''">财务出纳部</option>
+        <option th:selected="${user.getRole() == '销售部门'}" value="销售部门">销售部门</option>
+        <option th:selected="${user.getRole() == '仓库部门'}" value="仓库部门">仓库部门</option>
+        <option th:selected="${user.getRole() == '生产部门'}" value="生产部门">生产部门</option>
+        <option th:selected="${user.getRole() == '生产计划部门'}" value="生产计划部门">生产计划部门</option>
+        <option th:selected="${user.getRole() == '财务会计部'}" value="财务会计部">财务会计部</option>
+        <option th:selected="${user.getRole() == '财务出纳部'}" value="财务出纳部">财务出纳部</option>
     </select>
 
     <br>

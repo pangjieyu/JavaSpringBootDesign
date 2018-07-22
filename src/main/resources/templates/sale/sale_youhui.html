@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            font-size: 20px;
+        }
+        #bili,#zhekou ,#belong{
+            margin-left: 50px;
+        }
+        #btn{
+            margin-left: 150px;
+        }
+    </style>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">修改优惠信息:</strong>
+</p>
+<br>
+<form  name="form1" id="form-add" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 18px">所属等级:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <select class="form-control" id="belong" style="height: 35px;"name="bumen">
+        <option selected="selected" value="1">一级客户</option>
+        <option value="2">二级客户</option>
+        <option value="3">三级客户</option>
+    </select>
+    <br>
+    <span class="text-primary" style="margin-left: 1px">预付款比例:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="bili" placeholder="id" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 60px">折扣:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="zhekou" placeholder="money" style="height: 25px;"/>
+
+    <br>
+    <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
+        <span>修改</span>
+    </button>
+</form>
+
+<script type="text/javascript">
+    function submitFunction() {
+        var bili = document.form1.bili.value;
+        var zhekou = document.form1.zhekou.value;
+        if(bili == ""){
+            alert("请输入预付款比例");
+            return false;
+        }else if(zhekou == ""){
+            alert("请输入折扣");
+            return false;
+        }else{
+            return true;
+        }
+        /*var formData = new FormData($("#form-add")[0]);
+        $.ajax({
+            //接口地址
+            url: '/addUser' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data =="true")
+                {
+                    alert("yes");
+                }
+                else
+                {
+                    alert("no");
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+            }
+        });*/
+    }
+</script>
+</body>
+</html>

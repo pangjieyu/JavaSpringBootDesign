@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap.css}" href="../../static/css/bootstrap.css" />
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">员工信息:</strong>
+</p>
+<br>
+<form action="/chaxun/yuangong" method="post">
+    <span class="text-primary" style="font-size: 20px;">所属部门:</span>
+    <select class="form-control" id="sale" style="height: 35px;" name="bumen">
+        <option selected="selected">销售部门</option>
+        <option>仓库部门</option>
+        <option>生产部门</option>
+        <option>生产计划部门</option>
+        <option>财务会计部</option>
+        <option>财务出纳部</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="font-size: 20px;">姓名:</span>
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+        <span>查询</span>
+    </button>
+</form>
+<table class="table table-bordered table-hover definewidth m10">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">用户名</th>
+        <th scope="col">姓名</th>
+        <th scope="col">性别</th>
+        <th scope="col">工资</th>
+        <th scope="col">手机号</th>
+        <th scope="col">住址</th>
+        <th scope="col">入职时间</th>
+        <th scope="col">所属部门</th>
+    </tr>
+    </thead>
+    <tr th:each="user:${userList}">
+        <td th:text="${user.getUsername()}">123</td>
+        <td th:text="${user.getName()}">张江瑜</td>
+        <td th:text="${user.getSex()}">男</td>
+        <td th:text="${user.getSalary()}">1200</td>
+        <td th:text="${user.getTelephone()}">18535449392</td>
+        <td th:text="${user.getAddress()}">山西省晋中市太谷县</td>
+        <td th:text="${user.getTimeString()}">2018年7月20日</td>
+        <td th:text="${user.getRole()}">销售部门</td>
+    </tr>
+    <script type="text/javascript">
+        /* function submit(){
+             $.ajax({
+                 url : "/" , //获取数据列
+                 type : 'GET',
+                 data : {
+                 },
+                 success : function(data) {
+                     formatJsonToSeries(data);//对数据进行处理
+                 }
+             });
+
+             function formatJsonToSeries(data) {
+
+                 jsonData = JSON.parse(data);  //把后台传来的数据转来JSON格式
+                 //jsonData是二维数组，因为实体类ChartSeries的字段data也是个list
+                 for (x in jsonData) {  //遍历JSON格式的数组取元素, x代表下标
+
+                     for (y in jsonData[x].data) {
+                         alert(jsonData[x].occurTime[y]) ;//依次获取
+                         alert(jsonData[x].data[y]);
+                     }
+
+                 }
+
+
+             }
+         }*/
+    </script>
+</table>
+</body>
+</html>

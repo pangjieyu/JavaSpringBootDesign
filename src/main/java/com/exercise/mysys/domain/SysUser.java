@@ -107,7 +107,7 @@ public class SysUser implements UserDetails {
         return hiretime;
     }
     public String getTimeString() {
-        String sb = "yyyy年M月dd日";
+        String sb = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(sb);
         String day = sdf.format(this.hiretime);
         return day;
