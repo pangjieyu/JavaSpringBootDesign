@@ -33,7 +33,7 @@
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">库存信息:</strong>
 </p>
 <br>
-<form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form action="/kucun" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="font-size: 20px;">商品名称:</span>
     <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -52,8 +52,8 @@
     </thead>
     <tr th:each="kucun:${kucunList}">
         <td th:text="${kucun.getId()}">123</td>
-        <td th:text="${kucun.getNumble()}">1234</td>
-        <td th:text="">A4</td>
+        <td th:text="${kucun.getNumber()}">1234</td>
+        <td th:text="${kucun.getIn_id()}">A4</td>
         <td th:text="${kucun.getPosition()}">A4</td>
     </tr>
 </table>

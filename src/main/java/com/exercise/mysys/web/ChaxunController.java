@@ -40,6 +40,8 @@ public class ChaxunController {
     @GetMapping("/kucun")
     public String kucun(Model model) {
         model.addAttribute("kucunList", storeRepository.findAll());
+        repoo repo = null;
+        repo.fi();
         return "chaxun/chaxun_kucun";
     }
 

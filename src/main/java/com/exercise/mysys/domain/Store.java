@@ -18,7 +18,7 @@ public class Store {
     //商品编号（主键）
     private Long id;
     //存储数量
-    private Integer numble;
+    private Integer number;
     //存放位置
     private String position;
     //批号
@@ -34,12 +34,12 @@ public class Store {
         this.id = id;
     }
 
-    public Integer getNumble() {
-        return numble;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setNumble(Integer numble) {
-        this.numble = numble;
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public String getPosition() {
