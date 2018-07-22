@@ -7,6 +7,7 @@ import com.exercise.mysys.domain.Store;
 import com.exercise.mysys.domain.SysUser;
 import com.exercise.mysys.domain.Voucher;
 import com.exercise.mysys.domain.SysUser;
+import com.exercise.mysys.service.findServices;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +45,12 @@ public class ChaxunController {
     //查询库存
     @GetMapping("/kucun")
     public String kucun(Model model) {
-        model.addAttribute("kucunList", storeRepository.findAll());
+        model.addAttribute("kucunList", findServices.myFind());
+        return "chaxun/chaxun_kucun";
+    }
+    @PostMapping("/kucun")
+    public String findGood(Model model, HttpServletRequest request) {
+        model.addAttribute("kucunList", findServices.myFind(request.getParameter("goodname").trim()));
         return "chaxun/chaxun_kucun";
     }
 
