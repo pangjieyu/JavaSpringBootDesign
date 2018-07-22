@@ -46,9 +46,6 @@
             }else if(name == "") {
                 alert("请输入员工姓名");
                 return false;
-            }else if(password == ""){
-                alert("请输入员工密码");
-                return false;
             }else if(salary == ""){
                 alert("请输入员工工资");
                 return false;
@@ -74,7 +71,7 @@
 <br>
 <form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username" th:value="${user.getUsername()}"/>
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username" th:value="${user.getUsername()}" readonly="readonly"/>
 
     <span class="text-primary" style="margin-left: 190px">姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name" th:value="${user.getName()}"/>

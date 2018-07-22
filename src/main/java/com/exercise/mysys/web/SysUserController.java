@@ -137,7 +137,7 @@ public class SysUserController {
         x.setRole(request.getParameter("bumen"));
         System.out.println(request.getParameter("bumen"));
         userRepository.save(x);
-        return "redirect:/shouye";
+        return "redirect:/users";
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
