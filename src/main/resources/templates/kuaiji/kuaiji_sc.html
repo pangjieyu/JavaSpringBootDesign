@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            font-size: 20px;
+        }
+        #name,#type,#money,#id,#dingdan{
+            margin-left: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        function checkInput() {
+            var name = document.form1.name.value;
+            var id = document.form1.id.value;
+            var money = document.form1.money.value;
+            if(name == ""){
+                alert("请输入客户姓名");
+                return false;
+            }else if(id == ""){
+                alert("请输入客户编号");
+                return false;
+            }else if(money == ""){
+                alert("请输入金额");
+                return false;
+            }else{
+                return true;
+            }
+        }
+        function checkInput1() {
+            var dingdan = document.form2.dingdan.value;
+            if(dingdan == ""){
+                alert("请输入订单编号");
+                return false;
+                return true;
+            }
+        }
+        function checkInput2() {
+            var shoukuan = document.form3.shoukuan.value;
+            if(shoukuan == ""){
+                alert("请输入收款凭证编号");
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写收款凭证</strong>
+</p>
+<br>
+<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 21px">请输入客户姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 21px">请输入客户编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" />
+    <br>
+    <span class="text-primary" style="margin-left: 80px">凭证类型:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="type" placeholder="type" style="height: 25px;" value="收款" readonly="readonly"/>
+    <br>
+    <span class="text-primary" style="margin-left: 60px">请输入金额:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="money" placeholder="money" style="height: 25px;" />
+    <br>
+    <br>
+    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+        <span>生成</span>
+    </button>
+</form>
+<form action="#" method="post" name="form2" onsubmit="return checkInput1()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 21px">请输入订单编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="dingdan" placeholder="id" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="font-size: 20px;margin-left: 80px">所付款项:</span>
+    <select class="form-control" id="sale" style="height: 35px;margin-left: 115px" name="bumen">
+        <option selected="selected">未付款</option>
+        <option>已付全款</option>
+        <option>已付预订款</option>
+    </select>
+    <br>
+    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+        <span>修改</span>
+    </button>
+</form>
+<form action="#" method="post" name="form3" onsubmit="return checkInput2()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 0px">请输入收款凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="shoukuan" placeholder="id" style="height: 25px;margin-left: 80px;"/>
+    <br>
+    <br>
+    <button class="btn btn-primary" type="submit" style="width: 210px;height: 40px;margin-top: 20px;margin-left: 150px;">
+        <span>修改有效标记</span>
+    </button>
+</form>
+</body>
+</html>

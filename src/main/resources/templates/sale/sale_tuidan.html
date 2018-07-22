@@ -18,7 +18,7 @@
         span{
             font-size: 20px;
         }
-        #name,#date,#thing,#id,#num{
+        #people,#date,#id,#num,#cunstom,#money1,#money2{
             margin-left: 100px;
         }
     </style>
@@ -36,26 +36,25 @@
             $('#date').val(today);
         });
         function checkInput() {
-            var name = document.form1.name.value;
-            var thing = document.form1.thing.value;
+            var people = document.form1.people.value;
+            var id = document.form1.id.value;
+            var cunstom = document.form1.cunstom.value;
             var num = document.form1.num.value;
-            if(name == ""){
+            var money2 = document.form1.money2.value;
+            if(people == ""){
                 alert("请输入员工编号");
                 return false;
-            }else if(thing == ""){
-                alert("请输入商品名称");
+            }else if(id == ""){
+                alert("请输入商品编号");
+                return false;
+            }else if(cunstom == ""){
+                alert("请输入客户编号");
                 return false;
             }else if(num == ""){
                 alert("请输入商品数量");
                 return false;
-            }else{
-                return true;
-            }
-        }
-        function  checkInput1() {
-            var id = document.form2.id.value;
-            if(id == ""){
-                alert("请输入提货单编号");
+            }else if(money2 == ""){
+                alert("请输入应退金额");
                 return false;
             }else{
                 return true;
@@ -65,34 +64,31 @@
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写出库单</strong>
+<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写退货单</strong>
 </p>
 <br>
 <form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" id="people" placeholder="id" style="height: 25px;"/>
     <br>
-    <span class="text-primary" style="margin-left: 21px">请输入商品名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="thing" placeholder="thing" style="height: 25px;" />
+    <span class="text-primary" style="margin-left: 21px">请输入商品编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 21px">请输入客户编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="cunstom" placeholder="id" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;"/>
     <br>
-    <span class="text-primary" style="margin-left: 80px">出库时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 80px">应退金额:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="money2" placeholder="money" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 80px">产生时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="date" class="form-control" id="date" placeholder="sale" style="height: 25px;"/>
     <br>
     <br>
     <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>生成</span>
-    </button>
-</form>
-<form action="#" method="post" name="form2" onsubmit="return checkInput1()" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 5px">请输入提货单编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;"/>
-    <br>
-    <br>
-    <button class="btn btn-primary" type="submit" id="btn1" style="width: 190px;height: 40px;margin-top: 20px;margin-left: 150px;">
-        <span>修改有效标记</span>
     </button>
 </form>
 </body>

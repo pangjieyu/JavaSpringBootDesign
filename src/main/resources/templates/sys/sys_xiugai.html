@@ -28,7 +28,7 @@
             margin-left: 500px;
         }
     </style>
-    <script type="text/javascript">
+    <script type="text/javascript" th:inline="javascript">
         function checkInput() {
             var id = document.form1.id.value;
             var name = document.form1.name.value;
@@ -65,6 +65,18 @@
                 return true;
             }
         }
+        window.onload = function(){
+            var opts = document.getElementById("select");
+            var value = [[${user.get}]];//这个值就是你获取的值;
+            if(value != ""){
+                for(var i=0;i<opts.options.length;i++){
+                    if(value==opts.options[i].value){
+                        opts.options[i].selected = 'selected';
+                        break;
+                    }
+                }
+            }
+        }
     </script>
 </head>
 
@@ -82,8 +94,8 @@
     <br>
     <span class="text-primary" style="margin-left: 40px">性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="sex" style="height: 35px;" name="sex">
-        <option value="男" th:selected="${user.getSex() == '男'}">男</option>
-        <option value="女" th:selected="${user.getSex() == '男'}">女</option>
+        <option value="男">男</option>
+        <option value="女">女</option>
     </select>
 
     <span class="text-primary" style="margin-left: 190px">密码:</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -106,17 +118,17 @@
     <br>
     <span class="text-primary">是否在职:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="bool" style="height: 35px;"name="bumen">
-        <option th:selected="${user.isEffective() == '1'}" value="1">是</option>
-        <option th:selected="${user.isEffective() == '0'}" value="0">否</option>
+        <option value="1">是</option>
+        <option value="0">否</option>
     </select>
     <span class="text-primary" style="margin-left: 150px">所属部门:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="belong" style="height: 35px;"name="bumen">
-        <option th:selected="${user.getRole() == '销售部门'}" value="销售部门">销售部门</option>
-        <option th:selected="${user.getRole() == '仓库部门'}" value="仓库部门">仓库部门</option>
-        <option th:selected="${user.getRole() == '生产部门'}" value="生产部门">生产部门</option>
-        <option th:selected="${user.getRole() == '生产计划部门'}" value="生产计划部门">生产计划部门</option>
-        <option th:selected="${user.getRole() == '财务会计部'}" value="财务会计部">财务会计部</option>
-        <option th:selected="${user.getRole() == '财务出纳部'}" value="财务出纳部">财务出纳部</option>
+        <option value="销售部门">销售部门</option>
+        <option value="仓库部门">仓库部门</option>
+        <option value="生产部门">生产部门</option>
+        <option value="生产计划部门">生产计划部门</option>
+        <option value="财务会计部">财务会计部</option>
+        <option value="财务出纳部">财务出纳部</option>
     </select>
 
     <br>

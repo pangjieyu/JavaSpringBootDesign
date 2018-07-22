@@ -1,10 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            font-size: 20px;
+        }
+        #name,#date,#thing,#num,#sale{
+            margin-left: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 给input  date设置默认值
+            var now = new Date();
+//格式化日，如果小于9，前面补0
+            var day = ("0" + now.getDate()).slice(-2);
+//格式化月，如果小于9，前面补0
+            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+//拼装完整日期格式
+            var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+//完成赋值
+            $('#date').val(today);
+        });
+        function checkInput() {
+            var name = document.form1.name.value;
+            var thing = document.form1.thing.value;
+            var num = document.form1.num.value;
+            if(name == ""){
+                alert("请输入员工编号");
+                return false;
+            }else if(thing == ""){
+                alert("请输入商品名称");
+                return false;
+            }else if(num == ""){
+                alert("请输入商品数量");
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写销毁单</strong>
+</p>
+<br>
+<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 21px">请输入商品名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="thing" placeholder="thing" style="height: 25px;" />
+    <br>
+    <span class="text-primary" style="margin-left: 21px">请输入商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 80px">销毁时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" class="form-control" id="date" placeholder="sale" style="height: 25px;"/>
+    <br>
+    <br>
+    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+        <span>生成</span>
+    </button>
+</form>
 </body>
 </html>

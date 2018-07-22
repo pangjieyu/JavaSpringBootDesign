@@ -18,40 +18,43 @@
         span{
             font-size: 20px;
         }
-        #name,#phone,#address,#belong{
+        #name,#danwei,#baozhi{
             margin-left: 50px;
         }
+        #danjia,#xiaxian{
+            margin-left: 80px;
+        }
         #btn{
-            margin-left: 150px;
+            margin-left: 500px;
         }
     </style>
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">添加客户信息:</strong>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">修改商品信息:</strong>
 </p>
 <br>
 <form  name="form1" id="form-add" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 21px">客户名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 21px">商品名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;"/>
-    <br>
-    <span class="text-primary" style="margin-left: 40px">手机号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="phone" placeholder="money" style="height: 25px;"/>
+
+    <span class="text-primary" style="margin-left: 230px">单价:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="danjia" placeholder="money" style="height: 25px;"/>
 
     <br>
-    <span class="text-primary" style="margin-left: 58px">地址:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="address" placeholder="num" style="height: 25px;"/>
+    <span class="text-primary" style="margin-left: 60px">单位:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="danwei" placeholder="num" style="height: 25px;"/>
+
+    <span class="text-primary" style="margin-left: 190px">库存下限:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="xiaxian" placeholder="num" style="height: 25px;"/>
+
     <br>
-    <span class="text-primary" style="margin-left: 18px">所属等级:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <select class="form-control" id="belong" style="height: 35px;"name="bumen">
-        <option selected="selected" value="1">一级客户</option>
-        <option value="2">二级客户</option>
-        <option value="3">三级客户</option>
-    </select>
+    <span class="text-primary" style="margin-left: 40px">保质期:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="baozhi" placeholder="num" style="height: 25px;">
 
     <br>
     <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
-        <span>添加</span>
+        <span>修改</span>
     </button>
 </form>
 
@@ -59,16 +62,24 @@
     function submitFunction() {
         //这里唯一需要注意的就是这个form-add的id
         var name = document.form1.name.value;
-        var phone = document.form1.phone.value;
-        var address = document.form1.address.value;
+        var danjia = document.form1.danjia.value;
+        var danwei = document.form1.danwei.value;
+        var xiaxian = document.form1.xiaxian.value;
+        var baozhi = document.form1.baozhi.value;
         if(name == ""){
-            alert("请输入客户名称");
+            alert("请输入商品名称");
             return false;
-        }else if(phone == ""){
-            alert("请输入手机号");
+        }else if(danjia == ""){
+            alert("请输入单价");
             return false;
-        }else if(address == ""){
-            alert("请输入地址");
+        }else if(danwei == ""){
+            alert("请输入单位");
+            return false;
+        }else if(xiaxian == ""){
+            alert("请输入库存下限");
+            return false;
+        }else if(baozhi == ""){
+            alert("请输入保质期");
             return false;
         }else{
             return true;
