@@ -2,10 +2,10 @@ package com.exercise.mysys.web;
 
 import com.exercise.mysys.dao.*;
 import com.exercise.mysys.domain.Customer;
-import com.exercise.mysys.domain.Store;
+import com.exercise.mysys.domain.Good;
 import com.exercise.mysys.domain.SysUser;
 import com.exercise.mysys.domain.Voucher;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.exercise.mysys.service.findServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,10 +37,17 @@ public class ChaxunController {
     @Autowired
     private VoucherRepository voucherRepository;
 
+    @Autowired
+    private GoodRepository goodRepository;
     //查询库存
     @GetMapping("/kucun")
     public String kucun(Model model) {
-        model.addAttribute("kucunList", storeRepository.findAll());
+        model.addAttribute("kucunList", findServices.findGood());
+        return "chaxun/chaxun_kucun";
+    }
+    @PostMapping("/kucun")
+    public String findGood(Model model, HttpServletRequest request) {
+        model.addAttribute("kucunList", findServices.findGood(request.getParameter("goodname").trim()));
         return "chaxun/chaxun_kucun";
     }
 
@@ -76,6 +83,19 @@ public class ChaxunController {
         List<Customer> list = customerRepository.myFind(request.getParameter("name").trim());
         model.addAttribute("kehuList",list);
         return "chaxun/chaxun_kehu";
+    }
+
+    //查询商品信息
+    @GetMapping("/thing")
+    public String thing(Model model) {
+        model.addAttribute("thingList", goodRepository.findAll());
+        return "chaxun/chaxun_thing";
+    }
+    @PostMapping("/thing")
+    public String findThing(HttpServletRequest request, Model model) {
+        List<Good> list = goodRepository.myFind(request.getParameter("name").trim());
+        model.addAttribute("thingList",list);
+        return "chaxun/chaxun_thing";
     }
 
     //查询员工信息

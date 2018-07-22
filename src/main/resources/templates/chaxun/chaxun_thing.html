@@ -53,14 +53,14 @@
         <th scope="col">保质期</th>
     </tr>
     </thead>
-    <tr>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
+    <tr th:each="thing:${thingList}">
+        <td th:text="${thing.getId()}">123</td>
+        <td th:text="${thing.getName()}">123</td>
+        <td th:text="${thing.getPrice()}">123</td>
+        <td th:text="${thing.getUnit()}">123</td>
+        <td th:text="${thing.getLower_limit()}">123</td>
+        <td th:text="${thing.getSum()}">123</td>
+        <td th:text="${thing.getGuarantee()}">123</td>
     </tr>
 </table>
 </body>

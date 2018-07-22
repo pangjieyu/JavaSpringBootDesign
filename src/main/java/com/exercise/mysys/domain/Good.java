@@ -29,8 +29,6 @@ public class Good {
     private Integer sum;
     //保质期（按天算）
     private Integer guarantee;
-    //生产日期
-    private Date manufacture_date;
 
     public Long getId() {
         return id;
@@ -86,13 +84,5 @@ public class Good {
 
     public void setGuarantee(Integer guarantee) {
         this.guarantee = guarantee;
-    }
-
-    public Date getManufacture_date() {
-        return manufacture_date;
-    }
-
-    public void setManufacture_date(Date manufacture_date) {
-        this.manufacture_date = manufacture_date;
     }
 }
