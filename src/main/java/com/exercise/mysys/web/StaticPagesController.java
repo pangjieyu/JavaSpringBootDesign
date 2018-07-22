@@ -26,6 +26,8 @@ public class StaticPagesController {
             return "index/index_boss";
         else if(nowUser.getRole().equals("admin"))
             return "redirect:/admin";
+        else if(nowUser.getRole().equals("仓库部门"))
+            return "redirect:/cangku";
         return "index";
     }
 
@@ -37,5 +39,10 @@ public class StaticPagesController {
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin() {
         return "index/index_sys";
+    }
+
+    @RequestMapping(value = "/cangku", method = RequestMethod.GET)
+    public String cangku() {
+        return "index/index_store";
     }
 }
