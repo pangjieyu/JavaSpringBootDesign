@@ -20,7 +20,7 @@
         function checkInput() {
             var name = document.form1.name.value;
             if(name == ""){
-                alert("请输入商品名称");
+                alert("请输入客户名称");
                 return false;
             }else{
                 return true;
@@ -30,12 +30,12 @@
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">库存信息:</strong>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">客户信息:</strong>
 </p>
 <br>
-<form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
-    <span class="text-primary" style="font-size: 20px;">商品名称:</span>
-    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
+<form action="#" method="post">
+    <span class="text-primary" style="font-size: 20px;">客户名称:</span>
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
         <span>查询</span>
@@ -44,17 +44,21 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">商品编号</th>
-        <th scope="col">商品数量</th>
-        <th scope="col">入库批号</th>
-        <th scope="col">存放位置</th>
+        <th scope="col">客户编号</th>
+        <th scope="col">客户名称</th>
+        <th scope="col">手机号</th>
+        <th scope="col">地址</th>
+        <th scope="col">等级</th>
+        <th scope="col"></th>
     </tr>
     </thead>
-    <tr th:each="kucun:${kucunList}">
-        <td th:text="${kucun.getId()}">123</td>
-        <td th:text="${kucun.getNumble()}">1234</td>
-        <td th:text="">A4</td>
-        <td th:text="${kucun.getPosition()}">A4</td>
+    <tr>
+        <td>123</td>
+        <td>123</td>
+        <td>123</td>
+        <td>123</td>
+        <td>123</td>
+        <td><a href="customer_xiugai.html" th:href="@{}" class="a2">修改</a> </td>
     </tr>
 </table>
 </body>

@@ -1,6 +1,7 @@
 package com.exercise.mysys.dao;
 
 import com.exercise.mysys.domain.ReturnGood;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -10,6 +11,6 @@ import java.util.List;
  * @Date 2018/7/20 15:40
  * @Description: 退货单类的数据访问层
  */
-public interface ReturnGoodRepository {
+public interface ReturnGoodRepository extends JpaRepository<ReturnGood, Long> {
     List<ReturnGood> findAll();
 }

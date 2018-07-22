@@ -46,9 +46,6 @@
             }else if(name == "") {
                 alert("请输入员工姓名");
                 return false;
-            }else if(password == ""){
-                alert("请输入员工密码");
-                return false;
             }else if(salary == ""){
                 alert("请输入员工工资");
                 return false;
@@ -74,7 +71,7 @@
 <br>
 <form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">用户名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username" th:value="${user.getUsername()}"/>
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="username" th:value="${user.getUsername()}" readonly="readonly"/>
 
     <span class="text-primary" style="margin-left: 190px">姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name" th:value="${user.getName()}"/>
@@ -83,7 +80,7 @@
     <span class="text-primary" style="margin-left: 40px">性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="sex" style="height: 35px;" name="sex">
         <option value="男" th:selected="${user.getSex() == '男'}">男</option>
-        <option value="女" th:selected="${user.getSex() == '男'}">女</option>
+        <option value="女" th:selected="${user.getSex() == '女'}">女</option>
     </select>
 
     <span class="text-primary" style="margin-left: 190px">密码:</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -105,7 +102,7 @@
 
     <br>
     <span class="text-primary">是否在职:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <select class="form-control" id="bool" style="height: 35px;"name="bumen">
+    <select class="form-control" id="bool" style="height: 35px;"name="effective">
         <option th:selected="${user.isEffective() == '1'}" value="1">是</option>
         <option th:selected="${user.isEffective() == '0'}" value="0">否</option>
     </select>
