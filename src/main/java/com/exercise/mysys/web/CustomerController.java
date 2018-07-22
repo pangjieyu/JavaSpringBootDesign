@@ -24,7 +24,12 @@ import java.text.ParseException;
 public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
-
+    //显示客户列表
+    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    public String userList(Model model) {
+        model.addAttribute("customerList", customerRepository.findAll());
+        return "customer/customer_kehu";
+    }
     //添加客户
     @RequestMapping(value = "/addCustomer",method = RequestMethod.GET)
     public String addCustomer() {
@@ -33,38 +38,24 @@ public class CustomerController {
 
     @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
     public String add(HttpServletRequest request) throws ParseException {
-        //新建一个客户类
-        Customer customer = new Customer();
-        //设置客户姓名
-        customer.setName(request.getParameter("name"));
-        //设置手机号
-        customer.setTelephone(Long.parseLong(request.getParameter("telephone")));
-        //设置客户等级
-        customer.setRank(Long.parseLong(request.getParameter("rank")));
-        //保存
-        customerRepository.save(customer);
-        //返回界面
-        return "redirect:/shouye";
+        try {
+            //新建一个客户类
+            Customer customer = new Customer();
+            //设置客户姓名
+            customer.setName(request.getParameter("name"));
+            //设置手机号
+            customer.setTelephone(Long.parseLong(request.getParameter("telephone")));
+            //设置客户等级
+            customer.setRank(Long.parseLong(request.getParameter("rank")));
+            //保存
+            customerRepository.save(customer);
+            //返回界面
+        }
+        catch (Exception e)
+        {
+            return "false";
+        }
+        return "true";
     }
-    //修改客户信息
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String editPage(@PathVariable Long id , Model model) {
-        model.addAttribute("user",customerRepository.findCustomerById(id));
-        return "editCustomer";
-    }
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String editCustomer(@PathVariable Long id, HttpServletRequest request) throws ParseException {
-        //找到该用户
-        Customer customer = customerRepository.findCustomerById(id);
-        //设置姓名
-        customer.setName(request.getParameter("name"));
-        //设置手机号
-        customer.setTelephone(Long.parseLong(request.getParameter("telephone")));
-        //设置客户等级
-        customer.setRank(Long.parseLong(request.getParameter("rank")));
-        //保存
-        customerRepository.save(customer);
-        //返回首页
-        return "redirect:/shouye";
-    }
+
 }
