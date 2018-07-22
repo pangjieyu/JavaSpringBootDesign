@@ -83,7 +83,7 @@
     <span class="text-primary" style="margin-left: 40px">性别:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="sex" style="height: 35px;" name="sex">
         <option value="男" th:selected="${user.getSex() == '男'}">男</option>
-        <option value="女" th:selected="${user.getSex() == '男'}">女</option>
+        <option value="女" th:selected="${user.getSex() == '女'}">女</option>
     </select>
 
     <span class="text-primary" style="margin-left: 190px">密码:</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -101,11 +101,11 @@
     <input type="text" class="form-control" id="address" placeholder="address" style="height: 25px;" name="address" th:value="${user.getAddress()}">
 
     <span class="text-primary" style="margin-left: 150px">入职时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="date" class="form-control" id="date"  style="height: 25px;" name="date" th:value="${user.getHiretime()}">
+    <input type="date" class="form-control" id="date"  style="height: 25px;" name="date" th:value="${user.getTimeString()}">
 
     <br>
     <span class="text-primary">是否在职:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <select class="form-control" id="bool" style="height: 35px;"name="bumen">
+    <select class="form-control" id="bool" style="height: 35px;"name="effective">
         <option th:selected="${user.isEffective() == '1'}" value="1">是</option>
         <option th:selected="${user.isEffective() == '0'}" value="0">否</option>
     </select>
