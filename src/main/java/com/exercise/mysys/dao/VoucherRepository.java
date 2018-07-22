@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface VoucherRepository extends JpaRepository<Voucher,Long> {
     List<Voucher> findAll();
-    Voucher save(Voucher v);
-    Voucher findOne(Long id);
+//    Voucher findOne(Long id);
+    Voucher findVoucherById(Long id);
 }
