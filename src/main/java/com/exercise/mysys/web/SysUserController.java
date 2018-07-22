@@ -2,6 +2,8 @@ package com.exercise.mysys.web;
 
 import com.exercise.mysys.dao.SysUserRepository;
 import com.exercise.mysys.domain.SysUser;
+import com.exercise.mysys.service.SysUserDetailsService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +21,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,6 +33,7 @@ import java.util.Optional;
 public class SysUserController {
     @Autowired
     private SysUserRepository userRepository;
+    private SysUserDetailsService userDetailsService;
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login() {
         return "login";
@@ -127,6 +131,20 @@ public class SysUserController {
         x.setRole(request.getParameter("bumen"));
         userRepository.save(x);
         return "redirect:/shouye";
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @ResponseBody
+    public List<SysUser> chazhao(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        String bumen = request.getParameter("bumen");
+        List<SysUser> list = userRepository.findAllByRole(bumen);
+        if(name.equals("")) {
+            return list;
+        }else {
+            list = userRepository.myFind(bumen, name);
+            return list;
+        }
     }
 
 }
