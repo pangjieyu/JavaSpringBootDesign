@@ -18,7 +18,7 @@
         span{
             font-size: 20px;
         }
-        #name,#phone,#address,#belong{
+        #bili,#zhekou ,#belong{
             margin-left: 50px;
         }
         #btn{
@@ -28,47 +28,38 @@
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">添加客户信息:</strong>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">修改优惠信息:</strong>
 </p>
 <br>
 <form  name="form1" id="form-add" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 21px">客户名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;"/>
-    <br>
-    <span class="text-primary" style="margin-left: 40px">手机号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="phone" placeholder="money" style="height: 25px;"/>
-
-    <br>
-    <span class="text-primary" style="margin-left: 58px">地址:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="address" placeholder="num" style="height: 25px;"/>
-    <br>
     <span class="text-primary" style="margin-left: 18px">所属等级:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <select class="form-control" id="belong" style="height: 35px;"name="bumen">
         <option selected="selected" value="1">一级客户</option>
         <option value="2">二级客户</option>
         <option value="3">三级客户</option>
     </select>
+    <br>
+    <span class="text-primary" style="margin-left: 1px">预付款比例:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="bili" placeholder="id" style="height: 25px;"/>
+    <br>
+    <span class="text-primary" style="margin-left: 60px">折扣:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="zhekou" placeholder="money" style="height: 25px;"/>
 
     <br>
     <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
-        <span>添加</span>
+        <span>修改</span>
     </button>
 </form>
 
 <script type="text/javascript">
     function submitFunction() {
-        //这里唯一需要注意的就是这个form-add的id
-        var name = document.form1.name.value;
-        var phone = document.form1.phone.value;
-        var address = document.form1.address.value;
-        if(name == ""){
-            alert("请输入客户名称");
+        var bili = document.form1.bili.value;
+        var zhekou = document.form1.zhekou.value;
+        if(bili == ""){
+            alert("请输入预付款比例");
             return false;
-        }else if(phone == ""){
-            alert("请输入手机号");
-            return false;
-        }else if(address == ""){
-            alert("请输入地址");
+        }else if(zhekou == ""){
+            alert("请输入折扣");
             return false;
         }else{
             return true;

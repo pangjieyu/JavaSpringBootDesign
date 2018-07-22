@@ -24,7 +24,29 @@
     </style>
     <script type="text/javascript">
         function checkInput() {
-
+            var name = document.form1.name.value;
+            var date = document.form1.date.value;
+            var thing = document.form1.thing.value;
+            var num = document.form1.num.value;
+            var sale = document.form1.sale.value;
+            if(name == ""){
+                alert("请输入员工姓名");
+                return false;
+            }else if(date == ""){
+                alert("请选择生产时间");
+                return false;
+            }else if(thing == ""){
+                alert("请输入商品名称");
+                return false;
+            }else if(num == ""){
+                alert("请输入商品数量");
+                return false;
+            }else if(sale == ""){
+                alert("请输入花费");
+                return false;
+            }else{
+                return true;
+            }
         }
     </script>
 </head>

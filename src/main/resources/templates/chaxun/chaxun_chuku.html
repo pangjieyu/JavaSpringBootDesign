@@ -18,9 +18,9 @@
     </style>
     <script type="text/javascript">
         function checkInput() {
-            var name = document.form1.name.value;
-            if(name == ""){
-                alert("请输入商品名称");
+            var date = document.form1.date.value;
+            if(date == ""){
+                alert("请选择入库时间");
                 return false;
             }else{
                 return true;
@@ -30,12 +30,12 @@
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">库存信息:</strong>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">出库单信息:</strong>
 </p>
 <br>
 <form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
-    <span class="text-primary" style="font-size: 20px;">商品名称:</span>
-    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
+    <span class="text-primary" style="font-size: 20px;">出库时间:</span>
+    <input type="date" class="form-control" id="date" style="height: 25px;">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
         <span>查询</span>
@@ -44,17 +44,17 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">商品编号</th>
+        <th scope="col">员工名称</th>
+        <th scope="col">商品名称</th>
         <th scope="col">商品数量</th>
-        <th scope="col">入库批号</th>
-        <th scope="col">存放位置</th>
+        <th scope="col">出库时间</th>
     </tr>
     </thead>
     <tr th:each="#">
         <td th:text="#">123</td>
         <td th:text="#">1234</td>
         <td th:text="#">A4</td>
-        <td th:text="#">A4</td>
+        <td th:text="#">123</td>
     </tr>
 </table>
 </body>
