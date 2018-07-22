@@ -21,7 +21,7 @@
             var name1 = document.form1.name1.value;
             var name2 = document.form1.name2.value;
             if(name1 == ""){
-                alert("请输入客户名称");
+                alert("请输入员工名称");
                 return false;
             }else if(name2 == ""){
                 alert("请选择生产时间");
@@ -34,7 +34,7 @@
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">退单信息:</strong>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">生产计划信息:</strong>
 </p>
 <br>
 <form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
@@ -51,12 +51,11 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">员工名称</th>
+        <th scope="col">生产时间</th>
         <th scope="col">商品名称</th>
-        <th scope="col">客户名称</th>
         <th scope="col">商品数量</th>
-        <th scope="col">应退金额</th>
-        <th scope="col">产生时间</th>
+        <th scope="col">员工名称</th>
+        <th scope="col">花费</th>
     </tr>
     </thead>
     <tr th:each="#">
@@ -64,7 +63,6 @@
         <td th:text="#">1234</td>
         <td th:text="#">A4</td>
         <td th:text="#">123</td>
-        <td th:text="#">1234</td>
         <td th:text="#">1234</td>
     </tr>
 </table>
