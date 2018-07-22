@@ -16,25 +16,25 @@
             height: 100px;
         }
     </style>
-    <script type="text/javascript">
-        function checkInput() {
-            var name = document.form1.name.value;
-            if(name == ""){
-                alert("请输入姓名");
-                return false;
-            }
-            else{
-                return true;
-            }
-        }
-    </script>
+    <!--<script type="text/javascript">-->
+        <!--function checkInput() {-->
+            <!--var name = document.form1.name.value;-->
+            <!--if(name == ""){-->
+                <!--alert("请输入姓名");-->
+                <!--return false;-->
+            <!--}-->
+            <!--else{-->
+                <!--return true;-->
+            <!--}-->
+        <!--}-->
+    <!--</script>-->
 </head>
 
 <body>
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">员工信息:</strong>
 </p>
 <br>
-<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form id="form-add" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
 <span class="text-primary" style="font-size: 20px;">所属部门:</span>
 <select class="form-control" id="sale" style="height: 35px;">
     <option selected="selected" value="销售部门">销售部门</option>
@@ -48,10 +48,38 @@
 <span class="text-primary" style="font-size: 20px;">姓名:</span>
 <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+<button class="btn btn-primary"  style="width: 70px;height: 35px;margin-top: -14px;">
     <span>查询</span>
 </button>
 </form>
+<script type="text/javascript">
+    function submitFunction() {
+        //这里唯一需要注意的就是这个form-add的id
+        var formData = new FormData($("#form-add")[0]);
+        $.ajax({
+            //接口地址
+            url: '/' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                var str;
+                for(i in data)
+                {
+
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+                alert("error");
+            }
+        });
+    }
+</script>
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
