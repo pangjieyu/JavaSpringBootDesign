@@ -47,7 +47,7 @@ public class ChaxunController {
         model.addAttribute("returnList", returnGoodRepository.findAll());
         return "/chaxun/chaxun_tuidan";
     }
-    
+
     @GetMapping("/shengchan")
     public String shengchan(Model model) {
         model.addAttribute("shengchanList", manufacturePlanRepository.findAll());
