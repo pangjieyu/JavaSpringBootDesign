@@ -18,7 +18,7 @@
         span{
             font-size: 20px;
         }
-        #name,#date,#thing,#num,#sale{
+        #name,#date,#thing,#num,#name1{
             margin-left: 100px;
         }
     </style>
@@ -35,12 +35,16 @@
 //完成赋值
             $('#date').val(today);
         });
-        function checkInput() {
+       /* function checkInput() {
             var name = document.form1.name.value;
             var thing = document.form1.thing.value;
             var num = document.form1.num.value;
+            var name1 = document.form1.name1.value;
             if(name == ""){
                 alert("请输入员工编号");
+                return false;
+            }else if(name1 == ""){
+                alert("请输入员工姓名");
                 return false;
             }else if(thing == ""){
                 alert("请输入商品名称");
@@ -51,7 +55,7 @@
             }else{
                 return true;
             }
-        }
+        }*/
     </script>
 </head>
 
@@ -59,23 +63,72 @@
 <p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写销毁单</strong>
 </p>
 <br>
-<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form name="form1" id="form-add" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;"/>
+    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;" name="id"/>
+    <br>
+    <span class="text-primary" style="margin-left: 21px">请输入员工姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px;" name="username"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="thing" placeholder="thing" style="height: 25px;" />
+    <input type="text" class="form-control" id="thing" placeholder="thing" style="height: 25px;" name="goodname"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;"/>
+    <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;" name="number"/>
     <br>
     <span class="text-primary" style="margin-left: 80px">销毁时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="date" class="form-control" id="date" placeholder="sale" style="height: 25px;"/>
+    <input type="date" class="form-control" id="date" placeholder="sale" style="height: 25px;" name="date"/>
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>生成</span>
     </button>
 </form>
+<script type="text/javascript">
+    function submitFunction() {
+        var name = document.form1.name.value;
+        var thing = document.form1.thing.value;
+        var num = document.form1.num.value;
+        var name1 = document.form1.name1.value;
+        if(name == ""){
+            alert("请输入员工编号");
+            return false;
+        }else if(name1 == ""){
+            alert("请输入员工姓名");
+            return false;
+        }else if(thing == ""){
+            alert("请输入商品名称");
+            return false;
+        }else if(num == ""){
+            alert("请输入商品数量");
+            return false;
+        }
+        var formData = new FormData($("#form-add")[0]);
+        $.ajax({
+            //接口地址
+            url: '#' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data == "true")
+                {
+                    alert("操作成功");
+                }
+                else
+                {
+                    alert(data);
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+            }
+        });
+    }
+</script>
 </body>
 </html>
