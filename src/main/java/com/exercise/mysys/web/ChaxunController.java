@@ -3,14 +3,13 @@ package com.exercise.mysys.web;
 import com.exercise.mysys.dao.*;
 import com.exercise.mysys.domain.Customer;
 import com.exercise.mysys.domain.Store;
+import com.exercise.mysys.domain.SysUser;
+import com.exercise.mysys.domain.Voucher;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -35,6 +34,8 @@ public class ChaxunController {
     private CustomerRepository customerRepository;
     @Autowired
     private SysUserRepository userRepository;
+    @Autowired
+    private VoucherRepository voucherRepository;
 
     //查询库存
     @GetMapping("/kucun")
@@ -83,6 +84,26 @@ public class ChaxunController {
         model.addAttribute("userList", userRepository.findAll());
         return "chaxun/chaxun_yuangong";
     }
+    @RequestMapping(value = "/yuangong", method = RequestMethod.POST)
+    public String chazhao(HttpServletRequest request, Model model) {
+        String name = request.getParameter("name");
+        String bumen = request.getParameter("bumen");
+        List<SysUser> list;
+        if(name.equals("")) {
+            list = userRepository.findAllByRole(bumen);
+        }else {
+            list = userRepository.myFind(bumen, name);
+        }
+        model.addAttribute("userList",list);
+        return "chaxun/chaxun_yuangong";
+    }
 
+    //查询凭证
+    @GetMapping("/pingzheng")
+    public String pingzheng(Model model) {
+        List<Voucher> list = voucherRepository.findAll();
+        model.addAttribute("pingzhengList",list);
+        return "chaxun/chaxun_pingzheng";
+    }
 
 }
