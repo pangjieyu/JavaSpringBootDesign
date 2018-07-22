@@ -6,6 +6,7 @@ import com.exercise.mysys.domain.Good;
 import com.exercise.mysys.domain.SysUser;
 import com.exercise.mysys.domain.Voucher;
 import com.exercise.mysys.service.findServices;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -126,5 +127,21 @@ public class ChaxunController {
         return "chaxun/chaxun_pingzheng";
     }
 
-    
+    //查询入库
+    @GetMapping("/ruku")
+    public String ruku(Model model) {
+        return "chaxun/chaxun_ruku";
+    }
+
+    //查询出库
+    @GetMapping("/chuku")
+    public String chuku(Model model) {
+        return "chaxun/chaxun_chuku";
+    }
+
+    //查询提货
+    @GetMapping("/tihuo")
+    public String tihuo(Model model) {
+        return "chaxun/chaxun_tihuo";
+    }
 }
