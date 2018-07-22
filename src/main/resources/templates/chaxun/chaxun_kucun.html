@@ -48,6 +48,7 @@
         <th scope="col">商品数量</th>
         <th scope="col">入库批号</th>
         <th scope="col">存放位置</th>
+        <th scope="col">入库时间</th>
     </tr>
     </thead>
     <tr th:each="kucun:${kucunList}">
@@ -55,6 +56,7 @@
         <td th:text="${kucun.getNumble()}">1234</td>
         <td th:text="">A4</td>
         <td th:text="${kucun.getPosition()}">A4</td>
+        <td th:text=""></td>
     </tr>
 </table>
 </body>
