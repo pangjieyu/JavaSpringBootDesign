@@ -34,7 +34,7 @@
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">员工信息:</strong>
 </p>
 <br>
-<form id="form-add" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form id="form-add" name="form1"enctype="multipart/form-data">
 <span class="text-primary" style="font-size: 20px;">所属部门:</span>
 <select class="form-control" id="sale" style="height: 35px;">
     <option selected="selected" value="销售部门">销售部门</option>
@@ -48,17 +48,25 @@
 <span class="text-primary" style="font-size: 20px;">姓名:</span>
 <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button class="btn btn-primary"  style="width: 70px;height: 35px;margin-top: -14px;">
+<button class="btn btn-primary"  onclick="submitFunction()" style="width: 70px;height: 35px;margin-top: -14px;">
     <span>查询</span>
 </button>
 </form>
+
 <script type="text/javascript">
     function submitFunction() {
+        var name = document.form1.name.value;
+        if(name == "") {
+            alert("请输入姓名");
+            return ;
+        }
+
+
         //这里唯一需要注意的就是这个form-add的id
         var formData = new FormData($("#form-add")[0]);
         $.ajax({
             //接口地址
-            url: '/' ,
+            url: '/users' ,
             type: 'POST',
             data: formData,
             async: false,
@@ -66,11 +74,37 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                var str;
-                for(i in data)
+                var str="";
+                alert(data);
+                for(var i in data)
                 {
+                    str = "<tr id=\"main\">"+
+                        "<td>"+data[i].id+"<td>"+
+                        "<td>" + data[i].sex+ "</td>" +
+                        "<td>" + data[i].username + "</td>" +
+                        "<td>" + data[i].name+ "</td>" +
+                        "<td>" + data[i].password+ "</td>" +
+                        "<td>" + data[i].salary+ "</td>" +
+                        "<td>" + data[i].telephone+ "</td>" +
+                        "<td>" + data[i].address+ "</td>" +
+                        "<td>" + data[i].hiretime+ "</td>" +
+                        "<td>" + data[i].effective+ "</td>" +
+                        "<td>" + data[i].role+ "</td>"+
+                        "<tr>";
 
                 }
+                document.getElementById("main").innerHTML=str;
+                // private Long id;
+                // private String sex;
+                // private String username;
+                // private String name;
+                // private String password;
+                // private Integer salary;
+                // private Long telephone;
+                // private String address;
+                // private Date hiretime;
+                // private boolean effective;
+                // private String role;
             },
             error: function (returndata) {
                 //请求异常的回调

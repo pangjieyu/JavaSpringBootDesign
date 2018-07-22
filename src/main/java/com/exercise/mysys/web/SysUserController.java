@@ -139,6 +139,8 @@ public class SysUserController {
         String name = request.getParameter("name");
         String bumen = request.getParameter("bumen");
         List<SysUser> list = userRepository.findAllByRole(bumen);
+
+        System.out.println(name +"    "+bumen);
         if(name.equals("")) {
             return list;
         }else {
