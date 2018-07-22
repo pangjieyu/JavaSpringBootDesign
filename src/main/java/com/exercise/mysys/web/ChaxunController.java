@@ -161,6 +161,11 @@ public class ChaxunController {
         model.addAttribute("chukuList",findServices.findChuKu("","",""));
         return "chaxun/chaxun_chuku";
     }
+    @PostMapping("/chuku")
+    public String findchuku(HttpServletRequest request, Model model) {
+        model.addAttribute("chukuList",findServices.findChuKu("","",request.getParameter("time").trim()));
+        return "chaxun/chaxun_chuku";
+    }
 
     //查询提货
     @GetMapping("/tihuo")

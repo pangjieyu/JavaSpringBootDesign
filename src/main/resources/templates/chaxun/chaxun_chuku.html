@@ -35,7 +35,7 @@
 <br>
 <form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="font-size: 20px;">出库时间:</span>
-    <input type="date" class="form-control" id="date" style="height: 25px;">
+    <input type="date" class="form-control" id="date" style="height: 25px;" name="time">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
         <span>查询</span>
@@ -50,11 +50,11 @@
         <th scope="col">出库时间</th>
     </tr>
     </thead>
-    <tr th:each="#">
-        <td th:text="#">123</td>
-        <td th:text="#">1234</td>
-        <td th:text="#">A4</td>
-        <td th:text="#">123</td>
+    <tr th:each="item:${chukuList}">
+        <td th:text="${item.employee_name}">123</td>
+        <td th:text="${item.good_name}">1234</td>
+        <td th:text="${item.number}">A4</td>
+        <td th:text="${item.out_date}">123</td>
     </tr>
 </table>
 </body>
