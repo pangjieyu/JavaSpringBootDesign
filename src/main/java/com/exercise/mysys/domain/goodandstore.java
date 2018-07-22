@@ -1,6 +1,6 @@
 package com.exercise.mysys.domain;
 
-public class temp {
+public class goodandstore {
     public String id;
     public String in_id;
     public String in_time;

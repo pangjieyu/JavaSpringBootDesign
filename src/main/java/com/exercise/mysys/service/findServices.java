@@ -1,19 +1,16 @@
 package com.exercise.mysys.service;
-import com.exercise.mysys.domain.Customer;
-import com.exercise.mysys.domain.ReturnGood;
-import com.exercise.mysys.domain.temp;
+import com.exercise.mysys.domain.goodandstore;
+import com.exercise.mysys.domain.orderUserCustomGood;
 
-import javax.persistence.Query;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 public class findServices {
-    public static ArrayList<temp>myFind(String name) {
-        ArrayList<temp> list = new ArrayList<>();
+    public static ArrayList<goodandstore> findGood(String name) {
+        ArrayList<goodandstore> list = new ArrayList<>();
 
         Connection con = null ;
 
@@ -29,7 +26,7 @@ public class findServices {
             ResultSet rs = stmt.executeQuery(sql2);
             while(rs.next())
             {
-                temp tem = new temp();
+                goodandstore tem = new goodandstore();
                 tem.id = rs.getString(1);
                 tem.in_id = rs.getString(2);
                 tem.in_time = rs.getString(3);
@@ -46,9 +43,9 @@ public class findServices {
         }
         return list;
     }
-    public static ArrayList<temp> myFind()
+    public static ArrayList<goodandstore> findGood()
     {
-        ArrayList<temp> list = new ArrayList<>();
+        ArrayList<goodandstore> list = new ArrayList<>();
         Connection con = null ;
 
         Statement stmt = null ;
@@ -63,7 +60,7 @@ public class findServices {
             ResultSet rs = stmt.executeQuery(sql2);
             while(rs.next())
             {
-                temp tem = new temp();
+                goodandstore tem = new goodandstore();
                 tem.id = rs.getString(1);
                 tem.in_id = rs.getString(2);
                 tem.in_time = rs.getString(3);
@@ -78,6 +75,12 @@ public class findServices {
             System.out.println(e.toString());
             return null;
         }
+        return list;
+    }
+
+    public static ArrayList<orderUserCustomGood> findOrder(String customName, String sysUserName) {
+        ArrayList<orderUserCustomGood> list = new ArrayList<>();
+
         return list;
     }
 }
