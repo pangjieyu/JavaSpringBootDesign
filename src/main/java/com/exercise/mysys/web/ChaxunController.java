@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -146,6 +147,11 @@ public class ChaxunController {
     @GetMapping("/ruku")
     public String ruku(Model model) {
         model.addAttribute("rukuList", findServices.findRuKu("","",""));
+        return "chaxun/chaxun_ruku";
+    }
+    @PostMapping("/ruku")
+    public String findRuku(HttpServletRequest request, Model model) {
+        model.addAttribute("rukuList",findServices.findRuKu("","",request.getParameter("time").trim()));
         return "chaxun/chaxun_ruku";
     }
 
