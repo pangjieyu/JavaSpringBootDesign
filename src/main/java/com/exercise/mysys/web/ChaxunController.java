@@ -147,6 +147,12 @@ public class ChaxunController {
     //查询提货
     @GetMapping("/tihuo")
     public String tihuo(Model model) {
+        model.addAttribute("tihuoList", findServices.findPick("",""));
+        return "chaxun/chaxun_tihuo";
+    }
+    @PostMapping("/tihuo")
+    public String findTihuo(HttpServletRequest request, Model model) {
+        model.addAttribute("tihuoList", findServices.findPick(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
         return "chaxun/chaxun_tihuo";
     }
 }
