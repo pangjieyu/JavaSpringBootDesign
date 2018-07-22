@@ -62,7 +62,12 @@ public class ChaxunController {
     //查询退单
     @GetMapping("/tuidan")
     public String tuidan(Model model) {
-        model.addAttribute("returnList", returnGoodRepository.findAll());
+        model.addAttribute("returnList", findServices.findReturn("",""));
+        return "chaxun/chaxun_tuidan";
+    }
+    @PostMapping("/tuidan")
+    public String findtuidan(HttpServletRequest request, Model model) {
+        model.addAttribute("returnList", findServices.findReturn(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
         return "chaxun/chaxun_tuidan";
     }
 
