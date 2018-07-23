@@ -3,6 +3,9 @@
 <head>
     <title>My JSP 'ShowAllStudent.jsp' starting page</title>
 
+    <meta http-equiv="pragma"content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires"content="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
@@ -35,27 +38,6 @@
 //完成赋值
             $('#date').val(today);
         });
-        function checkInput() {
-            var name = document.form1.name.value;
-            var thing = document.form1.thing.value;
-            var num = document.form1.num.value;
-            var name1 = document.form1.name1.value;
-            if(name == ""){
-                alert("请输入员工编号");
-                return false;
-            }else if(name1 == ""){
-                alert("请输入员工姓名");
-                return false;
-            }else if(thing == ""){
-                alert("请输入商品名称");
-                return false;
-            }else if(num == ""){
-                alert("请输入商品数量");
-                return false;
-            }else{
-                return true;
-            }
-        }
     </script>
 </head>
 
@@ -92,7 +74,7 @@
         var formData = new FormData($("#form-add")[0]);
         $.ajax({
             //接口地址
-            url: '#' ,
+            url: '/cangku/ruku' ,
             type: 'POST',
             data: formData,
             async: false,
@@ -103,12 +85,10 @@
                 if(data == "true")
                 {
                     alert("操作成功");
-                    location.reload();
                 }
                 else
                 {
                     alert(data);
-                    location.reload();
                 }
             },
             error: function (returndata) {
