@@ -67,29 +67,80 @@
 <p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写退货单</strong>
 </p>
 <br>
-<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form id="form-add" name="form1" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="people" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" id="people" name="people" placeholder="id" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" id="id" name="id" placeholder="id" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入客户编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="cunstom" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" id="cunstom" name="customer" placeholder="id" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;"/>
+    <input type="text" class="form-control" id="num" name="num" placeholder="num" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 80px">应退金额:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="money2" placeholder="money" style="height: 25px;"/>
+    <input type="text" class="form-control" id="money2" name="money2" placeholder="money" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 80px">产生时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="date" class="form-control" id="date" placeholder="sale" style="height: 25px;"/>
+    <input type="date" class="form-control" id="date" name="date" placeholder="sale" style="height: 25px;"/>
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>生成</span>
     </button>
+    <script type="text/javascript">
+        function submitFunction() {
+            var people = document.form1.people.value;
+            var id = document.form1.id.value;
+            var cunstom = document.form1.cunstom.value;
+            var num = document.form1.num.value;
+            var money2 = document.form1.money2.value;
+            if(people == ""){
+                alert("请输入员工编号");
+                return false;
+            }else if(id == ""){
+                alert("请输入商品编号");
+                return false;
+            }else if(cunstom == ""){
+                alert("请输入客户编号");
+                return false;
+            }else if(num == ""){
+                alert("请输入商品数量");
+                return false;
+            }else if(money2 == ""){
+                alert("请输入应退金额");
+                return false;
+            }
+
+            var formData = new FormData($("#form-add")[0]);
+            $.ajax({
+                //接口地址
+                url: '/xiaoshou/tuihuo' ,
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if(data =="true")
+                    {
+                        alert("yes");
+                    }
+                    else
+                    {
+                        alert(data);
+                    }
+                },
+                error: function (returndata) {
+                    //请求异常的回调
+                    // modals.warn("网络访问失败，请稍后重试!");
+                }
+            });
+        }
+    </script>
 </form>
 </body>
 </html>

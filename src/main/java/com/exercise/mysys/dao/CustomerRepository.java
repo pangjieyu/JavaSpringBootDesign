@@ -19,4 +19,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     //name模糊查询
     @Query("select t from Customer t where t.name like %?1%")
     List<Customer> myFind(String name);
+
 }
