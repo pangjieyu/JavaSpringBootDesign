@@ -1,9 +1,6 @@
 package com.exercise.mysys.web;
 
-import com.exercise.mysys.dao.CustomerRepository;
-import com.exercise.mysys.dao.GoodRepository;
-import com.exercise.mysys.dao.ReturnGoodRepository;
-import com.exercise.mysys.dao.SysUserRepository;
+import com.exercise.mysys.dao.*;
 import com.exercise.mysys.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -38,6 +35,8 @@ public class XiaoShouController {
     private ReturnGoodRepository returnGoodRepository;
     @Autowired
     private SysUserRepository sysUserRepository;
+    @Autowired
+    private OrderGoodRepository orderGoodRepository;
 
     @GetMapping("")
     public String xiaoshouindex() {
@@ -47,7 +46,7 @@ public class XiaoShouController {
     @RequestMapping(value="/tuihuo",method=RequestMethod.GET)
     public String tiantuihuodan()
     {
-        return "/sale/sale_tuidan";
+        return "sale/sale_tuidan";
     }
     //添加客户
     @RequestMapping(value = "/addCustomer",method = RequestMethod.GET)
@@ -55,6 +54,27 @@ public class XiaoShouController {
         return "customer/customer_tianjia";
     }
 
+    //提货单页面
+    @RequestMapping(value="tihuopage",method = RequestMethod.GET)
+    public String tihuopage()
+    {
+        return "sale/sale_tihuo";
+    }
+
+    //添加商品页面
+    @RequestMapping(value = "addgoodpage",method = RequestMethod.GET)
+    public String addgoodpage()
+    {
+        return "thing/thing_tianjia";
+    }
+    //订货单页面
+    @RequestMapping(value = "/dinghuopage",method = RequestMethod.GET)
+    public String dinghuopage()
+    {
+        return "sale/sale_dingdan";
+    }
+
+    //添加客户
     @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
     @ResponseBody
     public String addCustomer(HttpServletRequest request) throws ParseException {
@@ -143,4 +163,81 @@ public class XiaoShouController {
         }
         return "true";
     }
+
+    //处理订货
+    @PostMapping("/dinghuopage")
+    @ResponseBody
+    public String dinghuo(HttpServletRequest request)
+    {
+        System.out.println(000);
+        try {
+            OrderGood order = new OrderGood();
+            //设置员工编号
+            Long employeeid = Long.parseLong(request.getParameter("people"));
+            if (sysUserRepository.findSysUserById(employeeid) == null)
+                return "员工不存在";
+            order.setEmployee_id(employeeid);
+
+            //设置商品编号
+            Long goodid = Long.parseLong(request.getParameter("id"));
+            if (goodRepository.findGoodById(goodid) == null)
+                return "商品不存在";
+            order.setGood_id(goodid);
+
+            //设置客户编号
+            Long customerid = Long.parseLong(request.getParameter("customer"));
+            if(customerRepository.findCustomerById(customerid) == null)
+                return "客户不存在";
+            order.setCustomer_id(customerid);
+
+            //设置商品数量
+            int num = Integer.parseInt(request.getParameter("num"));
+            order.setNumber(num);
+
+            //设置预付款
+            int deposit = Integer.parseInt(request.getParameter("money1"));
+            order.setDeposit(deposit);
+
+            //设置总金额
+            int money = Integer.parseInt(request.getParameter("money2"));
+            order.setMoney(money);
+
+            //设置日期
+            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = fmt.parse(request.getParameter("date"));
+            System.out.println(request.getParameter("date"));
+            order.setCreate_date(date);
+
+            //设置有效
+            order.setEffective(true);
+            //设置未付款
+            order.setPayment("未付款");
+
+            //save一下
+            orderGoodRepository.save(order);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
+            return "false";
+        }
+        return "true";
+    }
+
+    //处理提货
+    @RequestMapping(value = "tihuo",method = RequestMethod.POST)
+    @ResponseBody
+    public String tihuo(HttpServletRequest request)
+    {
+        return "true";
+    }
+
+    //处理添加商品
+    @RequestMapping(value="addgood",method = RequestMethod.POST)
+    @ResponseBody
+    public String addgood()
+    {
+        return "true";
+    }
+
 }
