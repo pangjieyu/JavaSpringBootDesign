@@ -42,8 +42,9 @@
         <th scope="col">凭证编号</th>
         <th scope="col">客户名称</th>
         <th scope="col">类型</th>
-        <th scope="col">金额</th>
+        <th scope="col">金额（元）</th>
         <th scope="col">是否完成</th>
+        <th scope="col">是否有效</th>
     </tr>
     </thead>
     <tr th:each="item:${pingzhengList}">
@@ -52,6 +53,7 @@
         <td th:text="${item.type}">1234</td>
         <td th:text="${item.money}">A4</td>
         <td th:text="${item.receivable}">123</td>
+        <td th:text="${item.effective}?'是':'否'">1234</td>
     </tr>
 </table>
 </body>
