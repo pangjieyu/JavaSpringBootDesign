@@ -41,8 +41,6 @@
             var id = document.form1.id.value;
             var cunstom = document.form1.cunstom.value;
             var num = document.form1.num.value;
-            var money1 = document.form1.money1.value;
-            var money2 = document.form1.money2.value;
             if(id == ""){
                 alert("请输入商品编号");
                 return false;
@@ -51,12 +49,6 @@
                 return false;
             }else if(num == ""){
                 alert("请输入商品数量");
-                return false;
-            }else if(money1 == ""){
-                alert("请输入预订款");
-                return false;
-            }else if(money2 == ""){
-                alert("请输入总金额");
                 return false;
             }
 
@@ -100,16 +92,24 @@
     <span class="text-primary" style="margin-left: 21px">请输入商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="num" placeholder="num" name="num" style="height: 25px;"/>
     <br>
-    <span class="text-primary" style="margin-left: 40px">请输入预付款:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+   <!-- <span class="text-primary" style="margin-left: 40px">请输入预付款:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="money1" placeholder="money" name="money1" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 40px">请输入总金额:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="money2" placeholder="money" name="money2" style="height: 25px;"/>
-    <br>
+    <br>-->
     <span class="text-primary" style="margin-left: 80px">产生时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="date" class="form-control" id="date" placeholder="sale" name="date" style="height: 25px;"/>
     <br>
     <br>
+    <button class="btn btn-primary" onclick="submitt()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+        <span>生成</span>
+    </button>
+</form>
+<form id="form-add" name="form1"  enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 21px">请输入订货编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="dinghuodan" name="dinghuodan" placeholder="id" style="height: 25px;"/>
+
     <button class="btn btn-primary" onclick="submitt()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>生成</span>
     </button>

@@ -40,10 +40,10 @@
     </select>
     <br>
     <span class="text-primary" style="margin-left: 1px">预付款比例:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="bili" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" name="bili" id="bili" placeholder="id" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 60px">折扣:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="zhekou" placeholder="money" style="height: 25px;"/>
+    <input type="text" class="form-control" id="zhekou" name="zhekou" placeholder="money" style="height: 25px;"/>
 
     <br>
     <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
@@ -61,13 +61,12 @@
         }else if(zhekou == ""){
             alert("请输入折扣");
             return false;
-        }else{
-            return true;
         }
-        /*var formData = new FormData($("#form-add")[0]);
+
+        var formData = new FormData($("#form-add")[0]);
         $.ajax({
             //接口地址
-            url: '/addUser' ,
+            url: '/xiaoshou/xiugaiyouhui' ,
             type: 'POST',
             data: formData,
             async: false,
@@ -88,7 +87,7 @@
                 //请求异常的回调
                 // modals.warn("网络访问失败，请稍后重试!");
             }
-        });*/
+        });
     }
 </script>
 </body>

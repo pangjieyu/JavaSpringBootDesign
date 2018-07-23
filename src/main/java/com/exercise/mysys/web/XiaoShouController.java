@@ -40,7 +40,10 @@ public class XiaoShouController {
     private OrderGoodRepository orderGoodRepository;
     @Autowired
     private PickRepository pickRepository;
+    @Autowired
+    private DiscountRepository discountRepository;
 
+//    private Discount
     @GetMapping("")
     public String xiaoshouindex() {
         return "index/index_sale";
@@ -53,6 +56,12 @@ public class XiaoShouController {
         return "sale/sale_tuidan";
     }
 
+    //修改优惠但
+    @RequestMapping(value = "/xiugaiyouhui",method = RequestMethod.GET)
+    public String xiugaiyouhui()
+    {
+        return "sale/sale_youhui";
+    }
 
     //添加客户
     @RequestMapping(value = "/addCustomer",method = RequestMethod.GET)
@@ -181,6 +190,7 @@ public class XiaoShouController {
     @ResponseBody
     public String dinghuo(HttpServletRequest request)
     {
+        System.out.println(123);
         try {
             OrderGood order = new OrderGood();
             //设置员工编号
@@ -210,12 +220,22 @@ public class XiaoShouController {
             order.setNumber(num);
 
             //设置预付款
-            int deposit = Integer.parseInt(request.getParameter("money1"));
-            order.setDeposit(deposit);
+            //int deposit = Integer.parseInt(request.getParameter("money1"));
+            //order.setDeposit(deposit);
+
 
             //设置总金额
-            int money = Integer.parseInt(request.getParameter("money2"));
-            order.setMoney(money);
+            //int money = Integer.parseInt(request.getParameter("money2"));
+            //order.setMoney(money);
+            Good good = goodRepository.findGoodById(goodid);
+            Customer customer = customerRepository.findCustomerById(Long.parseLong(request.getParameter("customer")));
+            Discount discount = discountRepository.findDiscountById(customer.getRank());
+            double money = Long.parseLong(request.getParameter("num"))*good.getPrice();
+            money = money * discount.getDiscount();
+            order.setMoney((int)money);
+            //设置预付款
+            order.setDeposit((int)(money*discount.getProportion()));
+
 
             //设置日期
             DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
@@ -305,5 +325,21 @@ public class XiaoShouController {
         goodRepository.save(good);
         return "true";
     }
+
+    @PostMapping("/xiugaiyouhui")
+    @ResponseBody
+    public String xiugaiyouhuidan(HttpServletRequest request)
+    {
+        Discount discount = new Discount();
+        discount.setId(Long.parseLong(request.getParameter("bumen")));
+        discount.setProportion(Double.parseDouble(request.getParameter("bili")));
+        System.out.println(
+                discount.getProportion()+"  "+discount.getId()
+        );
+        discount.setDiscount(Double.parseDouble(request.getParameter("zhekou")));
+        discountRepository.save(discount);
+        return "true";
+    }
+
 
 }
