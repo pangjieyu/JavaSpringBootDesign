@@ -1,21 +1,17 @@
 package com.exercise.mysys.domain;
 
-import java.util.Date;
-
 /**
- * @author 庞界宇
  * @ProjectName 食品企业订货销售系统
- * @date 2018/7/22
+ * @Author 朱向阳
+ * @Date 2018/7/22 18:12
+ * @Description: 生产计划查询结果类
  */
-public class orderUserCustomGood {
+public class manufacturePlanResult {
     public String good_name;
-    public String customer_name;
     public String employee_name;
     public String number;
-    public String deposit;
     public String money;
-    public String payment;
     public String effective;
-    public String create_date;
-
+    public String manufacture_date;
+    //public String create_date;
 }

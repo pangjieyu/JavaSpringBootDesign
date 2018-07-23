@@ -1,8 +1,6 @@
 package com.exercise.mysys.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -14,7 +12,7 @@ import java.util.Date;
 @Entity
 public class InKu {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     //编号（主键）
     private Long id;
     //商品编号（主键）

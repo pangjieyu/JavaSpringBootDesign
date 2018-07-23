@@ -6,11 +6,13 @@ import com.exercise.mysys.domain.Good;
 import com.exercise.mysys.domain.SysUser;
 import com.exercise.mysys.domain.Voucher;
 import com.exercise.mysys.service.findServices;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -61,14 +63,25 @@ public class ChaxunController {
     //查询退单
     @GetMapping("/tuidan")
     public String tuidan(Model model) {
-        model.addAttribute("returnList", returnGoodRepository.findAll());
+        model.addAttribute("returnList", findServices.findReturn("",""));
+        return "chaxun/chaxun_tuidan";
+    }
+    @PostMapping("/tuidan")
+    public String findtuidan(HttpServletRequest request, Model model) {
+        model.addAttribute("returnList", findServices.findReturn(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
         return "chaxun/chaxun_tuidan";
     }
 
     //查询生产计划
     @GetMapping("/shengchan")
     public String shengchan(Model model) {
-        model.addAttribute("shengchanList", manufacturePlanRepository.findAll());
+        model.addAttribute("shengchanList", findServices.findManufacturePlan("",""));
+        return "chaxun/chaxun_shengchan";
+    }
+    @PostMapping("/shengchan")
+    public String findShengchan(HttpServletRequest request, Model model) {
+        System.out.println("time:"+request.getParameter("time"));
+        model.addAttribute("shengchanList", findServices.findManufacturePlan(request.getParameter("goodname"),request.getParameter("time")));
         return "chaxun/chaxun_shengchan";
     }
 
@@ -121,9 +134,48 @@ public class ChaxunController {
     //查询凭证
     @GetMapping("/pingzheng")
     public String pingzheng(Model model) {
-        List<Voucher> list = voucherRepository.findAll();
-        model.addAttribute("pingzhengList",list);
+        model.addAttribute("pingzhengList",findServices.findVoucher("",""));
+        return "chaxun/chaxun_pingzheng";
+    }
+    @PostMapping("/pingzheng")
+    public String findPingzheng(HttpServletRequest request, Model model) {
+        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim()));
         return "chaxun/chaxun_pingzheng";
     }
 
+    //查询入库
+    @GetMapping("/ruku")
+    public String ruku(Model model) {
+        model.addAttribute("rukuList", findServices.findRuKu("","",""));
+        return "chaxun/chaxun_ruku";
+    }
+    @PostMapping("/ruku")
+    public String findRuku(HttpServletRequest request, Model model) {
+        model.addAttribute("rukuList",findServices.findRuKu("","",request.getParameter("time").trim()));
+        return "chaxun/chaxun_ruku";
+    }
+
+    //查询出库
+    @GetMapping("/chuku")
+    public String chuku(Model model) {
+        model.addAttribute("chukuList",findServices.findChuKu("","",""));
+        return "chaxun/chaxun_chuku";
+    }
+    @PostMapping("/chuku")
+    public String findchuku(HttpServletRequest request, Model model) {
+        model.addAttribute("chukuList",findServices.findChuKu("","",request.getParameter("time").trim()));
+        return "chaxun/chaxun_chuku";
+    }
+
+    //查询提货
+    @GetMapping("/tihuo")
+    public String tihuo(Model model) {
+        model.addAttribute("tihuoList", findServices.findPick("",""));
+        return "chaxun/chaxun_tihuo";
+    }
+    @PostMapping("/tihuo")
+    public String findTihuo(HttpServletRequest request, Model model) {
+        model.addAttribute("tihuoList", findServices.findPick(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        return "chaxun/chaxun_tihuo";
+    }
 }
