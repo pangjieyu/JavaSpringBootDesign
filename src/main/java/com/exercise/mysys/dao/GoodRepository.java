@@ -16,6 +16,7 @@ import java.util.List;
 public interface GoodRepository extends JpaRepository<Good, Long> {
     //按主键查找
     Good findGoodById(Long id);
+    List<Good> findAllByNameLike(String name);
     List<Good> findAll();
     //name模糊查询
     @Query("select t from Good t where t.name like %?1%")

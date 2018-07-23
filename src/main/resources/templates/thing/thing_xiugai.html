@@ -34,26 +34,26 @@
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">修改商品信息:</strong>
 </p>
 <br>
-<form  name="form1" id="form-add" enctype="multipart/form-data">
+<form  name="form1" id="form-add" enctype="multipart/form-data" th:action="@{'/good/edit/' + ${good.getId()}}" method="post">
     <span class="text-primary" style="margin-left: 21px">商品名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;" name="name" th:value="${good.getName()}"/>
 
     <span class="text-primary" style="margin-left: 230px">单价:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="danjia" placeholder="money" style="height: 25px;"/>
+    <input type="text" class="form-control" id="danjia" placeholder="money" style="height: 25px;" name="danjia" th:value="${good.getPrice()}"/>
 
     <br>
     <span class="text-primary" style="margin-left: 60px">单位:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="danwei" placeholder="num" style="height: 25px;"/>
+    <input type="text" class="form-control" id="danwei" placeholder="num" style="height: 25px;" name="danwei" th:value="${good.getUnit()}"/>
 
     <span class="text-primary" style="margin-left: 190px">库存下限:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="xiaxian" placeholder="num" style="height: 25px;"/>
+    <input type="text" class="form-control" id="xiaxian" placeholder="num" style="height: 25px;" name="xiaxian" th:value="${good.getLower_limit()}"/>
 
     <br>
     <span class="text-primary" style="margin-left: 40px">保质期:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="baozhi" placeholder="num" style="height: 25px;">
+    <input type="text" class="form-control" id="baozhi" placeholder="num" style="height: 25px;" name="baozhi" th:value="${good.getGuarantee()}"/>
 
     <br>
-    <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
+    <button class="btn btn-primary" onclick="submitFunction()" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
         <span>修改</span>
     </button>
 </form>
@@ -84,10 +84,10 @@
         }else{
             return true;
         }
-        /*var formData = new FormData($("#form-add")[0]);
-        $.ajax({
+        // var formData = new FormData($("#form-add")[0]);
+/*        $.ajax({
             //接口地址
-            url: '/addUser' ,
+            url: '#',
             type: 'POST',
             data: formData,
             async: false,
@@ -97,7 +97,7 @@
             success: function (data) {
                 if(data =="true")
                 {
-                    alert("yes");
+                    alert("成功");
                 }
                 else
                 {

@@ -43,12 +43,15 @@ public class XiaoShouController {
     public String xiaoshouindex() {
         return "index/index_sale";
     }
+
     //填写退货单
     @RequestMapping(value="/tuihuo",method=RequestMethod.GET)
     public String tiantuihuodan()
     {
         return "/sale/sale_tuidan";
     }
+
+
     //添加客户
     @RequestMapping(value = "/addCustomer",method = RequestMethod.GET)
     public String addCustomer() {
