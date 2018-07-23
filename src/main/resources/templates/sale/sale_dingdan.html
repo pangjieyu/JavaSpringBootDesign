@@ -35,17 +35,15 @@
 //完成赋值
             $('#date').val(today);
         });
-        function checkInput() {
-            var people = document.form1.people.value;
+        </script>
+    <script type="text/javascript">
+        function  submitt() {
             var id = document.form1.id.value;
             var cunstom = document.form1.cunstom.value;
             var num = document.form1.num.value;
             var money1 = document.form1.money1.value;
             var money2 = document.form1.money2.value;
-            if(people == ""){
-                alert("请输入员工编号");
-                return false;
-            }else if(id == ""){
+            if(id == ""){
                 alert("请输入商品编号");
                 return false;
             }else if(cunstom == ""){
@@ -60,9 +58,27 @@
             }else if(money2 == ""){
                 alert("请输入总金额");
                 return false;
-            }else{
-                return true;
             }
+
+            var formData = new FormData($("#form-add")[0]);
+            $.ajax({
+                //接口地址
+                url: '/xiaoshou/dinghuo',
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data == "true") {
+                        alert("yes");
+                    }
+                    else {
+                        alert(data);
+                    }
+                }
+            });
         }
     </script>
 </head>
@@ -71,30 +87,30 @@
 <p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写订单</strong>
 </p>
 <br>
-<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="people" placeholder="id" style="height: 25px;"/>
+<form id="form-add" name="form1"  enctype="multipart/form-data">
+    <!--<span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<input type="text" class="form-control" id="people" name="people" placeholder="id" style="height: 25px;"/>-->
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" id="id" name="id" placeholder="id" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入客户编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="cunstom" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" id="cunstom" name="customer" placeholder="id" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;"/>
+    <input type="text" class="form-control" id="num" placeholder="num" name="num" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 40px">请输入预付款:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="money1" placeholder="money" style="height: 25px;"/>
+    <input type="text" class="form-control" id="money1" placeholder="money" name="money1" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 40px">请输入总金额:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="money2" placeholder="money" style="height: 25px;"/>
+    <input type="text" class="form-control" id="money2" placeholder="money" name="money2" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 80px">产生时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="date" class="form-control" id="date" placeholder="sale" style="height: 25px;"/>
+    <input type="date" class="form-control" id="date" placeholder="sale" name="date" style="height: 25px;"/>
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitt()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>生成</span>
     </button>
 </form>
