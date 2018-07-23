@@ -60,6 +60,12 @@ public class ChaxunController {
         return "chaxun/chaxun_dingdan";
     }
 
+    @PostMapping("/dingdan")
+    public String finddingdan(HttpServletRequest request, Model model) {
+        model.addAttribute("orderList", findServices.findOrder(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        return "chaxun/chaxun_dingdan";
+    }
+
     //查询退单
     @GetMapping("/tuidan")
     public String tuidan(Model model) {

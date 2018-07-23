@@ -16,7 +16,7 @@
             height: 100px;
         }
     </style>
-    <script type="text/javascript">
+<!--    <script type="text/javascript">
         function checkInput() {
             var name1 = document.form1.name1.value;
             var name2 = document.form1.name2.value;
@@ -30,7 +30,7 @@
                 return true;
             }
         }
-    </script>
+    </script>-->
 </head>
 
 <body>
@@ -39,10 +39,10 @@
 <br>
 <form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="font-size: 20px;">客户名称:</span>
-    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px;">
+    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px; " name="kehu">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span class="text-primary" style="font-size: 20px;">员工名称:</span>
-    <input type="text" class="form-control" id="name2" placeholder="name" style="height: 25px;">
+    <input type="text" class="form-control" id="name2" placeholder="name" style="height: 25px;" name="yuangong">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
         <span>查询</span>
@@ -63,15 +63,15 @@
     </tr>
     </thead>
     <tr th:each="dingdan:${orderList}">
-        <td th:text="">123</td>
-        <td th:text="">1234</td>
-        <td th:text="">A4</td>
-        <td th:text="">123</td>
-        <td th:text="">1234</td>
-        <td th:text="">A4</td>
-        <td th:text="">123</td>
-        <td th:text="">1234</td>
-        <td th:text="">1234</td>
+        <td th:text="${dingdan.employee_name}">123</td>
+        <td th:text="${dingdan.good_name}">1234</td>
+        <td th:text="${dingdan.customer_name}">A4</td>
+        <td th:text="${dingdan.number}">123</td>
+        <td th:text="${dingdan.deposit}">1234</td>
+        <td th:text="${dingdan.money}">A4</td>
+        <td th:text="${dingdan.payment}">123</td>
+        <td th:text="${dingdan.create_date}">1234</td>
+        <td th:text="${dingdan.effective}">1234</td>
     </tr>
 </table>
 </body>

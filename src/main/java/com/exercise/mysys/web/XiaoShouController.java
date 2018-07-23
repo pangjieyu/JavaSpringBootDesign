@@ -80,7 +80,7 @@ public class XiaoShouController {
         return "sale/sale_dingdan";
     }
 
-    //添加客户
+/*    //添加客户
     @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
     @ResponseBody
     public String addCustomer(HttpServletRequest request) throws ParseException {
@@ -124,7 +124,7 @@ public class XiaoShouController {
         //修改客户
         customerRepository.save(customer);
         return "redirect:/shouye";
-    }
+    }*/
 
     //填写退货单
     @PostMapping("/tuihuo")
