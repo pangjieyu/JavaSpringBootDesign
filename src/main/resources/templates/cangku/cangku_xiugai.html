@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}"/>
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            font-size: 20px;
+        }
+        #name,#danwei,#baozhi{
+            margin-left: 50px;
+        }
+        #danjia,#xiaxian{
+            margin-left: 80px;
+        }
+        #btn{
+            margin-left: 500px;
+        }
+    </style>
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">修改库存信息:</strong>
+</p>
+<br>
+<form  th:action="@{'/cangku/edit/' + ${store.getId()}}" method="post" name="form1" id="form-add" onsubmit="submitFunction()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 60px">商品编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" th:value="${store.getGood_id()}" name="id"/>
+
+    <span class="text-primary" style="margin-left: 190px">商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="num" placeholder="money" style="height: 25px;" th:value="${store.getNumber()}" name="number"/>
+
+    <br>
+    <span class="text-primary" style="margin-left: 60px">存放位置:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="weizhi" placeholder="num" style="height: 25px;" th:value="${store.getPosition()}" name="position"/>
+
+    <span class="text-primary" style="margin-left: 190px">入库批号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="pihao" placeholder="num" style="height: 25px;" th:value="${store.getIn_id()}" name="pihao"/>
+
+    <br>
+
+    <br>
+    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
+        <span>修改</span>
+    </button>
+</form>
+
+<script type="text/javascript">
+    function submitFunction() {
+        //这里唯一需要注意的就是这个form-add的id
+       var name = document.form1.name.value;
+       var num = document.form1.num.value;
+       var weizhi = document.form1.weizhi.value;
+       var pihao = document.form1.pihao.value;
+        if(name == ""){
+            alert("请输入商品名称");
+            return false;
+        }else if(num == ""){
+            alert("请输入商品数量");
+            return false;
+        }else if(weizhi == ""){
+            alert("请输入位置");
+            return false;
+        }else if(pihao == ""){
+            alert("请输入库存批号");
+            return false;
+        }else{
+            return true;
+        }
+/*        var formData = new FormData($("#form-add")[0]);
+        $.ajax({
+            //接口地址
+            url: '/addUser' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data =="true")
+                {
+                    alert("yes");
+                }
+                else
+                {
+                    alert("no");
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+            }
+        });*/
+    }
+</script>
+</body>
+</html>

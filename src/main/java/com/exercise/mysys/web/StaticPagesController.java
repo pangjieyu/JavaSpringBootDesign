@@ -1,8 +1,10 @@
 package com.exercise.mysys.web;
 
 import com.exercise.mysys.domain.SysUser;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,7 +44,11 @@ public class StaticPagesController {
     }
 
     @RequestMapping(value = "/shouye", method = RequestMethod.GET)
-    public String shouye() {
+    public String shouye(Model model) {
+        SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
+        model.addAttribute("name",nowUser.getName());
         return "shouye";
     }
 

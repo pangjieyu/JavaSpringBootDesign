@@ -7,6 +7,7 @@ package com.exercise.mysys.domain;
  * @Description: 出库单查询结果类
  */
 public class chuKuResult {
+    public String id;
     public String employee_name;
     public String good_name;
     public String out_date;

@@ -12,5 +12,6 @@ import java.util.List;
  * @Description: 入库单类的数据访问层
  */
 public interface InKuRepository extends JpaRepository<InKu, Long> {
+    InKu findInKuById(Long id);
 }
 
