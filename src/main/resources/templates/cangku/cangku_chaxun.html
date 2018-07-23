@@ -22,12 +22,12 @@
 <p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">库存信息:</strong>
 </p>
 <br>
-<form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form action="/cangku/kucun" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="font-size: 20px;">商品名称:</span>
-    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span class="text-primary" style="font-size: 20px;">入库批号:</span>
-    <input type="text" class="form-control" id="id" placeholder="name" style="height: 25px;">
+    <input type="text" class="form-control" id="id" placeholder="name" style="height: 25px;" name="id">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
         <span>查询</span>

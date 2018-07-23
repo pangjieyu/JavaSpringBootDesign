@@ -2,6 +2,7 @@ package com.exercise.mysys.web;
 
 import com.exercise.mysys.dao.*;
 import com.exercise.mysys.domain.*;
+import com.exercise.mysys.service.findServices;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -225,7 +226,14 @@ public class CangkuController {
     }
 
     @GetMapping("/kucun")
-    public String kucun() {
+    public String kucun1(Model model){
+        model.addAttribute("kucunList",findServices.findGood("",""));
+        return "cangku/cangku_chaxun";
+    }
+
+    @PostMapping("/kucun")
+    public String kucun(HttpServletRequest request,Model model) {
+        model.addAttribute("kucunList", findServices.findGood(request.getParameter("name").trim(), request.getParameter("id").trim()));
         return "cangku/cangku_chaxun";
     }
 
@@ -237,10 +245,16 @@ public class CangkuController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    @ResponseBody
-    public String editUser(@PathVariable String id, HttpServletRequest request) throws ParseException {
-        
-        return "redirect:/users";
+    public String editUser(@PathVariable String id, HttpServletRequest request,Model model) throws ParseException {
+        Store store = storeRepository.findStoreById(Long.parseLong(id));
+        store.setGood_id(Long.parseLong(request.getParameter("id").trim()));
+        store.setNumber(Integer.parseInt(request.getParameter("number").trim()));
+        store.setPosition(request.getParameter("position"));
+        store.setIn_id(Long.parseLong(request.getParameter("pihao").trim()));
+        storeRepository.save(store);
+        Good good = goodRepository.findGoodById(Long.parseLong(request.getParameter("id").trim()));
+        model.addAttribute("kucunList", findServices.findGood(good.getName(), store.getIn_id().toString()));
+        return "cangku/cangku_chaxun";
     }
 
 }
