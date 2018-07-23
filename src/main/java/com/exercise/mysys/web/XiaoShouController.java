@@ -38,11 +38,10 @@ public class XiaoShouController {
     private ReturnGoodRepository returnGoodRepository;
     @Autowired
     private SysUserRepository sysUserRepository;
-    //显示客户列表
-    @RequestMapping(value = "/customers", method = RequestMethod.GET)
-    public String userList(Model model) {
-        model.addAttribute("customerList", customerRepository.findAll());
-        return "customer/customer_kehu";
+
+    @GetMapping("")
+    public String xiaoshouindex() {
+        return "index/index_sale";
     }
     //填写退货单
     @RequestMapping(value="/tuihuo",method=RequestMethod.GET)
