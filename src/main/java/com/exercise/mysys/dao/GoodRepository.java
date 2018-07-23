@@ -20,4 +20,7 @@ public interface GoodRepository extends JpaRepository<Good, Long> {
     //name模糊查询
     @Query("select t from Good t where t.name like %?1%")
     List<Good> myFind(String name);
+
+    @Query("select t from Good t where t.name = ?1")
+    List<Good> myFindJingque(String name);
 }

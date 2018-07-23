@@ -36,6 +36,7 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
+        <th scope="col">生产计划编号</th>
         <th scope="col">生产时间</th>
         <th scope="col">商品名称</th>
         <th scope="col">商品数量</th>
@@ -44,6 +45,7 @@
     </tr>
     </thead>
     <tr th:each="item:${shengchanList}">
+        <td th:text="${item.id}"></td>
         <td th:text="${item.manufacture_date}">123</td>
         <td th:text="${item.good_name}">1234</td>
         <td th:text="${item.number}">A4</td>

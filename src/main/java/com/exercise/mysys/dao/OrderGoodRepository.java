@@ -1,6 +1,7 @@
 package com.exercise.mysys.dao;
 
 import com.exercise.mysys.domain.OrderGood;
+import com.exercise.mysys.domain.Voucher;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -13,4 +14,5 @@ import java.util.List;
  */
 public interface OrderGoodRepository extends JpaRepository<OrderGood, Long> {
     List<OrderGood> findAll();
+    OrderGood findOrderGoodById(Long id);
 }

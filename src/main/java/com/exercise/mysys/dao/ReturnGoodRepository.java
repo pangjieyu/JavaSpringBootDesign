@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface ReturnGoodRepository extends JpaRepository<ReturnGood, Long> {
     List<ReturnGood> findAll();
+    ReturnGood findReturnGoodById(Long id);
 }
