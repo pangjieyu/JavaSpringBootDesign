@@ -39,6 +39,7 @@
         <th scope="col">入库批号</th>
         <th scope="col">存放位置</th>
         <th scope="col">入库时间</th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tr th:each="kucun:${kucunList}">
@@ -48,6 +49,7 @@
         <td th:text="${kucun.in_id}">A4</td>
         <td th:text="${kucun.position}"></td>
         <td th:text="${kucun.in_time}"></td>
+        <td><a href="cangku_xiugai.html" th:href="@{'/edit/'+${user.getId()}}" class="a2">修改</a> </td>
     </tr>
 </table>
 </body>

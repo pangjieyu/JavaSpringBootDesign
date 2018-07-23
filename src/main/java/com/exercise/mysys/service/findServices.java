@@ -17,7 +17,7 @@ public class findServices {
         try {
             System.out.println("enter");
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "13835472854");
             stmt = con.createStatement();
             String sql2="select x.id,x.in_id,x.in_time,x.number,x.position,y.name from\n" +
                     "store as x,good as y\n" +

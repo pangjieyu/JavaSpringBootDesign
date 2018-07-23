@@ -26,16 +26,7 @@
         function checkInput() {
             var id = document.form1.id.value;
             if(id == ""){
-                alert("请输入凭证编号");
-                return false;
-            }else{
-                return true;
-            }
-        }
-        function checkInput1() {
-            var tuikuan = document.form2.tuikuan.value;
-            if(tuikuan == ""){
-                alert("请输入退款凭证编号");
+                alert("请输入生产计划编号");
                 return false;
             }else{
                 return true;
@@ -45,25 +36,16 @@
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">修改取退款完成标记</strong>
+<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">修改生产计划完成标记</strong>
 </p>
 <br>
-<form action="/chuna/chuna/xiugaipingzheng" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 42px">请输入凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+    <span class="text-primary" style="margin-left: 42px">请输入生产计划编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="id"/>
     <br>
     <br>
     <button class="btn btn-primary" type="submit" id="btn" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
-        <span>修改款项标记</span>
-    </button>
-</form>
-<form action="/chuna/chuna/xiugaituikuanpingzheng" method="post" name="form2" onsubmit="return checkInput1()" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 0px">请输入退款凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="tuikuan" placeholder="id" style="height: 25px;" name="tuikuan"/>
-    <br>
-    <br>
-    <button class="btn btn-primary" type="submit" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
-        <span>修改有效标记</span>
+        <span>修改完成标记</span>
     </button>
 </form>
 </body>
