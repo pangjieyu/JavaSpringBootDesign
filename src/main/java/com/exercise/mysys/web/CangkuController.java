@@ -5,12 +5,15 @@ import com.exercise.mysys.domain.*;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.GenericArrayType;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -36,11 +39,14 @@ public class CangkuController {
     private GoodRepository goodRepository;
     @Autowired
     private PickRepository pickRepository;
+    @Autowired
+    private StoreRepository storeRepository;
 
     @GetMapping("/ruku")
     public String ruku() {
         return "cangku/cangku_ruku";
     }
+
 
     @PostMapping("/ruku")
     @ResponseBody
@@ -181,4 +187,60 @@ public class CangkuController {
                 return "操作失败";
             }
         }
+
+    @RequestMapping(value = "/tianjia", method = RequestMethod.GET)
+    public String tianjia(){
+        return "cangku/cangku_tianjia";
+    }
+
+    @PostMapping("/tianjia")
+    @ResponseBody
+    public String tianjiakucun(HttpServletRequest request){
+        try{
+            //新建一个库存
+            Store store = new Store();
+            //查找商品id
+            List<Good> list = goodRepository.myFind(request.getParameter("name").trim());
+            if(list.size() == 0){
+                return "没有该商品";
+            }
+            Good good = list.get(0);
+            store.setGood_id(good.getId());
+            store.setNumber(Integer.parseInt(request.getParameter("number").trim()));
+            InKu inKu = inKuRepository.findInKuById(Long.parseLong(request.getParameter("pihao").trim()));
+            if(inKu == null){
+                return "不存在批号入库单";
+            }
+            store.setIn_id(Long.parseLong(request.getParameter("pihao").trim()));
+            store.setPosition(request.getParameter("position"));
+            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = fmt.parse(request.getParameter("date"));
+            store.setIn_time(date);
+            storeRepository.save(store);
+            return "true";
+        }
+        catch (Exception ex){
+            return "操作失败";
+        }
+    }
+
+    @GetMapping("/kucun")
+    public String kucun() {
+        return "cangku/cangku_chaxun";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String editPage(@PathVariable String id ,Model model) {
+        Store store = storeRepository.findStoreById(Long.parseLong(id));
+        model.addAttribute("store",store);
+        return "cangku/cangku_xiugai";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public String editUser(@PathVariable String id, HttpServletRequest request) throws ParseException {
+        
+        return "redirect:/users";
+    }
+
 }

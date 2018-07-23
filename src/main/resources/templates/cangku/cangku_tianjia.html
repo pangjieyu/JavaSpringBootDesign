@@ -31,28 +31,30 @@
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">修改库存信息:</strong>
+<p class="text-success" style="margin-top: 20px;margin-left: 60px"><strong style="font-size: 25px">添加库存信息:</strong>
 </p>
 <br>
 <form  name="form1" id="form-add" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 60px">商品编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;"/>
+    <span class="text-primary" style="margin-left: 60px">商品名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;" name="name"/>
 
-    <span class="text-primary" style="margin-left: 190px">商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="danjia" placeholder="money" style="height: 25px;"/>
+    <span class="text-primary" style="margin-left: 230px">商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="danjia" placeholder="money" style="height: 25px;" name="number"/>
 
     <br>
     <span class="text-primary" style="margin-left: 60px">存放位置:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="danwei" placeholder="num" style="height: 25px;"/>
+    <input type="text" class="form-control" id="danwei" placeholder="num" style="height: 25px;" name="position"/>
 
-    <span class="text-primary" style="margin-left: 190px">入库批号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="xiaxian" placeholder="num" style="height: 25px;"/>
+    <span class="text-primary" style="margin-left: 230px">入库批号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control" id="xiaxian" placeholder="num" style="height: 25px;" name="pihao"/>
 
     <br>
+    <span class="text-primary" style="margin-left: 60px">入库时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" class="form-control" id="baozhi" placeholder="num" style="height: 25px;" name="date">
 
     <br>
     <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
-        <span>修改</span>
+        <span>添加</span>
     </button>
 </form>
 
@@ -68,24 +70,22 @@
             alert("请输入商品名称");
             return false;
         }else if(danjia == ""){
-            alert("请输入单价");
+            alert("请输入商品数量");
             return false;
         }else if(danwei == ""){
-            alert("请输入单位");
+            alert("请输入存放位置");
             return false;
         }else if(xiaxian == ""){
-            alert("请输入库存下限");
+            alert("请输入入库批号");
             return false;
         }else if(baozhi == ""){
-            alert("请输入保质期");
+            alert("请输入入库时间");
             return false;
-        }else{
-            return true;
         }
-        /*var formData = new FormData($("#form-add")[0]);
+        var formData = new FormData($("#form-add")[0]);
         $.ajax({
             //接口地址
-            url: '/addUser' ,
+            url: '/cangku/tianjia' ,
             type: 'POST',
             data: formData,
             async: false,
@@ -95,18 +95,18 @@
             success: function (data) {
                 if(data =="true")
                 {
-                    alert("yes");
+                    alert("操作成功");
                 }
                 else
                 {
-                    alert("no");
+                    alert(data);
                 }
             },
             error: function (returndata) {
                 //请求异常的回调
                 // modals.warn("网络访问失败，请稍后重试!");
             }
-        });*/
+        });
     }
 </script>
 </body>

@@ -26,6 +26,9 @@
     <span class="text-primary" style="font-size: 20px;">商品名称:</span>
     <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="font-size: 20px;">入库批号:</span>
+    <input type="text" class="form-control" id="id" placeholder="name" style="height: 25px;">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
         <span>查询</span>
     </button>
@@ -49,7 +52,7 @@
         <td th:text="${kucun.in_id}">A4</td>
         <td th:text="${kucun.position}"></td>
         <td th:text="${kucun.in_time}"></td>
-        <td><a href="cangku_xiugai.html" th:href="@{'/edit/'+${user.getId()}}" class="a2">修改</a> </td>
+        <td><a href="cangku_xiugai.html" th:href="@{'/cangku/edit/'+${kucun.id}}" class="a2">修改</a> </td>
     </tr>
 </table>
 </body>

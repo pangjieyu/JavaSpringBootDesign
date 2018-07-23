@@ -105,6 +105,7 @@ public class SysUserController {
         model.addAttribute("user",userRepository.findSysUserById(Long.parseLong(id.trim())));
         return "sys/sys_xiugai";
     }
+
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String editUser(@PathVariable String id, HttpServletRequest request) throws ParseException {
         SysUser x = userRepository.findSysUserById(Long.parseLong(id.trim()));
