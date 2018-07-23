@@ -37,7 +37,7 @@
     <span class="text-primary" style="font-size: 20px;">客户名称:</span>
     <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="name">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;" onclick="checkInput()">
         <span>查询</span>
     </button>
 </form>
@@ -52,13 +52,13 @@
         <th scope="col"></th>
     </tr>
     </thead>
-    <tr>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td><a href="customer_xiugai.html" th:href="@{}" class="a2">修改</a> </td>
+    <tr th:each="customer:${kehuList}">
+        <td th:text="${customer.getId()}">123</td>
+        <td th:text="${customer.getName()}">123</td>
+        <td th:text="${customer.getTelephone()}">123</td>
+        <td th:text="${customer.getAddress()}">123</td>
+        <td th:text="${customer.getRank()}">123</td>
+        <td><a href="customer_xiugai.html" th:href="@{'/customer/edit/'+${customer.getId()}}" class="a2">修改</a> </td>
     </tr>
 </table>
 </body>
