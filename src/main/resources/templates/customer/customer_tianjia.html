@@ -33,17 +33,17 @@
 <br>
 <form  name="form1" id="form-add" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">客户名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;"/>
+    <input type="text" class="form-control" id="name" name="name" placeholder="id" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 40px">手机号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="phone" placeholder="money" style="height: 25px;"/>
+    <input type="text" class="form-control" id="phone" name="phone" placeholder="money" style="height: 25px;"/>
 
     <br>
     <span class="text-primary" style="margin-left: 58px">地址:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="address" placeholder="num" style="height: 25px;"/>
+    <input type="text" class="form-control" id="address" name="address" placeholder="num" style="height: 25px;"/>
     <br>
     <span class="text-primary" style="margin-left: 18px">所属等级:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <select class="form-control" id="belong" style="height: 35px;"name="bumen">
+    <select class="form-control" id="belong" style="height: 35px;" name="rank">
         <option selected="selected" value="1">一级客户</option>
         <option value="2">二级客户</option>
         <option value="3">三级客户</option>
@@ -70,13 +70,13 @@
         }else if(address == ""){
             alert("请输入地址");
             return false;
-        }else{
-            return true;
         }
-        /*var formData = new FormData($("#form-add")[0]);
+
+
+        var formData = new FormData($("#form-add")[0]);
         $.ajax({
             //接口地址
-            url: '/addUser' ,
+            url: '/xiaoshou/addCustomer' ,
             type: 'POST',
             data: formData,
             async: false,
@@ -97,7 +97,7 @@
                 //请求异常的回调
                 // modals.warn("网络访问失败，请稍后重试!");
             }
-        });*/
+        });
     }
 </script>
 </body>
