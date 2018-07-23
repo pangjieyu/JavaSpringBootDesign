@@ -30,6 +30,14 @@ public class StaticPagesController {
             return "redirect:/cangku";
         else if(nowUser.getRole().equals("财务出纳部"))
             return "redirect:/chuna";
+        else if(nowUser.getRole().equals("生产部门"))
+            return "redirect:/shengchan";
+        else if(nowUser.getRole().equals("财务会计部"))
+            return "redirect:/kuaiji";
+        else if(nowUser.getRole().equals("生产计划部门"))
+            return "redirect:/jihua";
+        else if(nowUser.getRole().equals("销售部门"))
+            return "redirect:/xiaoshou";
         return "index";
     }
 
