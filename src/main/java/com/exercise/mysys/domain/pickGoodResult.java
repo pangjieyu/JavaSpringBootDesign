@@ -7,6 +7,7 @@ package com.exercise.mysys.domain;
  * @Description: 提货记录查询类
  */
 public class pickGoodResult {
+    public String id;
     public String good_name;
     public String customer_name;
     public String employee_name;

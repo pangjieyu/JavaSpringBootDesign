@@ -2,6 +2,7 @@ package com.exercise.mysys.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.crypto.Data;
 import java.util.Date;
@@ -15,7 +16,7 @@ import java.util.Date;
 @Entity
 public class OrderGood {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     //编号（主键）
     private Long id;
     //员工编号（外键）

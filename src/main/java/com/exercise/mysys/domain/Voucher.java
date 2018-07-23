@@ -2,6 +2,7 @@ package com.exercise.mysys.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -13,7 +14,7 @@ import javax.persistence.Id;
 @Entity
 public class Voucher {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     //编号（主键）
     private Long id;
     //客户编号（外键）

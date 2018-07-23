@@ -54,15 +54,15 @@
         <th scope="col"></th>
     </tr>
     </thead>
-    <tr>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td><a href="thing_xiugai.html" th:href="@{}" class="a2">修改</a> </td>
+    <tr th:each="good:${goodList}">
+        <td th:text="${good.getId()}">123</td>
+        <td th:text="${good.getName()}">123</td>
+        <td th:text="${good.getPrice()}">123</td>
+        <td th:text="${good.getUnit()}">123</td>
+        <td th:text="${good.getLower_limit()}">123</td>
+        <td th:text="${good.getSum()}">123</td>
+        <td th:text="${good.getGuarantee()}">123</td>
+        <td><a href="thing_xiugai.html" th:href="@{'/good/edit/'+${good.getId()}}" class="a2">修改</a> </td>
     </tr>
 </table>
 </body>

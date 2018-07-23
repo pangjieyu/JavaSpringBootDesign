@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../static/css/admin.css" th:href="@{/static/css/admin.css}">
     <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
 </head>
-<body style="background-color: #f2f9fd;overflow: scroll;">
+<body style="background-color: #f2f9fd;">
 <div class="header bg-main">
     <div class="logo margin-big-left fadein-top">
         <h1>
@@ -32,49 +32,53 @@
         <span class="icon-user"></span>基本操作
     </h2>
     <ul style="display: block">
-        <li><a href="../sale/sale_dingdan.html"
-               target="right"><span class="icon-caret-right"></span>生成订货单</a></li>
-        <li><a href="../sale/sale_tuidan.html" target="right"><span
+        <li>
+            <a href="../sale/sale_tuidan.html" target="right" th:href="@{'/xiaoshou/dinghuopage'}">
+                <span target="right" class="icon-caret-right"></span>订货单功能</a>
+        </li>
+        <li><a href="../sale/sale_tuidan.html" target="right" th:href="@{'/xiaoshou/tuihuo'}">
+            <span
                 class="icon-caret-right"></span>生成退货单</a></li>
-        <li><a href="../sale/sale_tihuo.html" target="right"><span
-                class="icon-caret-right"></span>生成提货单</a></li>
+                <li><a href="../sale/sale_tihuo.html" target="right" th:href="@{'/xiaoshou/tihuopage'}" >
+                <span class="icon-caret-right"></span>生成提货单</a>
+                </li>
     </ul>
     <h2>
         <span class="icon-user"></span>查询信息
     </h2>
-    <ul>
-        <li><a href="../chaxun/chaxun_dingdan.html"
+    <ul style="display: block">
+        <li><a href="../chaxun/chaxun_dingdan.html" th:href="@{'/chaxun/dingdan'}"
                target="right"><span class="icon-caret-right"></span>查询订货单信息</a></li>
-        <li><a href="../chaxun/chaxun_tuidan.html" target="right"><span
+        <li><a href="../chaxun/chaxun_tuidan.html" th:href="@{'/chaxun/tuidan'}" target="right"><span
                 class="icon-caret-right"></span>查询退货单信息</a></li>
-        <li><a href="../chaxun/chaxun_tihuo.html" target="right"><span
+        <li><a href="../chaxun/chaxun_tihuo.html" target="right" th:href="@{'/chaxun/tihuo'}"><span
                 class="icon-caret-right"></span>查询提货单信息</a></li>
     </ul>
     <h2>
         <span class="icon-pencil-square-o"></span>处理商品业务
     </h2>
-    <ul>
-        <li><a href="../thing/thing_tianjia.html" target="right"><span
+    <ul style="display: block">
+        <li><a href="../thing/thing_tianjia.html" target="right" th:href="@{'/xiaoshou/addgoodpage'}"><span
                 class="icon-caret-right"></span>添加商品信息</a></li>
-        <li><a href="../thing/thing_chaxun.html" target="right"><span
+        <li><a href="../thing/thing_chaxun.html" target="right" th:href="@{'/good/chaxun'}"><span
                 class="icon-caret-right"></span>查询商品信息</a></li>
 
     </ul>
     <h2>
         <span class="icon-user-md"></span>处理客户信息
     </h2>
-    <ul>
-        <li><a href="../customer/customer_tianjia.html"
+    <ul style="display: block">
+        <li><a href="../customer/customer_tianjia.html" th:href="@{'/customer/addCustomer'}"
                target="right"><span class="icon-caret-right"></span>创建客户信息</a></li>
-        <li><a href="../customer/customer_chaxun.html" target="right"><span
+        <li><a href="../customer/customer_chaxun.html" target="right" th:href="@{'/customer/find'}"><span
                 class="icon-caret-right"></span>查询客户信息</a></li>
 
     </ul>
     <h2>
         <span class="icon-pencil-square-o"></span>修改优惠信息
     </h2>
-    <ul>
-        <li><a href="../sale/sale_chaxun.html"
+    <ul style="display: block">
+        <li><a href="../sale/sale_chaxun.html" th:href="@{'/xiaoshou/xiugaiyouhui'}"
                target="right"><span class="icon-caret-right"></span>修改优惠单</a></li>
     </ul>
 </div>
