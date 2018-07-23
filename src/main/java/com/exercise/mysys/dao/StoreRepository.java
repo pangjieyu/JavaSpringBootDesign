@@ -15,4 +15,5 @@ import java.util.List;
 public interface StoreRepository extends JpaRepository<Store, Long> {
     @Override
     <S extends Store> List<S> findAll(Example<S> example);
+    Store findStoreById(Long id);
 }
