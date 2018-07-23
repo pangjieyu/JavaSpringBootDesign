@@ -64,12 +64,6 @@
 </p>
 <br>
 <form id="form-add" name="form1" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;" name="id"/>
-    <br>
-    <span class="text-primary" style="margin-left: 21px">请输入员工姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px;" name="username"/>
-    <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="thing" placeholder="thing" style="height: 25px;" name="goodname"/>
     <br>
@@ -86,17 +80,9 @@
 </form>
 <script type="text/javascript">
     function submitFunction() {
-        var name = document.form1.name.value;
         var thing = document.form1.thing.value;
         var num = document.form1.num.value;
-        var name1 = document.form1.name1.value;
-        if(name == ""){
-            alert("请输入员工编号");
-            return false;
-        }else if(name1 == ""){
-            alert("请输入员工姓名");
-            return false;
-        }else if(thing == ""){
+        if(thing == ""){
             alert("请输入商品名称");
             return false;
         }else if(num == ""){
@@ -117,10 +103,12 @@
                 if(data == "true")
                 {
                     alert("操作成功");
+                    location.reload();
                 }
                 else
                 {
                     alert(data);
+                    location.reload();
                 }
             },
             error: function (returndata) {
