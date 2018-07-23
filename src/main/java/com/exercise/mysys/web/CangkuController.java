@@ -4,6 +4,7 @@ import com.exercise.mysys.dao.*;
 import com.exercise.mysys.domain.*;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,22 +47,12 @@ public class CangkuController {
     public String tianjiaruku(HttpServletRequest request) {
         //初始化一个入库单
         InKu inKu = new InKu();
-        //取出员工编号对应的员工信息
-        SysUser user = new SysUser();
-        user = sysUserRepository.findSysUserById(Long.parseLong(request.getParameter("id").trim()));
-        //取出员工姓名
-        String username = request.getParameter("username").trim();
-        //比较是否员工编号对应员工姓名
-        System.out.println(username + ":" + user.getName());
-        System.out.println(username.length() + ":" + user.getName().length());
-        if(!user.getName().trim().equals(username)){
-            //System.out.println("15");
-            return "员工编号与员工姓名不一致";
-        }else {
+        SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
             try {
                 System.out.println("0");
-                //设置员工编号
-                inKu.setEmployee_id(Long.parseLong(request.getParameter("id").trim()));
+                inKu.setEmployee_id(nowUser.getId());
                 //按商品名称查询
                 List<Good> list = goodRepository.myFind(request.getParameter("goodname").trim());
                 System.out.println(list.size());
@@ -84,7 +75,6 @@ public class CangkuController {
             catch (Exception ex) {
                 return "操作失败";
             }
-        }
     }
 
     @RequestMapping(value = "/chuku", method = RequestMethod.GET)
@@ -97,24 +87,13 @@ public class CangkuController {
     public String tianjiachuku(HttpServletRequest request) {
         //初始化一个出库单
         OutKu outku = new OutKu();
-        //取出员工编号对应的员工信息
-        System.out.println("first:" + request.getParameter("id"));
-        System.out.println(Long.parseLong(request.getParameter("id").trim()));
-        SysUser user = new SysUser();
-        user = sysUserRepository.findSysUserById(Long.parseLong(request.getParameter("id").trim()));
-        //取出员工姓名
-        String username = request.getParameter("username").trim();
-        //比较是否员工编号对应员工姓名
-        //System.out.println(username + ":" + user.getName());
-        //System.out.println(username.length() + ":" + user.getName().length());
-        if (!user.getName().trim().equals(username)) {
-            //System.out.println("15");
-            return "员工编号与员工姓名不一致";
-        } else {
+        SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
             try {
                 //System.out.println("0");
                 //设置员工编号
-                outku.setEmployee_id(Long.parseLong(request.getParameter("id").trim()));
+                outku.setEmployee_id(nowUser.getId());
                 //按商品名称查询
                 List<Good> list = goodRepository.myFind(request.getParameter("goodname").trim());
                 //System.out.println(list.size());
@@ -139,7 +118,6 @@ public class CangkuController {
             } catch (Exception ex) {
                 return "操作失败";
             }
-        }
     }
 
     @PostMapping("/chuku/xiugai")
@@ -171,24 +149,13 @@ public class CangkuController {
     public String tianjiaxiaohui(HttpServletRequest request){
         //初始化一个销毁单
         Destroy destroy = new Destroy();
-        //取出员工编号对应的员工信息
-        System.out.println("first:" + request.getParameter("id"));
-        System.out.println(Long.parseLong(request.getParameter("id").trim()));
-        SysUser user = new SysUser();
-        user = sysUserRepository.findSysUserById(Long.parseLong(request.getParameter("id").trim()));
-        //取出员工姓名
-        String username = request.getParameter("username").trim();
-        //比较是否员工编号对应员工姓名
-        System.out.println(username + ":" + user.getName());
-        System.out.println(username.length() + ":" + user.getName().length());
-        if (!user.getName().trim().equals(username)) {
-            //System.out.println("15");
-            return "员工编号与员工姓名不一致";
-        } else {
+        SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
             try {
                 //System.out.println("0");
                 //设置员工编号
-                destroy.setEmployee_id(Long.parseLong(request.getParameter("id").trim()));
+                destroy.setEmployee_id(nowUser.getId());
                 //按商品名称查询
                 List<Good> list = goodRepository.myFind(request.getParameter("goodname").trim());
                 //System.out.println(list.size());
@@ -214,5 +181,4 @@ public class CangkuController {
                 return "操作失败";
             }
         }
-    }
 }
