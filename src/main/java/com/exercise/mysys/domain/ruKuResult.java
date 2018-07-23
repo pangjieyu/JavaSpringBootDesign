@@ -7,6 +7,7 @@ package com.exercise.mysys.domain;
  * @Description: 入库单查询类
  */
 public class ruKuResult {
+    public String formatdate;
     public String id;
     public String employee_name;
     public String good_name;

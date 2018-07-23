@@ -14,7 +14,6 @@ import javax.persistence.Id;
 @Entity
 public class Discount {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     //用户等级（主键）
     private Long id;
     //预付款比例
