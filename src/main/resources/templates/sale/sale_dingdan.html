@@ -38,16 +38,12 @@
         </script>
     <script type="text/javascript">
         function  submitt() {
-            var people = document.form1.people.value;
             var id = document.form1.id.value;
             var cunstom = document.form1.cunstom.value;
             var num = document.form1.num.value;
             var money1 = document.form1.money1.value;
             var money2 = document.form1.money2.value;
-            if(people == ""){
-                alert("请输入员工编号");
-                return false;
-            }else if(id == ""){
+            if(id == ""){
                 alert("请输入商品编号");
                 return false;
             }else if(cunstom == ""){
@@ -92,8 +88,8 @@
 </p>
 <br>
 <form id="form-add" name="form1"  enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="people" name="people" placeholder="id" style="height: 25px;"/>
+    <!--<span class="text-primary" style="margin-left: 21px">请输入员工编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<input type="text" class="form-control" id="people" name="people" placeholder="id" style="height: 25px;"/>-->
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="id" name="id" placeholder="id" style="height: 25px;"/>

@@ -3,6 +3,7 @@ package com.exercise.mysys.web;
 import com.exercise.mysys.dao.*;
 import com.exercise.mysys.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,8 @@ public class XiaoShouController {
     private SysUserRepository sysUserRepository;
     @Autowired
     private OrderGoodRepository orderGoodRepository;
+    @Autowired
+    private PickRepository pickRepository;
 
     @GetMapping("")
     public String xiaoshouindex() {
@@ -126,12 +129,17 @@ public class XiaoShouController {
     public String makereturnlist(HttpServletRequest request) {
         try {
             ReturnGood returngood = new ReturnGood();
-            Long employeeid=Long.parseLong(request.getParameter("people").trim());
+//            Long employeeid=Long.parseLong(request.getParameter("people").trim());
+//
+//            if(sysUserRepository.findSysUserById(employeeid) == null)
+//                return "没有该雇员";
+//            returngood.setEmployee_id(employeeid);
 
-            if(sysUserRepository.findSysUserById(employeeid) == null)
-                return "没有该雇员";
-            returngood.setEmployee_id(employeeid);
-
+            SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+            System.out.println(nowUser.getId());
+            returngood.setEmployee_id(nowUser.getId());
 
             if(goodRepository.findGoodById(Long.parseLong(request.getParameter("id"))) == null)
                 return "没有该商品";
@@ -142,9 +150,10 @@ public class XiaoShouController {
                 return "没有该用户";
             returngood.setCustomer_id(Long.parseLong(request.getParameter("customer")));
 
-            returngood.setNumber(Integer.parseInt(request.getParameter("people")));
+            returngood.setNumber(Integer.parseInt(request.getParameter("num")));
             returngood.setMoney(Integer.parseInt(request.getParameter("money2")));
             String str = request.getParameter("date");
+
             //Date date = new Date(str);
 //        returngood.setCreatedate(D);
             DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
@@ -165,18 +174,21 @@ public class XiaoShouController {
     }
 
     //处理订货
-    @PostMapping("/dinghuopage")
+    @PostMapping("/dinghuo")
     @ResponseBody
     public String dinghuo(HttpServletRequest request)
     {
-        System.out.println(000);
         try {
             OrderGood order = new OrderGood();
             //设置员工编号
-            Long employeeid = Long.parseLong(request.getParameter("people"));
-            if (sysUserRepository.findSysUserById(employeeid) == null)
-                return "员工不存在";
-            order.setEmployee_id(employeeid);
+//            Long employeeid = Long.parseLong(request.getParameter("people"));
+//            if (sysUserRepository.findSysUserById(employeeid) == null)
+//                return "员工不存在";
+//            order.setEmployee_id(employeeid);
+            SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+            order.setEmployee_id(nowUser.getId());
 
             //设置商品编号
             Long goodid = Long.parseLong(request.getParameter("id"));
@@ -229,14 +241,65 @@ public class XiaoShouController {
     @ResponseBody
     public String tihuo(HttpServletRequest request)
     {
+        try {
+            Pick pick = new Pick();
+            //写入员工编号
+//            Long employeid = Long.parseLong(request.getParameter("people"));
+//            if(sysUserRepository.findSysUserById(employeid) == null)
+//                return "员工不存在";
+//            pick.setEmployee_id(employeid);
+            SysUser nowUser = (SysUser) SecurityContextHolder.getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+            pick.setEmployee_id(nowUser.getId());
+
+            //写入商品编号
+            Long goodid = Long.parseLong(request.getParameter("id"));
+            if(goodRepository.findGoodById(goodid) == null)
+                return "商品不存在";
+            pick.setGood_id(goodid);
+            //写入客户编号
+            Long customerid = Long.parseLong(request.getParameter("customer"));
+            if(customerRepository.findCustomerById(customerid) == null)
+                return "客户编号为空";
+            pick.setCustomer_id(customerid);
+            //写入商品数量
+            pick.setNumber(Integer.parseInt(request.getParameter("num")));
+            //设置section
+            pick.setSection(request.getParameter("date1")+"-"+request.getParameter("date2"));
+            //设置日期
+            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = fmt.parse(request.getParameter("date"));
+            pick.setCreate_date(date);
+            pick.setEffective(true);
+            pickRepository.save(pick);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+            return "false";
+        }
         return "true";
     }
 
     //处理添加商品
-    @RequestMapping(value="addgood",method = RequestMethod.POST)
+    @RequestMapping(value="/addgood",method = RequestMethod.POST)
     @ResponseBody
-    public String addgood()
+    public String addgood(HttpServletRequest request)
     {
+        Good good = new Good();
+        //设置名称
+        good.setName(request.getParameter("name"));
+        //设置单价
+        good.setPrice(Integer.parseInt(request.getParameter("danjia")));
+        //设置单位
+        good.setUnit(request.getParameter("danwei"));
+        //设置下限
+        good.setLower_limit(Integer.parseInt(request.getParameter("xiaxian")));
+        //设置保质期
+        good.setGuarantee(Integer.parseInt(request.getParameter("baozhi")));
+
+        goodRepository.save(good);
         return "true";
     }
 
