@@ -7,6 +7,7 @@ package com.exercise.mysys.domain;
  * @Description: 生产计划查询结果类
  */
 public class manufacturePlanResult {
+    public String formatdate;
     public String id;
     public String good_name;
     public String employee_name;

@@ -14,5 +14,6 @@ public class pickGoodResult {
     public String number;
     public String effective;
     public String create_date;
+    public String formatdate;
     public String section;
 }

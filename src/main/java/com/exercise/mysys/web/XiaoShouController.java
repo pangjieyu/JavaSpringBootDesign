@@ -2,6 +2,7 @@ package com.exercise.mysys.web;
 
 import com.exercise.mysys.dao.*;
 import com.exercise.mysys.domain.*;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -56,10 +57,17 @@ public class XiaoShouController {
         return "sale/sale_tuidan";
     }
 
-    //修改优惠但
-    @RequestMapping(value = "/xiugaiyouhui",method = RequestMethod.GET)
-    public String xiugaiyouhui()
+    //列出优惠
+    @RequestMapping(value = "/youhui",method = RequestMethod.GET)
+    public String xiugaiyouhui(Model model)
     {
+        model.addAttribute("youhuiList", discountRepository.findAll());
+        return "sale/sale_chaxun";
+    }
+    //修改优惠
+    @GetMapping("/xiugaiyouhui")
+    public String youhuipage() {
+
         return "sale/sale_youhui";
     }
 
@@ -239,7 +247,7 @@ public class XiaoShouController {
             //写入商品数量
             pick.setNumber(Integer.parseInt(request.getParameter("num")));
             //设置section
-            pick.setSection(request.getParameter("date1")+"-"+request.getParameter("date2"));
+            pick.setSection(request.getParameter("date1")+" ~ "+request.getParameter("date2"));
             //设置日期
             DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
             Date date = fmt.parse(request.getParameter("date"));
