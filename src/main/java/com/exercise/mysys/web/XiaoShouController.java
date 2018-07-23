@@ -141,7 +141,7 @@ public class XiaoShouController {
     public String dinghuo(HttpServletRequest request)
     {
         System.out.println(123);
-        try {
+//        try {
             OrderGood order = new OrderGood();
             //设置员工编号
 //            Long employeeid = Long.parseLong(request.getParameter("people"));
@@ -180,7 +180,10 @@ public class XiaoShouController {
             Good good = goodRepository.findGoodById(goodid);
             Customer customer = customerRepository.findCustomerById(Long.parseLong(request.getParameter("customer")));
             Discount discount = discountRepository.findDiscountById(customer.getRank());
+            System.out.println(request.getParameter("num")+"  "+good.getPrice());
             double money = Long.parseLong(request.getParameter("num"))*good.getPrice();
+            System.out.println(discount.getDiscount());
+
             money = money * discount.getDiscount();
             order.setMoney((int)money);
             //设置预付款
@@ -188,10 +191,18 @@ public class XiaoShouController {
 
 
             //设置日期
-            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = fmt.parse(request.getParameter("date"));
+
+            try {
+                DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = fmt.parse(request.getParameter("date"));
+                order.setCreate_date(date);
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.toString());
+            }
             System.out.println(request.getParameter("date"));
-            order.setCreate_date(date);
+
 
             //设置有效
             order.setEffective(true);
@@ -200,12 +211,12 @@ public class XiaoShouController {
 
             //save一下
             orderGoodRepository.save(order);
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.toString());
-            return "false";
-        }
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println(e.toString());
+//            return "false";
+//        }
         return "true";
     }
 
