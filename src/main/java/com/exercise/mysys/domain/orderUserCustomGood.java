@@ -8,6 +8,7 @@ import java.util.Date;
  * @date 2018/7/22
  */
 public class orderUserCustomGood {
+    public String id;
     public String good_name;
     public String customer_name;
     public String employee_name;
