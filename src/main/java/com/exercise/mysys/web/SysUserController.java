@@ -115,9 +115,11 @@ public class SysUserController {
         x.setName(request.getParameter("name"));
         //性别
         x.setSex(request.getParameter("sex"));
-        BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
-        //设置密码
-        x.setPassword(encoder.encode(request.getParameter("password").trim()));
+        if(!request.getParameter("password").trim().equals("")) {
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            //设置密码
+            x.setPassword(encoder.encode(request.getParameter("password").trim()));
+        }
         //设置地址
         x.setAddress(request.getParameter("address"));
 
