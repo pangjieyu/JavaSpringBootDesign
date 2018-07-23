@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ChunaController {
     @Autowired
     private VoucherRepository voucherRepository;
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String chuna() {
         return "index/index_chuna";
@@ -28,26 +29,52 @@ public class ChunaController {
         return "chuna/chuna_xiugai";
     }
 
-    @PostMapping(value="chuna/xiugaipingzheng")
+    @PostMapping("/xiugaipingzheng")
     @ResponseBody
+    //修改交易是否完成标记
     public String xiugaipingzheng(HttpServletRequest request)
     {
-        Voucher voucher = new Voucher();
-        voucher = voucherRepository.findVoucherById(Long.parseLong(request.getParameter("id")));
-        voucher.setEffective(false);
-        voucherRepository.save(voucher);
-        return "sucess";
+        try {
+            Voucher voucher = voucherRepository.findVoucherById(Long.parseLong(
+                    request.getParameter("id").trim()
+            ));
+            if (voucher == null){
+                return "该凭证不存在";
+            }
+            if (!voucher.getEffective()){
+                return "该凭证无效";
+            }
+            voucher.setReceivable(true);
+            voucherRepository.save(voucher);
+            return "true";
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return "操作失败";
+        }
     }
 
-    @PostMapping("chuna/xiugaituikuanpingzheng")
+    @PostMapping("/xiugaituikuanpingzheng")
     @ResponseBody
     public String xiugaituikuanpingzheng(HttpServletRequest request)
     {
-
-        Voucher voucher = null;
-        voucher = voucherRepository.findVoucherById(Long.parseLong(request.getParameter("tuikuan")));
-        voucher.setEffective(false);
-        voucherRepository.save(voucher);
-        return "sucess";
+        try {
+            Voucher voucher = voucherRepository.findVoucherById(Long.parseLong(
+                    request.getParameter("id")
+            ));
+            if (voucher == null){
+                return "该凭证不存在";
+            }
+            if (voucher.getType().equals("收款")){
+                return "该凭证是收款凭着，您无权销毁";
+            }
+            voucher.setEffective(false);
+            voucherRepository.save(voucher);
+            return "true";
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return "操作失败";
+        }
     }
 }

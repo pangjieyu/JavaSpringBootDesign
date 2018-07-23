@@ -56,32 +56,112 @@
 <p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写取款凭证</strong>
 </p>
 <br>
-<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form  name="form1" id="form-addQukuan" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">请输入客户姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;"/>
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="customer_name"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入客户编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" />
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="customer_id"/>
     <br>
     <span class="text-primary" style="margin-left: 80px">凭证类型:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="type" placeholder="type" style="height: 25px;" value="取款" readonly="readonly"/>
+    <input type="text" class="form-control" id="type" placeholder="type" style="height: 25px;" value="取款" readonly="readonly"
+    name="type"/>
     <br>
     <span class="text-primary" style="margin-left: 80px">退款金额:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="money" placeholder="money" style="height: 25px;" />
+    <input type="text" class="form-control" id="money" placeholder="money" style="height: 25px;" name="money"/>
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction()" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>生成</span>
     </button>
 </form>
-<form action="#" method="post" name="form2" onsubmit="return checkInput1()" enctype="multipart/form-data">
+<form name="form2" id="form-updateTuihuodan" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 15px">请输入退货单编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="tuihuo" placeholder="id" style="height: 25px;margin-left: 80px;"/>
+    <input type="text" class="form-control" id="tuihuo" placeholder="id" style="height: 25px;margin-left: 80px;" name="id"/>
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" style="width: 210px;height: 40px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction1()" style="width: 210px;height: 40px;margin-top: 20px;margin-left: 150px;">
         <span>修改有效标记</span>
     </button>
 </form>
+
+<script type="text/javascript">
+    function submitFunction() {
+        //这里唯一需要注意的就是这个form-add的id
+        var name = document.form1.name.value;
+        var id = document.form1.id.value;
+        var money = document.form1.money.value;
+        if(name == ""){
+            alert("请输入客户姓名");
+            return false;
+        }else if(id == ""){
+            alert("请输入客户编号");
+            return false;
+        }else if(money == ""){
+            alert("请输入金额");
+            return false;
+        }
+        var formData = new FormData($("#form-addQukuan")[0]);
+        $.ajax({
+            //接口地址
+            url: '/kuaiji/addVoucher' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data =="true")
+                {
+                    alert("操作成功");
+                }
+                else
+                {
+                    alert(data);
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+            }
+        });
+    }
+
+    function submitFunction1() {
+        //这里唯一需要注意的就是这个form-add的id
+        var tuihuo = document.form2.tuihuo.value;
+        if(tuihuo == ""){
+            alert("请输入退货单编号");
+            return false;
+        }
+        var formData = new FormData($("#form-updateTuihuodan")[0]);
+        $.ajax({
+            //接口地址
+            url: '/kuaiji/addVoucher/updateTuihuodan' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data =="true")
+                {
+                    alert("操作成功");
+                }
+                else
+                {
+                    alert(data);
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

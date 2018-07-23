@@ -24,15 +24,11 @@
     </style>
     <script type="text/javascript">
         function checkInput() {
-            var name = document.form1.name.value;
             var date = document.form1.date.value;
             var thing = document.form1.thing.value;
             var num = document.form1.num.value;
             var sale = document.form1.sale.value;
-            if(name == ""){
-                alert("请输入员工姓名");
-                return false;
-            }else if(date == ""){
+            if(date == ""){
                 alert("请选择生产时间");
                 return false;
             }else if(thing == ""){
@@ -55,26 +51,72 @@
 <p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">制定生产计划</strong>
 </p>
 <br>
-<form action="#" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
-    <span class="text-primary" style="margin-left: 21px">请输入员工姓名:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;"/>
-    <br>
+<form name="form1" id="tianjiashengchanjihua" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">请选择生产时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="date" class="form-control" id="date" style="height: 25px;" value="2018-02-10"/>
+    <input type="date" class="form-control" id="date" style="height: 25px;" name="date"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品名字:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="thing" placeholder="thing" style="height: 25px;"/>
+    <input type="text" class="form-control" id="thing" placeholder="thing" style="height: 25px;" name="name"/>
     <br>
     <span class="text-primary" style="margin-left: 21px">请输入商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;"/>
+    <input type="text" class="form-control" id="num" placeholder="num" style="height: 25px;" name="number"/>
     <br>
     <span class="text-primary" style="margin-left: 61px">请输入花费:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="sale" placeholder="sale" style="height: 25px;"/>
+    <input type="text" class="form-control" id="sale" placeholder="sale" style="height: 25px;" name="money"/>
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>生成</span>
     </button>
 </form>
+
+<script type="text/javascript">
+    function submitFunction() {
+        //这里唯一需要注意的就是这个form-add的id
+        var date = document.form1.date.value;
+        var thing = document.form1.thing.value;
+        var num = document.form1.num.value;
+        var sale = document.form1.sale.value;
+        if(date == ""){
+            alert("请选择生产时间");
+            return false;
+        }else if(thing == ""){
+            alert("请输入商品名称");
+            return false;
+        }else if(num == ""){
+            alert("请输入商品数量");
+            return false;
+        }else if(sale == ""){
+            alert("请输入花费");
+            return false;
+        }
+        var formData = new FormData($("#tianjiashengchanjihua")[0]);
+        $.ajax({
+            //接口地址
+            url: '/jihua/tianjiashengchanjihua' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data =="true")
+                {
+                    alert("操作成功");
+                }
+                else
+                {
+                    alert(data);
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

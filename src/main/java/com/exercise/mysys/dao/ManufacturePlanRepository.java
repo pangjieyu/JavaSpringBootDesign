@@ -15,4 +15,5 @@ import java.util.List;
 public interface ManufacturePlanRepository extends JpaRepository<ManufacturePlan, Long> {
     @Override
     <S extends ManufacturePlan> List<S> findAll(Example<S> example);
+    ManufacturePlan findManufacturePlanById(Long id);
 }

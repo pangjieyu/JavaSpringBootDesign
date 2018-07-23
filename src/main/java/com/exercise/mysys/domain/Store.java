@@ -17,6 +17,8 @@ public class Store {
     @GeneratedValue
     //商品编号（主键）
     private Long id;
+    //商品编号
+    private Long good_id;
     //存储数量
     private Integer number;
     //存放位置
@@ -66,5 +68,13 @@ public class Store {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    public Long getGood_id() {
+        return good_id;
+    }
+
+    public void setGood_id(Long good_id) {
+        this.good_id = good_id;
     }
 }
