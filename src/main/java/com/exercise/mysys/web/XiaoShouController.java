@@ -291,5 +291,16 @@ public class XiaoShouController {
         return "true";
     }
 
-
+    @PostMapping("/deleteorder")
+    @ResponseBody
+    public String deleteorder(HttpServletRequest request)
+    {
+        OrderGood orderGood = new OrderGood();
+        orderGood = orderGoodRepository.findOrderGoodById(Long.parseLong(request.getParameter("dinghuodan").trim()));
+        if(orderGood == null)
+            return "没有这个订单";
+        orderGood.setEffective(false);
+        orderGoodRepository.save(orderGood);
+        return "true";
+    }
 }

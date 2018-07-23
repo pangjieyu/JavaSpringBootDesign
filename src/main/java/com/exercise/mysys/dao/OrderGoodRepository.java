@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface OrderGoodRepository extends JpaRepository<OrderGood, Long> {
     List<OrderGood> findAll();
+    OrderGood findOrderGoodById(Long id);
 }

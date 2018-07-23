@@ -76,7 +76,7 @@
 </head>
 
 <body>
-<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">填写订单</strong>
+<p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">订单功能大集合</strong>
 </p>
 <br>
 <form id="form-add" name="form1"  enctype="multipart/form-data">
@@ -106,13 +106,36 @@
         <span>生成</span>
     </button>
 </form>
-<form id="form-add" name="form1"  enctype="multipart/form-data">
+<form id="form-ad" name="form2"  enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">请输入订货编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="dinghuodan" name="dinghuodan" placeholder="id" style="height: 25px;"/>
-
-    <button class="btn btn-primary" onclick="submitt()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
-        <span>生成</span>
+    <br>
+    <button class="btn btn-primary" onclick="sub()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
+        <span>删除</span>
     </button>
 </form>
 </body>
+<script type="text/javascript">
+    function  sub() {
+        var formData = new FormData($("#form-ad")[0]);
+        $.ajax({
+            //接口地址
+            url: '/xiaoshou/deleteorder',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data == "true") {
+                    alert("删除成功");
+                }
+                else {
+                    alert(data);
+                }
+            }
+        });
+    }
+</script>
 </html>
