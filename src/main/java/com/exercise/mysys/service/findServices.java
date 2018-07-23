@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class findServices {
     public static ArrayList<goodandstore> findGood(String name) {
+
         ArrayList<goodandstore> list = new ArrayList<>();
 
         Connection con = null ;
@@ -17,11 +18,11 @@ public class findServices {
         try {
             System.out.println("enter");
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
-            String sql2="select x.id,x.in_id,x.in_time,x.number,x.position,y.name from\n" +
+            String sql2="select x.good_id,x.in_id,x.in_time,x.number,x.position,y.name,x.id from\n" +
                     "store as x,good as y\n" +
-                    "where x.id=y.id and y.name like '%"+name+"%'";
+                    "where x.good_id=y.id and y.name like '%"+name+"%'";
             ResultSet rs = stmt.executeQuery(sql2);
             while(rs.next())
             {
@@ -32,6 +33,7 @@ public class findServices {
                 tem.number = rs.getString(4);
                 tem.position = rs.getString(5);
                 tem.good_name = rs.getString(6);
+                tem.id = rs.getString(7);
                 list.add(tem);
             }
         }
@@ -51,7 +53,7 @@ public class findServices {
         try {
             System.out.println("enter");
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign", "root", "13835472854");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
             String sql2="select x.id,x.in_id,x.in_time,x.number,x.position,y.name from\n" +
                     "store as x,good as y\n" +
@@ -85,7 +87,7 @@ public class findServices {
         Statement stmt = null ;
         try {
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
             String sql2="select x.name, y.name, z.name, hh.deposit, hh.money, hh.number," +
                     "hh.effective, hh.create_date, hh.payment from\n" +
@@ -131,7 +133,7 @@ public class findServices {
         Statement stmt = null ;
         try {
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
             String sql2="select x.name, y.name, z.name, hh.money, hh.number," +
                     "hh.effective, hh.createdate from\n" +
@@ -175,7 +177,7 @@ public class findServices {
         Statement stmt = null ;
         try {
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
             String sql2="select x.name, y.name, z.name, hh.section, hh.number," +
                     "hh.effective, hh.create_date from\n" +
@@ -219,7 +221,7 @@ public class findServices {
         Statement stmt = null ;
         try {
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
             String sql2="select x.name, y.name, hh.number, hh.money," +
                     "hh.effective, hh.manufacture_date from\n" +
@@ -262,7 +264,7 @@ public class findServices {
         Statement stmt = null ;
         try {
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
             String sql2="select x.name, hh.money," +
                     "hh.effective, hh.receivable, hh.type, hh.id from\n" +
@@ -305,7 +307,7 @@ public class findServices {
         Statement stmt = null ;
         try {
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
             String sql2="select x.name, y.name, hh.in_date," +
                     "hh.number from\n" +
@@ -350,7 +352,7 @@ public class findServices {
         Statement stmt = null ;
         try {
             Class.forName("com.mysql.jdbc.Driver");   //mysql为例 不一样的数据库所需的驱动包不一样 连接语句略有不同
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "pangjieyu");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", "123456789");
             stmt = con.createStatement();
             String sql2="select x.name, y.name, hh.out_date," +
                     "hh.number from\n" +

@@ -58,7 +58,7 @@
         <td th:text="${kucun.number}">A4</td>
         <td th:text="${kucun.in_id}">A4</td>
         <td th:text="${kucun.position}"></td>
-        <td th:text="${kucun.in_time}"></td>
+        <td th:text="${#dates.format(kucun.in_time,'yyyy-MM-dd')}"></td>
     </tr>
 </table>
 </body>

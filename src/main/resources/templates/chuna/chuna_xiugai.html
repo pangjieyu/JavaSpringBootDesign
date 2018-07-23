@@ -24,7 +24,7 @@
     </style>
     <script type="text/javascript">
         function checkInput() {
-            var id = document.form1.id.value;
+            var id = document.faorm1.id.value;
             if(id == ""){
                 alert("请输入凭证编号");
                 return false;
@@ -33,8 +33,8 @@
             }
         }
         function checkInput1() {
-            var tuikuan = documen.form2.value;
-            if(tuikuan == ""){
+            var id = document.form2.id1.value;
+            if(id == ""){
                 alert("请输入退款凭证编号");
                 return false;
             }else{
@@ -48,23 +48,95 @@
 <p class="text-success" style="margin-top: 20px;margin-left: 20px"><strong style="font-size: 25px">修改取退款完成标记</strong>
 </p>
 <br>
-<form action="/chuna/chuna/xiugaipingzheng" method="post" name="form1" onsubmit="return checkInput()" enctype="multipart/form-data">
+<form  name="form1" id="update-receivable" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 42px">请输入凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="id"/>
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" id="btn" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>修改款项标记</span>
     </button>
 </form>
-<form action="/chuna/chuna/xiugaituikuanpingzheng" method="post" name="form2" onsubmit="return checkInput1()" enctype="multipart/form-data">
+<form  name="form2" id="update-effective" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 0px">请输入退款凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="tuikuan" placeholder="id" style="height: 25px;" name="tuikuan"/>
+    <input type="text" class="form-control" id="id1" placeholder="id" style="height: 25px;" name="id"/>
     <br>
     <br>
-    <button class="btn btn-primary" type="submit" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction1()" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>修改有效标记</span>
     </button>
 </form>
+
+<script type="text/javascript">
+    function submitFunction() {
+        //这里唯一需要注意的就是这个form-add的id
+        var id = document.form1.id.value;
+        if(id == ""){
+            alert("请输入凭证编号");
+            return false;
+        }
+        var formData = new FormData($("#update-receivable")[0]);
+        $.ajax({
+            //接口地址
+            url: '/chuna/xiugaipingzheng' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data =="true")
+                {
+                    alert("操作成功");
+                }
+                else
+                {
+                    alert(data);
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+            }
+        });
+    }
+
+    function submitFunction1() {
+        //这里唯一需要注意的就是这个form-add的id
+        var id = document.form2.id1.value;
+        if(id == ""){
+            alert("请输入退款凭证编号");
+            return false;
+        }
+        var formData = new FormData($("#update-effective")[0]);
+        $.ajax({
+            //接口地址
+            url: '/chuna/xiugaituikuanpingzheng' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data =="true")
+                {
+                    alert("操作成功");
+                }
+                else
+                {
+                    alert(data);
+                }
+            },
+            error: function (returndata) {
+                //请求异常的回调
+                // modals.warn("网络访问失败，请稍后重试!");
+            }
+        });
+    }
+
+</script>
+
 </body>
 </html>
