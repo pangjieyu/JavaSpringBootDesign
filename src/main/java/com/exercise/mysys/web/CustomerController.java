@@ -20,7 +20,7 @@ import java.text.ParseException;
  * @Description: 用户类的控制器
  */
 @Controller
-@RequestMapping("/custommer")
+@RequestMapping("/customer")
 public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
