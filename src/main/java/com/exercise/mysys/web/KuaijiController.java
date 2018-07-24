@@ -160,6 +160,17 @@ public class KuaijiController {
         }
     }
 
+    //查询退单
+    @GetMapping("/tuidan")
+    public String tuidan(Model model) {
+        model.addAttribute("returnList", findServices.findReturn("",""));
+        return "kuaiji/tuidan";
+    }
+    @PostMapping("/tuidan")
+    public String findtuidan(HttpServletRequest request, Model model) {
+        model.addAttribute("returnList", findServices.findReturn(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        return "kuaiji/tuidan";
+    }
     @PostMapping("/addVoucher/updateTuihuodan")
     @ResponseBody
     public String updateTuihuodan(HttpServletRequest request){

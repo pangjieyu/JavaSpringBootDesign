@@ -77,7 +77,7 @@
 </form>
 <form name="form2" id="form-updateTuihuodan" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 15px">请输入退货单编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="tuihuo" placeholder="id" style="height: 25px;margin-left: 80px;" name="id"/>
+    <input type="text" class="form-control" id="tuihuo" placeholder="id" style="height: 25px;margin-left: 80px;" name="id" th:value="${#httpServletRequest.getParameter('id')}"/>
     <br>
     <br>
     <button class="btn btn-primary" onclick="submitFunction1()" style="width: 210px;height: 40px;margin-top: 20px;margin-left: 150px;">

@@ -127,6 +127,17 @@ public class CangkuController {
             }
     }
 
+    //查询提货
+    @GetMapping("/tihuo")
+    public String tihuo(Model model) {
+        model.addAttribute("tihuoList", findServices.findPick("",""));
+        return "cangku/tihuo";
+    }
+    @PostMapping("/tihuo")
+    public String findTihuo(HttpServletRequest request, Model model) {
+        model.addAttribute("tihuoList", findServices.findPick(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        return "cangku/tihuo";
+    }
     @PostMapping("/chuku/xiugai")
     @ResponseBody
     public String xiugaiyouxiao(HttpServletRequest request)

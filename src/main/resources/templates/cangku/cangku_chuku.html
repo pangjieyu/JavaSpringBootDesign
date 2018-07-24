@@ -90,7 +90,7 @@
 </form>
 <form name="form2" id="form-xiugai" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 5px">请输入提货单编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="tihuo"/>
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="tihuo" th:value="${#httpServletRequest.getParameter('id')}"/>
     <br>
     <br>
     <button class="btn btn-primary" onclick="submitFunction1()" id="btn1" style="width: 190px;height: 40px;margin-top: 20px;margin-left: 150px;">
