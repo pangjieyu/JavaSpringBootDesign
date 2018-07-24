@@ -51,18 +51,14 @@
 <form  name="form1" id="update-receivable" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 42px">请输入凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" name="id" th:value="${#httpServletRequest.getParameter('id')}"/>
-    <br>
-    <br>
-    <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 200px;height: 35px;margin-top: -15px;margin-left: 170px;">
         <span>修改款项标记</span>
     </button>
 </form>
 <form  name="form2" id="update-effective" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 0px">请输入取款凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="id1" placeholder="id" style="height: 25px;" name="id" th:value="${#httpServletRequest.getParameter('id')}"/>
-    <br>
-    <br>
-    <button class="btn btn-primary" onclick="submitFunction1()" style="width: 200px;height: 35px;margin-top: 20px;margin-left: 150px;">
+    <button class="btn btn-primary" onclick="submitFunction1()" style="width: 200px;height: 35px;margin-top: -15px;margin-left: 170px;">
         <span>修改有效标记</span>
     </button>
 </form>

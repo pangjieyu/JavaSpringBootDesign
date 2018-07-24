@@ -24,17 +24,19 @@
 <br>
 <form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="font-size: 20px;">客户名称:</span>
-    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px;" name="kehu">
+    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px;width: 150px" name="kehu">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span class="text-primary" style="font-size: 20px;">员工名称:</span>
-    <input type="text" class="form-control" id="name2" placeholder="name" style="height: 25px;" name="yuangong">
+    <input type="text" class="form-control" id="name2" placeholder="name" style="height: 25px;width: 150px" name="yuangong">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <select class="form-control" style="height: 35px;"name="button1">
+    <span class="text-primary" style="font-size: 20px;">查询方式:</span>
+    <select class="form-control" style="height: 35px;width: 150px;"name="button1">
         <option selected="selected" value="1">有效</option>
         <option  value="2">无效</option>
         <option  value="3">全部</option>
     </select>
-    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -10px;">
         <span>查询</span>
     </button>
 </form>

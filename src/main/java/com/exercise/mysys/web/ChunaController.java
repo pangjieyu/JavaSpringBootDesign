@@ -39,7 +39,7 @@ public class ChunaController {
     }
     @PostMapping("/pingzheng")
     public String findPingzheng(HttpServletRequest request, Model model) {
-        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim(),Integer.parseInt(request.getParameter("buton1")),Integer.parseInt(request.getParameter("button2"))));
+        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim(),Integer.parseInt(request.getParameter("button1")),Integer.parseInt(request.getParameter("button2"))));
         return "chuna/pingzheng";
     }
     @PostMapping("/xiugaipingzheng")
