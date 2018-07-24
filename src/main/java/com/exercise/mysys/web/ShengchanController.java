@@ -6,9 +6,11 @@ import com.exercise.mysys.domain.Good;
 import com.exercise.mysys.domain.ManufacturePlan;
 import com.exercise.mysys.domain.SysUser;
 import com.exercise.mysys.domain.Voucher;
+import com.exercise.mysys.service.findServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,10 +42,23 @@ public class ShengchanController {
         return "index/index_jihua";
     }
 
+    //查询生产计划
+    @GetMapping("/shengchan")
+    public String shengchan(Model model) {
+        model.addAttribute("shengchanList", findServices.findManufacturePlan("",""));
+        return "shengchan/shengchan";
+    }
+    @PostMapping("/shengchan")
+    public String findShengchan(HttpServletRequest request, Model model) {
+        System.out.println("time:"+request.getParameter("time"));
+        model.addAttribute("shengchanList", findServices.findManufacturePlan(request.getParameter("goodname"),request.getParameter("time")));
+        return "shengchan/shengchan";
+    }
     @GetMapping("/xiugaishengchanjihua")
     public String add() {
         return "shengchan/shengchan_xiugai";
     }
+
 
     @PostMapping("/xiugaishengchanjihua")
     @ResponseBody
