@@ -36,21 +36,25 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
+        <th scope="col">提货单编号</th>
         <th scope="col">员工名称</th>
         <th scope="col">商品名称</th>
         <th scope="col">客户名称</th>
         <th scope="col">商品数量</th>
         <th scope="col">提货日期区间</th>
         <th scope="col">产生时间</th>
+        <th scope="col">是否有效</th>
     </tr>
     </thead>
     <tr th:each="item:${tihuoList}">
+        <td th:text="${item.id}">123</td>
         <td th:text="${item.employee_name}">123</td>
         <td th:text="${item.good_name}">1234</td>
         <td th:text="${item.customer_name}">A4</td>
         <td th:text="${item.number}">123</td>
         <td th:text="${item.section}">1234</td>
-        <td th:text="${item.create_date}">A4</td>
+        <td th:text="${item.formatdate}">A4</td>
+        <td th:text="${item.effective} == 1?'是':'否'">1234</td>
     </tr>
 </table>
 </body>

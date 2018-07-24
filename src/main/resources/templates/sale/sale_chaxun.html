@@ -28,15 +28,18 @@
         <th scope="col">客户等级</th>
         <th scope="col">预付款比例</th>
         <th scope="col">折扣</th>
-        <th scope="col"></th>
     </tr>
     </thead>
-    <tr>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td><a href="sale_youhui.html" th:href="@{}" class="a2">修改</a> </td>
+    <tr th:each="item:${youhuiList}">
+        <td th:text="${'第'+item.getId()+'等级'}">123</td>
+        <td th:text="${item.getProportion()}">123</td>
+        <td th:text="${item.getDiscount()}">123</td>
     </tr>
 </table>
+<a th:href="@{/xiaoshou/xiugaiyouhui}">
+    <button class="btn btn-primary" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
+        <span>修改</span>
+    </button>
+</a>
 </body>
 </html>

@@ -42,9 +42,14 @@
     <input type="text" class="form-control" id="danjia" placeholder="money" style="height: 25px;" name="danjia" th:value="${good.getPrice()}"/>
 
     <br>
+    <!--<span class="text-primary" style="margin-left: 60px">单位:</span>&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<input type="text" class="form-control" id="danwei" placeholder="num" style="height: 25px;" name="danwei" th:value="${good.getUnit()}"/>-->
     <span class="text-primary" style="margin-left: 60px">单位:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="danwei" placeholder="num" style="height: 25px;" name="danwei" th:value="${good.getUnit()}"/>
-
+    <select class="form-control" id="danwei" style="height: 35px;"name="danwei">
+        <option th:selected="${good.getUnit() == '吨'}" value="吨">吨</option>
+        <option th:selected="${good.getUnit() == '公斤'}" value="公斤">公斤</option>
+        <option th:selected="${good.getUnit() == '升'}" value="升">升</option>
+    </select>
     <span class="text-primary" style="margin-left: 190px">库存下限:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="xiaxian" placeholder="num" style="height: 25px;" name="xiaxian" th:value="${good.getLower_limit()}"/>
 

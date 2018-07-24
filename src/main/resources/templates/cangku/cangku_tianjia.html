@@ -18,16 +18,30 @@
         span{
             font-size: 20px;
         }
-        #name,#danwei,#baozhi{
+        #name,#danwei,#date{
             margin-left: 50px;
         }
         #danjia,#xiaxian{
-            margin-left: 80px;
+            margin-left: 60px;
         }
         #btn{
-            margin-left: 500px;
+            margin-left: 300px;
         }
     </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 给input  date设置默认值
+            var now = new Date();
+//格式化日，如果小于9，前面补0
+            var day = ("0" + now.getDate()).slice(-2);
+//格式化月，如果小于9，前面补0
+            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+//拼装完整日期格式
+            var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+//完成赋值
+            $('#date').val(today);
+        });
+    </script>
 </head>
 
 <body>
@@ -38,19 +52,19 @@
     <span class="text-primary" style="margin-left: 60px">商品名称:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="name" placeholder="id" style="height: 25px;" name="name"/>
 
-    <span class="text-primary" style="margin-left: 230px">商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 180px">商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="danjia" placeholder="money" style="height: 25px;" name="number"/>
 
     <br>
     <span class="text-primary" style="margin-left: 60px">存放位置:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="danwei" placeholder="num" style="height: 25px;" name="position"/>
 
-    <span class="text-primary" style="margin-left: 230px">入库批号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="margin-left: 180px">入库批号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="xiaxian" placeholder="num" style="height: 25px;" name="pihao"/>
 
     <br>
     <span class="text-primary" style="margin-left: 60px">入库时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="date" class="form-control" id="baozhi" placeholder="num" style="height: 25px;" name="date">
+    <input type="date" class="form-control" id="date" placeholder="num" style="height: 25px;" name="date">
 
     <br>
     <button class="btn btn-primary" onclick="submitFunction()" id="btn" style="width: 70px;height: 35px;margin-top: 80px;">
@@ -65,7 +79,6 @@
         var danjia = document.form1.danjia.value;
         var danwei = document.form1.danwei.value;
         var xiaxian = document.form1.xiaxian.value;
-        var baozhi = document.form1.baozhi.value;
         if(name == ""){
             alert("请输入商品名称");
             return false;
@@ -77,9 +90,6 @@
             return false;
         }else if(xiaxian == ""){
             alert("请输入入库批号");
-            return false;
-        }else if(baozhi == ""){
-            alert("请输入入库时间");
             return false;
         }
         var formData = new FormData($("#form-add")[0]);

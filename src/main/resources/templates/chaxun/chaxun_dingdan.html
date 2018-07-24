@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>My JSP 'ShowAllStudent.jsp' starting page</title>
 
@@ -51,18 +51,20 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
+        <th scope="col">订单编号</th>
         <th scope="col">员工名称</th>
         <th scope="col">商品名称</th>
         <th scope="col">客户名称</th>
         <th scope="col">商品数量</th>
-        <th scope="col">预付款</th>
-        <th scope="col">总金额</th>
+        <th scope="col">预付款（元）</th>
+        <th scope="col">总金额（元）</th>
         <th scope="col">付款情况</th>
         <th scope="col">产生时间</th>
         <th scope="col">是否有效</th>
     </tr>
     </thead>
     <tr th:each="dingdan:${orderList}">
+        <td th:text="${dingdan.id}">123</td>
         <td th:text="${dingdan.employee_name}">123</td>
         <td th:text="${dingdan.good_name}">1234</td>
         <td th:text="${dingdan.customer_name}">A4</td>
@@ -70,8 +72,8 @@
         <td th:text="${dingdan.deposit}">1234</td>
         <td th:text="${dingdan.money}">A4</td>
         <td th:text="${dingdan.payment}">123</td>
-        <td th:text="${dingdan.create_date}">1234</td>
-        <td th:text="${dingdan.effective == 1} ? '是' : '否'">1234</td>
+        <td th:text="${dingdan.formatdate}">1234</td>
+        <td th:text="${dingdan.effective} == 1 ? '是':'否'">1234</td>
     </tr>
 </table>
 </body>

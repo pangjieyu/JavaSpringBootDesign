@@ -42,8 +42,14 @@
     <input type="text" class="form-control" id="danjia" name="danjia" placeholder="money" style="height: 25px;"/>
 
     <br>
+    <!--<span class="text-primary" style="margin-left: 60px">单位:</span>&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<input type="text" class="form-control" id="danwei" name="danwei" placeholder="unit" style="height: 25px;"/>-->
     <span class="text-primary" style="margin-left: 60px">单位:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="danwei" name="danwei" placeholder="unit" style="height: 25px;"/>
+    <select class="form-control" id="danwei" style="height: 35px;"name="danwei">
+        <option selected="selected">吨</option>
+        <option>公斤</option>
+        <option>升</option>
+    </select>
 
     <span class="text-primary" style="margin-left: 190px">库存下限:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="xiaxian" name="xiaxian" placeholder="limit" style="height: 25px;"/>
@@ -96,11 +102,11 @@
             success: function (data) {
                 if(data =="true")
                 {
-                    alert("yes");
+                    alert("操作成功");
                 }
                 else
                 {
-                    alert("no");
+                    alert(data);
                 }
             },
             error: function (returndata) {

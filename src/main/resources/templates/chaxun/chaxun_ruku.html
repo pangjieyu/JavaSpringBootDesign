@@ -44,17 +44,19 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">员工名称</th>
+        <th scope="col">入库单编号</th>
+        <th scope="col">员工姓名</th>
         <th scope="col">商品名称</th>
         <th scope="col">商品数量</th>
         <th scope="col">入库时间</th>
     </tr>
     </thead>
     <tr th:each="item:${rukuList}">
+        <td th:text="${item.id}">123</td>
         <td th:text="${item.employee_name}">123</td>
         <td th:text="${item.good_name}">1234</td>
         <td th:text="${item.number}">A4</td>
-        <td th:text="${item.in_date}">123</td>
+        <td th:text="${item.formatdate}">123</td>
     </tr>
 </table>
 </body>

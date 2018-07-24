@@ -15,4 +15,5 @@ public class returnGoodResult {
     public String money;
     public String effective;
     public String create_date;
+    public String formatdate;
 }

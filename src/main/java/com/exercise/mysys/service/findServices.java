@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class findServices {
-    private static String password = "13835472854";
+    private static String password = "123456789";
 
     public static ArrayList<goodandstore> findGood(String name, String inId) {
 
@@ -41,6 +41,7 @@ public class findServices {
                 tem.id = rs.getString(1);
                 tem.in_id = rs.getString(2);
                 tem.in_time = rs.getString(3);
+                tem.formatdate = tem.in_time.substring(0,10);
                 tem.number = rs.getString(4);
                 tem.position = rs.getString(5);
                 tem.good_name = rs.getString(6);
@@ -83,6 +84,7 @@ public class findServices {
                 tem.position = rs.getString(5);
                 tem.good_name = rs.getString(6);
                 tem.id = rs.getString(7);
+                tem.formatdate = tem.in_time.substring(0,10);
                 list.add(tem);
             }
         }
@@ -117,6 +119,7 @@ public class findServices {
                 tem.number = rs.getString(4);
                 tem.position = rs.getString(5);
                 tem.good_name = rs.getString(6);
+                tem.formatdate = tem.in_time.substring(0,10);
                 list.add(tem);
             }
         }
@@ -128,6 +131,7 @@ public class findServices {
         return list;
     }
     //查询订货单
+    //格式化日期
     public static ArrayList<orderUserCustomGood> findOrder(String customName, String sysUserName) {
         ArrayList<orderUserCustomGood> list = new ArrayList<>();
 
@@ -165,6 +169,7 @@ public class findServices {
                 tem.create_date = rs.getString(8);
                 tem.payment = rs.getString(9);
                 tem.id = rs.getString(10);
+                tem.formatdate = tem.create_date.substring(0,10);
                 list.add(tem);
             }
         }
@@ -176,6 +181,7 @@ public class findServices {
         return list;
     }
     //查询退货单
+    //格式化日期
     public static ArrayList<returnGoodResult> findReturn(String customName, String sysUserName) {
         ArrayList<returnGoodResult> list = new ArrayList<>();
 
@@ -211,6 +217,7 @@ public class findServices {
                 tem.effective = rs.getString(6);
                 tem.create_date = rs.getString(7);
                 tem.id = rs.getString(8);
+                tem.formatdate = tem.create_date.substring(0,10);
                 list.add(tem);
             }
         }
@@ -222,6 +229,7 @@ public class findServices {
         return list;
     }
     //插叙提货单
+    //格式化日期
     public static ArrayList<pickGoodResult> findPick(String customName, String sysUserName) {
         ArrayList<pickGoodResult> list = new ArrayList<>();
 
@@ -257,6 +265,8 @@ public class findServices {
                 tem.effective = rs.getString(6);
                 tem.create_date = rs.getString(7);
                 tem.id = rs.getString(8);
+                //2018-07-23 00:00:00.0
+                tem.formatdate = tem.create_date.substring(0,10);
                 list.add(tem);
             }
         }
@@ -268,6 +278,7 @@ public class findServices {
         return list;
     }
     //查询生产计划
+    //格式化日期
     public static ArrayList<manufacturePlanResult> findManufacturePlan(String goodName, String manufactureDate) {
         ArrayList<manufacturePlanResult> list = new ArrayList<>();
 
@@ -302,6 +313,7 @@ public class findServices {
                 tem.effective = rs.getString(5);
                 tem.manufacture_date = rs.getString(6);
                 tem.id = rs.getString(7);
+                tem.formatdate = tem.manufacture_date.substring(0,10);
                 list.add(tem);
             }
         }
@@ -357,6 +369,7 @@ public class findServices {
         return list;
     }
     //查询入库单
+    //格式化日期
     public static ArrayList<ruKuResult> findRuKu(String employeeName, String goodName, String inDate) {
         ArrayList<ruKuResult> list = new ArrayList<>();
 
@@ -393,6 +406,7 @@ public class findServices {
                 tem.in_date = rs.getString(3);
                 tem.number = rs.getString(4);
                 tem.id = rs.getString(5);
+                tem.formatdate = tem.in_date.substring(0,10);
                 list.add(tem);
             }
         }
@@ -404,6 +418,7 @@ public class findServices {
         return list;
     }
     //查询出库单
+    //格式化日期
     public static ArrayList<chuKuResult> findChuKu(String employeeName, String goodName, String outDate) {
         ArrayList<chuKuResult> list = new ArrayList<>();
 
@@ -440,6 +455,7 @@ public class findServices {
                 tem.out_date = rs.getString(3);
                 tem.number = rs.getString(4);
                 tem.id = rs.getString(5);
+                tem.formatdate = tem.out_date.substring(0,10);
                 list.add(tem);
             }
         }

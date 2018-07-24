@@ -56,7 +56,7 @@
         <td th:text="${kehu.getName()}">123</td>
         <td th:text="${kehu.getTelephone()}">123</td>
         <td th:text="${kehu.getAddress()}">123</td>
-        <td th:text="${kehu.getRank()}">123</td>
+        <td th:text="'第' + ${kehu.getRank()} + '等级'">123</td>
     </tr>
 </table>
 </body>

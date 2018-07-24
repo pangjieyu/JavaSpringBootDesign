@@ -51,7 +51,7 @@
         <td th:text="${kucun.number}">A4</td>
         <td th:text="${kucun.in_id}">A4</td>
         <td th:text="${kucun.position}"></td>
-        <td th:text="${kucun.in_time}"></td>
+        <td th:text="${kucun.formatdate}"></td>
         <td><a href="cangku_xiugai.html" th:href="@{'/cangku/edit/'+${kucun.id}}" class="a2">修改</a> </td>
     </tr>
 </table>

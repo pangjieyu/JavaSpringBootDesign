@@ -1,6 +1,7 @@
 package com.exercise.mysys.domain;
 
 public class goodandstore {
+    public String formatdate;
     public String id;
     public String in_id;
     public String in_time;

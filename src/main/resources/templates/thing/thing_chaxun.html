@@ -46,10 +46,9 @@
     <tr>
         <th scope="col">商品编号</th>
         <th scope="col">商品名称</th>
-        <th scope="col">单价</th>
+        <th scope="col">单价（元）</th>
         <th scope="col">单位</th>
         <th scope="col">库存下限</th>
-        <th scope="col">库存总量</th>
         <th scope="col">保质期</th>
         <th scope="col"></th>
     </tr>
@@ -60,7 +59,6 @@
         <td th:text="${good.getPrice()}">123</td>
         <td th:text="${good.getUnit()}">123</td>
         <td th:text="${good.getLower_limit()}">123</td>
-        <td th:text="${good.getSum()}">123</td>
         <td th:text="${good.getGuarantee()}">123</td>
         <td><a href="thing_xiugai.html" th:href="@{'/good/edit/'+${good.getId()}}" class="a2">修改</a> </td>
     </tr>
