@@ -56,12 +56,12 @@ public class KuaijiController {
     //查询凭证
     @GetMapping("/pingzheng")
     public String pingzheng(Model model) {
-        model.addAttribute("pingzhengList",findServices.findVoucher("",""));
+        model.addAttribute("pingzhengList",findServices.findVoucher("","",3,4));
         return "kuaiji/pingzheng";
     }
     @PostMapping("/pingzheng")
     public String findPingzheng(HttpServletRequest request, Model model) {
-        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim()));
+        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim(),Integer.parseInt(request.getParameter("button1")),Integer.parseInt(request.getParameter("button2"))));
         return "kuaiji/pingzheng";
     }
     //生成凭证
@@ -106,13 +106,13 @@ public class KuaijiController {
     //查询订单
     @GetMapping("/dingdan")
     public String dingdan(Model model) {
-        model.addAttribute("orderList", findServices.findOrder("",""));
+        model.addAttribute("orderList", findServices.findOrder("","",3));
         return "kuaiji/dingdan";
     }
 
     @PostMapping("/dingdan")
     public String finddingdan(HttpServletRequest request, Model model) {
-        model.addAttribute("orderList", findServices.findOrder(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        model.addAttribute("orderList", findServices.findOrder(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim(),Integer.parseInt(request.getParameter("button1"))));
         return "kuaiji/dingdan";
     }
     //修改订单
@@ -163,12 +163,12 @@ public class KuaijiController {
     //查询退单
     @GetMapping("/tuidan")
     public String tuidan(Model model) {
-        model.addAttribute("returnList", findServices.findReturn("",""));
+        model.addAttribute("returnList", findServices.findReturn("","",3));
         return "kuaiji/tuidan";
     }
     @PostMapping("/tuidan")
     public String findtuidan(HttpServletRequest request, Model model) {
-        model.addAttribute("returnList", findServices.findReturn(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        model.addAttribute("returnList", findServices.findReturn(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim(),Integer.parseInt(request.getParameter("button1"))));
         return "kuaiji/tuidan";
     }
     @PostMapping("/addVoucher/updateTuihuodan")

@@ -1,14 +1,11 @@
 package com.exercise.mysys.service;
 import com.exercise.mysys.domain.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class findServices {
-    private static String password = "pangjieyu";
+    private static String password = "123456";
 
     public static ArrayList<goodandstore> findGood(String name, String inId) {
 
@@ -132,7 +129,7 @@ public class findServices {
     }
     //查询订货单
     //格式化日期
-    public static ArrayList<orderUserCustomGood> findOrder(String customName, String sysUserName) {
+    public static ArrayList<orderUserCustomGood> findOrder(String customName, String sysUserName,int type) {
         ArrayList<orderUserCustomGood> list = new ArrayList<>();
 
         Connection con = null ;
@@ -146,7 +143,12 @@ public class findServices {
             String sql2="select x.name, y.name, z.name, hh.deposit, hh.money, hh.number," +
                     "hh.effective, hh.create_date, hh.payment, hh.id from\n" +
                     "order_good as hh, good as x, customer as y, sys_user as z\n" +
-                    "where hh.good_id=x.id and hh.customer_id = y.id and hh.employee_id = z.id ";
+                    "where hh.good_id=x.id and hh.customer_id = y.id and hh.employee_id = z.id";
+            if(type == 1)
+                sql2+=" and hh.effective=true ";
+            else if(type == 2)
+                sql2+=" and hh.effective=false ";
+
             if (!customName.equals(""))
             {
                 sql2 += "and y.name like '%" + customName + "%'";
@@ -182,7 +184,7 @@ public class findServices {
     }
     //查询退货单
     //格式化日期
-    public static ArrayList<returnGoodResult> findReturn(String customName, String sysUserName) {
+    public static ArrayList<returnGoodResult> findReturn(String customName, String sysUserName,int type) {
         ArrayList<returnGoodResult> list = new ArrayList<>();
 
         Connection con = null ;
@@ -197,6 +199,17 @@ public class findServices {
                     "hh.effective, hh.createdate, hh.id from\n" +
                     "return_good as hh, good as x, customer as y, sys_user as z\n" +
                     "where hh.good_id=x.id and hh.customer_id = y.id and hh.employee_id = z.id ";
+            System.out.println(type);
+            if(type == 1)
+            {
+                sql2 += " and hh.effective=true ";
+            }
+            else if(type == 2)
+            {
+                System.out.println("lianli");
+                sql2 += " and hh.effective=false ";
+            }
+
             if (!customName.equals(""))
             {
                 sql2 += "and y.name like '%" + customName + "%'";
@@ -205,6 +218,7 @@ public class findServices {
             {
                 sql2 += "and z.name like '%" + sysUserName + "%'";
             }
+            System.out.println(sql2);
             ResultSet rs = stmt.executeQuery(sql2);
             while(rs.next())
             {
@@ -230,7 +244,7 @@ public class findServices {
     }
     //插叙提货单
     //格式化日期
-    public static ArrayList<pickGoodResult> findPick(String customName, String sysUserName) {
+    public static ArrayList<pickGoodResult> findPick(String customName, String sysUserName,int type) {
         ArrayList<pickGoodResult> list = new ArrayList<>();
 
         Connection con = null ;
@@ -245,6 +259,14 @@ public class findServices {
                     "hh.effective, hh.create_date, hh.id from\n" +
                     "pick as hh, good as x, customer as y, sys_user as z\n" +
                     "where hh.good_id=x.id and hh.customer_id = y.id and hh.employee_id = z.id ";
+
+            if(type == 1)
+            {
+                sql2 += " and hh.effective=true ";
+            }
+            else if(type == 2)
+                sql2 += " and hh.effective=false ";
+
             if (!customName.equals(""))
             {
                 sql2 += "and y.name like '%" + customName + "%'";
@@ -325,7 +347,7 @@ public class findServices {
         return list;
     }
     //查询凭证
-    public static ArrayList<voucherResult> findVoucher(String customerName, String type) {
+    public static ArrayList<voucherResult> findVoucher(String customerName, String type,int type3,int type4) {
         ArrayList<voucherResult> list = new ArrayList<>();
 
         Connection con = null ;
@@ -340,6 +362,19 @@ public class findServices {
                     "hh.effective, hh.receivable, hh.type, hh.id from\n" +
                     "voucher as hh, customer as x\n" +
                     "where hh.customer_id=x.id ";
+
+
+            if(type3 == 1)
+                sql2+=" and hh.receivable=true ";
+            else if(type3 == 2)
+                sql2+=" and hh.receivable=false ";
+
+
+            if(type4 == 1)
+                sql2+=" and hh.effective=true ";
+            else if(type4 == 2)
+                sql2+=" and hh.effective=false ";
+
             if (!customerName.equals(""))
             {
                 sql2 += "and x.name like '%" + customerName + "%'";

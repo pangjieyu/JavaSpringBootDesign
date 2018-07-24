@@ -89,13 +89,13 @@ public class XiaoShouController {
     //查询订单
     @GetMapping("/dingdan")
     public String dingdan(Model model) {
-        model.addAttribute("orderList", findServices.findOrder("",""));
+        model.addAttribute("orderList", findServices.findOrder("","",3));
         return "sale/dingdan";
     }
 
     @PostMapping("/dingdan")
     public String finddingdan(HttpServletRequest request, Model model) {
-        model.addAttribute("orderList", findServices.findOrder(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        model.addAttribute("orderList", findServices.findOrder(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim(),Integer.parseInt(request.getParameter("button1"))));
         return "sale/dingdan";
     }
     //订货单页面
