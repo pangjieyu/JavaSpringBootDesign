@@ -5,6 +5,7 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -40,6 +41,8 @@ public class StaticPagesController {
             return "redirect:/jihua";
         else if(nowUser.getRole().equals("销售部门"))
             return "redirect:/xiaoshou";
+        else if(nowUser.getRole().equals("teacher"))
+            return "redirect:/index";
         return "index";
     }
 
@@ -60,5 +63,43 @@ public class StaticPagesController {
     @RequestMapping(value = "/cangku", method = RequestMethod.GET)
     public String cangku() {
         return "index/index_store";
+    }
+
+    @GetMapping("/index")
+    public String zhuye() {
+        return "index";
+    }
+
+    @GetMapping("/index/index_boss")
+    public String boss() {
+        return "index/index_boss";
+    }
+    @GetMapping("/index/index_sys")
+    public String sys() {
+        return "index/index_sys";
+    }
+    @GetMapping("/index/index_sale")
+    public String sale() {
+        return "index/index_sale";
+    }
+    @GetMapping("/index/index_store")
+    public String stores() {
+        return "index/index_store";
+    }
+    @GetMapping("/index/index_shengchan")
+    public String shengchan() {
+        return "index/index_shengchan";
+    }
+    @GetMapping("/index/index_jihua")
+    public String jihua() {
+        return "index/index_jihua";
+    }
+    @GetMapping("/index/index_chuna")
+    public String chuna() {
+        return "index/index_chuna";
+    }
+    @GetMapping("/index/index_kuaiji")
+    public String kuaiji() {
+        return "index/index_kuaiji";
     }
 }

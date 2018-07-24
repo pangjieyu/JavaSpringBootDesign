@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>INDEX</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>登录</title>
+    <link rel="stylesheet" href="../static/css/pintuer.css" th:href="@{/static/css/pintuer.css}">
+    <link rel="stylesheet" href="../static/css/admin.css" th:href="@{/static/css/admin.css}">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}">
+    <script th:src="@{/static/js/jquery.js}" src="../static/js/jquery.js"></script>
+    <script th:src="@{/static/js/pintuer.js}" src="../static/js/pintuer.js"></script>
+    <style type="text/css">
+    </style>
 </head>
 <body>
-
+<div class="bg">
+    <h1 class="text-dark" style="text-align: center;margin-top: 50px;">java实训展示界面</h1>
+    <br>
+    <center>
+        <a href="/index/index_boss.html" target="_blank" th:href="@{/index/index_boss}">
+             <button type="button" class="btn btn-success" style="width: 200px;height: 50px;margin-top:50px;">
+                <span style="font-size: 25px;">企业高管</span>
+             </button>
+        </a>
+        <a href="/index/index_sys.html" target="_blank" th:href="@{/index/index_sys}">
+    <button type="button" class="btn btn-success" style="width: 200px;height: 50px;margin-top:50px;margin-left: 50px;">
+        <span style="font-size: 25px;">系统管理部</span>
+    </button>
+        </a>
+    </center>
+    <br>
+    <center>
+        <a href="index/index_sale.html" target="_blank" th:href="@{/index/index_sale}">
+    <button type="button" class="btn btn-success" style="width: 200px;height: 50px;margin-top:50px;">
+        <span style="font-size: 25px;">销售部门</span>
+    </button>
+        </a>
+        <a href="index/index_store.html" target="_blank" th:href="@{/index/index_store}">
+    <button type="button" class="btn btn-success" style="width: 200px;height: 50px;margin-top:50px;margin-left: 50px;">
+        <span style="font-size: 25px;">仓库部门</span>
+    </button>
+        </a>
+    </center>
+    <br>
+    <center>
+        <a href="index/index_shengchan.html" target="_blank" th:href="@{/index/index_shengchan}">
+    <button type="button" class="btn btn-success" style="width: 200px;height: 50px;margin-top:50px;">
+        <span style="font-size: 25px;">生产部门</span>
+    </button>
+        </a>
+        <a href="index/index_jihua.html" target="_blank" th:href="@{/index/index_jihua}">
+    <button type="button" class="btn btn-success" style="width: 200px;height: 50px;margin-top:50px;margin-left: 50px;">
+        <span style="font-size: 25px;">生产计划部门</span>
+    </button>
+        </a>
+    </center>
+        <br>
+    <center>
+        <a href="index/index_chuna.html" target="_blank" th:href="@{/index/index_chuna}">
+        <button type="button" class="btn btn-success" style="width: 200px;height: 50px;margin-top:50px;;">
+            <span style="font-size: 25px;">财务出纳部</span>
+        </button>
+        </a>
+        <a href="index/index_kuaiji.html" target="_blank" th:href="@{/index/index_kuaiji}">
+        <button type="button" class="btn btn-success" style="width: 200px;height: 50px;margin-top: 50px;margin-left: 50px;">
+            <span style="font-size: 25px;">财务会计部</span>
+        </button>
+        </a>
+    </center>
+</div>
 </body>
 </html>
