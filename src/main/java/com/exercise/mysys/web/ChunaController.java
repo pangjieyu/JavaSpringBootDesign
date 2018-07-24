@@ -2,8 +2,10 @@ package com.exercise.mysys.web;
 
 import com.exercise.mysys.dao.VoucherRepository;
 import com.exercise.mysys.domain.Voucher;
+import com.exercise.mysys.service.findServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,17 @@ public class ChunaController {
         return "chuna/chuna_xiugai";
     }
 
+    //查询凭证
+    @GetMapping("/pingzheng")
+    public String pingzheng(Model model) {
+        model.addAttribute("pingzhengList",findServices.findVoucher("",""));
+        return "chuna/pingzheng";
+    }
+    @PostMapping("/pingzheng")
+    public String findPingzheng(HttpServletRequest request, Model model) {
+        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim()));
+        return "chuna/pingzheng";
+    }
     @PostMapping("/xiugaipingzheng")
     @ResponseBody
     //修改交易是否完成标记
