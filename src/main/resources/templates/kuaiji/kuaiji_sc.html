@@ -101,7 +101,7 @@
 </form>
 <form name="form3"  id="form-updatePingzheng" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 0px">请输入收款凭证编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="shoukuan" placeholder="id" style="height: 25px;margin-left: 80px;" name="id"/>
+    <input type="text" class="form-control" id="shoukuan" placeholder="id" style="height: 25px;margin-left: 80px;" name="id" th:value="${#httpServletRequest.getParameter('pingzhengid')}"/>
     <br>
     <br>
     <button class="btn btn-primary" onclick="submitFunction2()" style="width: 210px;height: 40px;margin-top: 20px;margin-left: 150px;">

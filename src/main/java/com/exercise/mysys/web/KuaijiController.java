@@ -53,6 +53,17 @@ public class KuaijiController {
         return "kuaiji/kuaiji_qk";
     }
 
+    //查询凭证
+    @GetMapping("/pingzheng")
+    public String pingzheng(Model model) {
+        model.addAttribute("pingzhengList",findServices.findVoucher("",""));
+        return "kuaiji/pingzheng";
+    }
+    @PostMapping("/pingzheng")
+    public String findPingzheng(HttpServletRequest request, Model model) {
+        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim()));
+        return "kuaiji/pingzheng";
+    }
     //生成凭证
     @RequestMapping(value = "/addVoucher", method = RequestMethod.POST)
     @ResponseBody
