@@ -46,11 +46,10 @@
     <tr>
         <th scope="col">商品编号</th>
         <th scope="col">商品名称</th>
-        <th scope="col">单价</th>
+        <th scope="col">单价（元）</th>
         <th scope="col">单位</th>
         <th scope="col">库存下限</th>
-        <th scope="col">库存总量</th>
-        <th scope="col">保质期</th>
+        <th scope="col">保质期（天）</th>
     </tr>
     </thead>
     <tr th:each="thing:${thingList}">
@@ -59,7 +58,6 @@
         <td th:text="${thing.getPrice()}">123</td>
         <td th:text="${thing.getUnit()}">123</td>
         <td th:text="${thing.getLower_limit()}">123</td>
-        <td th:text="${thing.getSum()}">123</td>
         <td th:text="${thing.getGuarantee()}">123</td>
     </tr>
 </table>

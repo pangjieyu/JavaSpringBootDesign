@@ -57,7 +57,7 @@
         <td th:text="${customer.getName()}">123</td>
         <td th:text="${customer.getTelephone()}">123</td>
         <td th:text="${customer.getAddress()}">123</td>
-        <td th:text="${customer.getRank()}">123</td>
+        <td th:text="'第' + ${customer.getRank()} + '等级'">123</td>
         <td><a href="customer_xiugai.html" th:href="@{'/customer/edit/'+${customer.getId()}}" class="a2">修改</a> </td>
     </tr>
 </table>

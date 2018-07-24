@@ -41,7 +41,8 @@
         <th scope="col">商品名称</th>
         <th scope="col">商品数量</th>
         <th scope="col">员工名称</th>
-        <th scope="col">花费</th>
+        <th scope="col">花费（元）</th>
+        <th scope="col">是否完成</th>
     </tr>
     </thead>
     <tr th:each="item:${shengchanList}">
@@ -51,6 +52,7 @@
         <td th:text="${item.number}">A4</td>
         <td th:text="${item.employee_name}">123</td>
         <td th:text="${item.money}">1234</td>
+        <td th:text="${item.effective} == 1?'否':'是'">1234</td>
     </tr>
 </table>
 </body>

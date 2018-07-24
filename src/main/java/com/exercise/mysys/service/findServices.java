@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class findServices {
-    private static String password = "pangjieyu";
+    private static String password = "123456789";
 
     public static ArrayList<goodandstore> findGood(String name, String inId) {
 
