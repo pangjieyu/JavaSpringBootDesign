@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My JSP 'ShowAllStudent.jsp' starting page</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap.css}" href="../../static/css/bootstrap.css" />
+    <script src="../../static/js/jquery.js" th:src="@{/static/js/jquery.js}"></script>
+    <style>
+        .img1:hover {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+<!--    <script type="text/javascript">
+        function checkInput() {
+            var name1 = document.form1.name1.value;
+            var name2 = document.form1.name2.value;
+            if(name1 == ""){
+                alert("请输入客户名称");
+                return false;
+            }else if(name2 == ""){
+                alert("请输入员工名称");
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>-->
+</head>
+
+<body>
+<p class="text-success" style="margin-top: 20px;"><strong style="font-size: 25px">订单信息:</strong>
+</p>
+<br>
+<form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
+    <span class="text-primary" style="font-size: 20px;">客户名称:</span>
+    <input type="text" class="form-control" id="name1" placeholder="name" style="height: 25px; " name="kehu">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="text-primary" style="font-size: 20px;">员工名称:</span>
+    <input type="text" class="form-control" id="name2" placeholder="name" style="height: 25px;" name="yuangong">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
+        <span>查询</span>
+    </button>
+</form>
+<table class="table table-bordered table-hover definewidth m10">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">员工名称</th>
+        <th scope="col">商品名称</th>
+        <th scope="col">客户名称</th>
+        <th scope="col">商品数量</th>
+        <th scope="col">预付款</th>
+        <th scope="col">总金额</th>
+        <th scope="col">付款情况</th>
+        <th scope="col">产生时间</th>
+        <th scope="col">是否有效</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tr th:each="dingdan:${orderList}">
+        <td th:text="${dingdan.employee_name}">123</td>
+        <td th:text="${dingdan.good_name}">1234</td>
+        <td th:text="${dingdan.customer_name}">A4</td>
+        <td th:text="${dingdan.number}">123</td>
+        <td th:text="${dingdan.deposit}">1234</td>
+        <td th:text="${dingdan.money}">A4</td>
+        <td th:text="${dingdan.payment}">123</td>
+        <td th:text="${dingdan.formatdate}">1234</td>
+        <td th:text="${dingdan.effective}">1234</td>
+        <td><a href="#" th:href="@{'/xiaoshou/dinghuopage?id='+${dingdan.id}}" class="a2">修改</a> </td>
+    </tr>
+</table>
+</body>
+</html>

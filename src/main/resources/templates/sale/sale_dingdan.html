@@ -108,7 +108,7 @@
 </form>
 <form id="form-ad" name="form2"  enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">请输入订货编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="dinghuodan" name="dinghuodan" placeholder="id" style="height: 25px;"/>
+    <input th:value="${#httpServletRequest.getParameter('id')}" type="text" class="form-control" id="dinghuodan" name="dinghuodan" placeholder="id" style="height: 25px;"/>
     <br>
     <button class="btn btn-primary" onclick="sub()" id="btn" style="width: 70px;height: 35px;margin-top: 20px;margin-left: 150px;">
         <span>删除</span>

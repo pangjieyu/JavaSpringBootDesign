@@ -2,6 +2,7 @@ package com.exercise.mysys.web;
 
 import com.exercise.mysys.dao.*;
 import com.exercise.mysys.domain.*;
+import com.exercise.mysys.service.findServices;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -85,12 +86,25 @@ public class XiaoShouController {
     {
         return "thing/thing_tianjia";
     }
+    //查询订单
+    @GetMapping("/dingdan")
+    public String dingdan(Model model) {
+        model.addAttribute("orderList", findServices.findOrder("",""));
+        return "sale/dingdan";
+    }
+
+    @PostMapping("/dingdan")
+    public String finddingdan(HttpServletRequest request, Model model) {
+        model.addAttribute("orderList", findServices.findOrder(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        return "sale/dingdan";
+    }
     //订货单页面
     @RequestMapping(value = "/dinghuopage",method = RequestMethod.GET)
     public String dinghuopage()
     {
-        return "sale/sale_dingdan";
+            return "sale/sale_dingdan";
     }
+
 
 
     //填写退货单
