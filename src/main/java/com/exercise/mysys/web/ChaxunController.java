@@ -83,13 +83,13 @@ public class ChaxunController {
     //查询生产计划
     @GetMapping("/shengchan")
     public String shengchan(Model model) {
-        model.addAttribute("shengchanList", findServices.findManufacturePlan("",""));
+        model.addAttribute("shengchanList", findServices.findManufacturePlan("","",3));
         return "chaxun/chaxun_shengchan";
     }
     @PostMapping("/shengchan")
     public String findShengchan(HttpServletRequest request, Model model) {
         System.out.println("time:"+request.getParameter("time"));
-        model.addAttribute("shengchanList", findServices.findManufacturePlan(request.getParameter("goodname"),request.getParameter("time")));
+        model.addAttribute("shengchanList", findServices.findManufacturePlan(request.getParameter("goodname"),request.getParameter("time"),Integer.parseInt(request.getParameter("button1"))));
         return "chaxun/chaxun_shengchan";
     }
 

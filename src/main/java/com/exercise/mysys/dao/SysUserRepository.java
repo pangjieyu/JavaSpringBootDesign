@@ -18,7 +18,13 @@ public interface SysUserRepository extends JpaRepository<SysUser,Long> {
     SysUser findSysUserByUsername(String username);
     SysUser findSysUserById(Long id);
     List<SysUser> findAllByRole(String role);
+    @Query("select t from SysUser t where t.name like %?1%")
+    List<SysUser> myFindname(String name);
+
     @Query("select t from SysUser t where t.role = ?1 and t.name like %?2%")
     List<SysUser> myFind(String bumen, String name);
+
+    @Query("select t from SysUser  t where t.role = ?1")
+    List<SysUser> myFindbumen(String bumen);
 
 }

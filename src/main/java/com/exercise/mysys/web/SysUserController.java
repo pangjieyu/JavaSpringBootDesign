@@ -147,12 +147,20 @@ public class SysUserController {
     public String chazhao(HttpServletRequest request, Model model) {
         String name = request.getParameter("name");
         String bumen = request.getParameter("bumen");
-        List<SysUser> list;
-        if(name.equals("")) {
+        List<SysUser> list = null;
+
+        if(name.equals("") && bumen.equals("请选择"))
+            list = userRepository.findAll();
+
+        if(name.equals("") && !bumen.equals("请选择"))
             list = userRepository.findAllByRole(bumen);
-        }else {
+
+        if(!name.equals("") && !bumen.equals("请选择"))
             list = userRepository.myFind(bumen, name);
-        }
+
+        if(!name.equals("") && bumen.equals("请选择"))
+            list = userRepository.myFindname(name);
+
         model.addAttribute("userList",list);
         return "sys/sys_yuangong";
     }

@@ -301,7 +301,7 @@ public class findServices {
     }
     //查询生产计划
     //格式化日期
-    public static ArrayList<manufacturePlanResult> findManufacturePlan(String goodName, String manufactureDate) {
+    public static ArrayList<manufacturePlanResult> findManufacturePlan(String goodName, String manufactureDate,int type) {
         ArrayList<manufacturePlanResult> list = new ArrayList<>();
 
         Connection con = null ;
@@ -316,6 +316,10 @@ public class findServices {
                     "hh.effective, hh.manufacture_date, hh.id from\n" +
                     "manufacture_plan as hh, good as x, sys_user as y\n" +
                     "where hh.good_id=x.id and hh.employee_id = y.id ";
+            if(type == 1)
+                sql2 += " and hh.effective=false ";
+            else if(type == 2)
+                sql2 += " and hh.effective=true ";
             if (!goodName.equals(""))
             {
                 sql2 += "and x.name like '%" + goodName + "%'";
