@@ -5,9 +5,11 @@ import com.exercise.mysys.dao.OrderGoodRepository;
 import com.exercise.mysys.dao.ReturnGoodRepository;
 import com.exercise.mysys.dao.VoucherRepository;
 import com.exercise.mysys.domain.*;
+import com.exercise.mysys.service.findServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -89,6 +91,18 @@ public class KuaijiController {
             System.out.println(e.toString());
             return "操作失败";
         }
+    }
+    //查询订单
+    @GetMapping("/dingdan")
+    public String dingdan(Model model) {
+        model.addAttribute("orderList", findServices.findOrder("",""));
+        return "kuaiji/dingdan";
+    }
+
+    @PostMapping("/dingdan")
+    public String finddingdan(HttpServletRequest request, Model model) {
+        model.addAttribute("orderList", findServices.findOrder(request.getParameter("kehu").trim(),request.getParameter("yuangong").trim()));
+        return "kuaiji/dingdan";
     }
     //修改订单
     @PostMapping("/addVoucher/updateDingdan")

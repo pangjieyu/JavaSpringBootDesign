@@ -86,7 +86,7 @@
 </form>
 <form  name="form2" id="form-update" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 21px">请输入订单编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="dingdan" placeholder="id" style="height: 25px;" name="id"/>
+    <input type="text" class="form-control" id="dingdan" placeholder="id" style="height: 25px;" name="id" th:value="${#httpServletRequest.getParameter('id')}"/>
     <br>
     <span class="text-primary" style="font-size: 20px;margin-left: 80px">所付款项:</span>
     <select class="form-control" id="sale" style="height: 35px;margin-left: 115px" name="payment">
