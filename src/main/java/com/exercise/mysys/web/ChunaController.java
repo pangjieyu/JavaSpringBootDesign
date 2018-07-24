@@ -66,7 +66,7 @@ public class ChunaController {
                 return "该凭证不存在";
             }
             if (voucher.getType().equals("收款")){
-                return "该凭证是收款凭着，您无权销毁";
+                return "该凭证是收款凭证，您无权销毁";
             }
             voucher.setEffective(false);
             voucherRepository.save(voucher);

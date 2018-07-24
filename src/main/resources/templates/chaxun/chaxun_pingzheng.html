@@ -52,8 +52,8 @@
         <td th:text="${item.customer_name}">123</td>
         <td th:text="${item.type}">1234</td>
         <td th:text="${item.money}">A4</td>
-        <td th:text="${item.receivable}">123</td>
-        <td th:text="${item.effective}?'是':'否'">1234</td>
+        <td th:text="${item.receivable} == 1 ? '完成' : '未完成'">123</td>
+        <td th:text="${item.effective} == 1?'是':'否'">1234</td>
     </tr>
 </table>
 </body>

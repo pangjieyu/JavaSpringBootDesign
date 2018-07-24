@@ -29,41 +29,18 @@
         }
     </style>
     <script type="text/javascript">
-        function checkInput() {
-/*            var id = document.form1.id.value;
-            var name = document.form1.name.value;
-            var sex = document.form1.sex.value;
-            var password = document.form1.password.value;
-            var salary = document.form1.salary.value;
-            var telephone = document.form1.telephone.value;
-            var address = document.form1.address.value;
-            var date = document.form1.date.value;
-            var belong = document.form1.belong.value;
-            if(id == ""){
-                alert("请输入员工用户名");
-                return false;
-            }else if(name == "") {
-                alert("请输入员工姓名");
-                return false;
-            }else if(password == ""){
-                alert("请输入员工密码");
-                return false;
-            }else if(salary == ""){
-                alert("请输入员工工资");
-                return false;
-            }else if(telephone == ""){
-                alert("请输入员工手机号");
-                return false;
-            }else if(address == ""){
-                alert("请输入员工家庭地址");
-                return false;
-            }else if(date == ""){
-                alert("请输入员工入职时间");
-                return false;
-            }else{
-                return true;
-            }*/
-        }
+        $(document).ready(function(){
+            // 给input  date设置默认值
+            var now = new Date();
+//格式化日，如果小于9，前面补0
+            var day = ("0" + now.getDate()).slice(-2);
+//格式化月，如果小于9，前面补0
+            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+//拼装完整日期格式
+            var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+//完成赋值
+            $('#date').val(today);
+        });
     </script>
 </head>
 

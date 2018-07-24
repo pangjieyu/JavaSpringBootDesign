@@ -28,6 +28,7 @@
             margin-left: 500px;
         }
     </style>
+
 </head>
 
 <body>
@@ -36,7 +37,7 @@
 <br>
 <form  th:action="@{'/cangku/edit/' + ${store.getId()}}" method="post" name="form1" id="form-add" onsubmit="submitFunction()" enctype="multipart/form-data">
     <span class="text-primary" style="margin-left: 60px">商品编号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" th:value="${store.getGood_id()}" name="id"/>
+    <input type="text" class="form-control" id="id" placeholder="id" style="height: 25px;" th:value="${store.getGood_id()}" name="id" readonly="readonly"/>
 
     <span class="text-primary" style="margin-left: 190px">商品数量:</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" class="form-control" id="num" placeholder="money" style="height: 25px;" th:value="${store.getNumber()}" name="number"/>
@@ -46,7 +47,7 @@
     <input type="text" class="form-control" id="weizhi" placeholder="num" style="height: 25px;" th:value="${store.getPosition()}" name="position"/>
 
     <span class="text-primary" style="margin-left: 190px">入库批号:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control" id="pihao" placeholder="num" style="height: 25px;" th:value="${store.getIn_id()}" name="pihao"/>
+    <input type="text" class="form-control" id="pihao" placeholder="num" style="height: 25px;" th:value="${store.getIn_id()}" name="pihao" readonly="readonly"/>
 
     <br>
 

@@ -73,7 +73,7 @@
         <td th:text="${dingdan.money}">A4</td>
         <td th:text="${dingdan.payment}">123</td>
         <td th:text="${dingdan.formatdate}">1234</td>
-        <td th:text="${dingdan.effective}?'是':'否'">1234</td>
+        <td th:text="${dingdan.effective} == 1 ? '是':'否'">1234</td>
     </tr>
 </table>
 </body>
