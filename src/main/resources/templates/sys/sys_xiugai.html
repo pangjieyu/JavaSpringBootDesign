@@ -114,6 +114,8 @@
         <option th:selected="${user.getRole() == '生产计划部门'}" value="生产计划部门">生产计划部门</option>
         <option th:selected="${user.getRole() == '财务会计部'}" value="财务会计部">财务会计部</option>
         <option th:selected="${user.getRole() == '财务出纳部'}" value="财务出纳部">财务出纳部</option>
+        <option th:selected="${user.getRole() == 'admin'}" value="admin">root</option>
+        <option th:selected="${user.getRole() == 'boss'}" value="boss">boss</option>
     </select>
 
     <br>

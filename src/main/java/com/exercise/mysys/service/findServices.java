@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class findServices {
-    private static String password = "pangjieyu";
+    private static String password = "123456789";
 
     public static ArrayList<goodandstore> findGood(String name, String inId) {
 
@@ -23,7 +23,7 @@ public class findServices {
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", password);
             stmt = con.createStatement();
             //查询结果显示编号
-            String sql2="select x.good_id,x.in_id,x.in_time,x.number,x.position,y.name,x.id from\n" +
+            String sql2="select x.id,x.in_id,x.in_time,x.number,x.position,y.name from\n" +
                     "store as x,good as y\n" +
                     "where x.good_id=y.id ";
             if (!name.equals(""))
@@ -45,7 +45,6 @@ public class findServices {
                 tem.number = rs.getString(4);
                 tem.position = rs.getString(5);
                 tem.good_name = rs.getString(6);
-                tem.id = rs.getString(7);
                 list.add(tem);
             }
         }
@@ -58,7 +57,6 @@ public class findServices {
     }
 
     public static ArrayList<goodandstore> findGood(String name) {
-
         ArrayList<goodandstore> list = new ArrayList<>();
 
         Connection con = null ;
@@ -70,7 +68,7 @@ public class findServices {
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sqlDesign?useUnicode=true&characterEncoding=utf-8", "root", password);
             stmt = con.createStatement();
             //查询结果显示编号
-            String sql2="select x.good_id,x.in_id,x.in_time,x.number,x.position,y.name,x.id from\n" +
+            String sql2="select x.id,x.in_id,x.in_time,x.number,x.position,y.name from\n" +
                     "store as x,good as y\n" +
                     "where x.good_id=y.id and y.name like '%"+name+"%'";
             ResultSet rs = stmt.executeQuery(sql2);
@@ -83,7 +81,6 @@ public class findServices {
                 tem.number = rs.getString(4);
                 tem.position = rs.getString(5);
                 tem.good_name = rs.getString(6);
-                tem.id = rs.getString(7);
                 tem.formatdate = tem.in_time.substring(0,10);
                 list.add(tem);
             }

@@ -24,7 +24,7 @@
 <br>
 <form action="#" name="form1" method="post" onsubmit="return checkInput()" enctype="multipart/form-data">
     <span class="text-primary" style="font-size: 20px;">商品名称:</span>
-    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;">
+    <input type="text" class="form-control" id="name" placeholder="name" style="height: 25px;" name="goodname"/>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit" style="width: 70px;height: 35px;margin-top: -14px;">
         <span>查询</span>
@@ -33,7 +33,7 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">商品编号</th>
+        <th scope="col">库存编号</th>
         <th scope="col">商品名称</th>
         <th scope="col">商品数量</th>
         <th scope="col">入库批号</th>

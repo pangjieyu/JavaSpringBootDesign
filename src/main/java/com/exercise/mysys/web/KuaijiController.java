@@ -183,6 +183,7 @@ public class KuaijiController {
                 return "没有该退货单";
             }
             returnGood.setEffective(false);
+            returnGoodRepository.save(returnGood);
             return "true";
         }
         catch (Exception e) {
