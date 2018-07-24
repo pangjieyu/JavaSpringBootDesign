@@ -34,12 +34,12 @@ public class ChunaController {
     //查询凭证
     @GetMapping("/pingzheng")
     public String pingzheng(Model model) {
-        model.addAttribute("pingzhengList",findServices.findVoucher("",""));
+        model.addAttribute("pingzhengList",findServices.findVoucher("","",3,4));
         return "chuna/pingzheng";
     }
     @PostMapping("/pingzheng")
     public String findPingzheng(HttpServletRequest request, Model model) {
-        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim()));
+        model.addAttribute("pingzhengList",findServices.findVoucher(request.getParameter("customerName").trim(),request.getParameter("type").trim(),Integer.parseInt(request.getParameter("buton1")),Integer.parseInt(request.getParameter("button2"))));
         return "chuna/pingzheng";
     }
     @PostMapping("/xiugaipingzheng")

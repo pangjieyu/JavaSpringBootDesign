@@ -157,4 +157,9 @@ public class SysUserController {
         return "sys/sys_yuangong";
     }
 
+    @RequestMapping(value="/zong")
+    public String zon()
+    {
+        return "indexx.html";
+    }
 }
