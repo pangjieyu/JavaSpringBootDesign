@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class findServices {
-    private static String password = "123456789";
+    private static String password = "13835472854";
 
     public static ArrayList<goodandstore> findGood(String name, String inId) {
 
